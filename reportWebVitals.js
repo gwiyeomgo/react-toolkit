@@ -11,11 +11,3 @@ const reportWebVitals = onPerfEntry => {
 };
 
 export default reportWebVitals;
-
-
-const track = ({ type, demo }: { type: string; demo: string }) => {
-  if (!window.gtag) {
-    return;
-  }
-  window.gtag('event', 'demo', { event_category: type, event_label: demo });
-};

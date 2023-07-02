@@ -8,3 +8,16 @@ tsconfig.json
 
 # GIT
 .git
+
+demo
+demo_init
+
+/public
+yarn.lock
+.idea
+
+
+make_demo.mjs
+make_demo2.mjs
+make_demo3.mjs
+make_demo4.mjs

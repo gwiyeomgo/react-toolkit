@@ -2,13 +2,13 @@ import { render } from '@testing-library/react'
 import {SearchConditionsProvider,useSearchConditions} from './searchConditions'
 
 const TestPage = ({ pageName }) => {
-    const {searchConditions, setValue, deleteValue} = useSearchConditions();
+    const {searchConditions} = useSearchConditions();
     console.log("pageName 페이지의 ",pageName)
     console.log("searchConditions",searchConditions)
 }
 describe("SearchConditionsProvider test",()=>{
 
-    test('SearchConditionsProvider 에 렌더링 완료 (성공) ', () => {
+    test('SearchConditionsProvider 에 렌더링 완료 (성공)', () => {
         render(
             <SearchConditionsProvider pageName={"페이지1"}>
                 <TestPage pageName={"페이지1"}/>

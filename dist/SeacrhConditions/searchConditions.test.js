@@ -5,14 +5,12 @@ var _searchConditions = require("./searchConditions");
 var TestPage = function TestPage(_ref) {
   var pageName = _ref.pageName;
   var _useSearchConditions = (0, _searchConditions.useSearchConditions)(),
-    searchConditions = _useSearchConditions.searchConditions,
-    setValue = _useSearchConditions.setValue,
-    deleteValue = _useSearchConditions.deleteValue;
+    searchConditions = _useSearchConditions.searchConditions;
   console.log("pageName 페이지의 ", pageName);
   console.log("searchConditions", searchConditions);
 };
 describe("SearchConditionsProvider test", function () {
-  test('SearchConditionsProvider 에 렌더링 완료 (성공) ', function () {
+  test('SearchConditionsProvider 에 렌더링 완료 (성공)', function () {
     (0, _react.render)( /*#__PURE__*/React.createElement(_searchConditions.SearchConditionsProvider, {
       pageName: "페이지1"
     }, /*#__PURE__*/React.createElement(TestPage, {

@@ -1,9 +1,8 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.0.0",
+  "version": "0.0.12",
   "description": "react components ",
   "main": "dist/index.js",
-  "private": true,
   "keywords": [
     "react",
     "toolkit",
@@ -26,6 +25,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@gwiyeomgo/react-toolkit": "^0.0.12",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -37,7 +37,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build": "yarn make-demo && npx rimraf dist && babel src/lib -d dist && yarn copy-files ",
+    "build": "npx rimraf dist && babel src/lib -d dist && yarn copy-files && yarn make-demo",
     "copy-files": "npx babel src/lib/styles.css --copy-files --out-dir dist ",
     "make-demo": "node make_demo.mjs",
     "test": "jest",
@@ -70,5 +70,3 @@
     "eslint-plugin-testing-library": "^5.11.0"
   }
 }
-
-

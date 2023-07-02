@@ -1,1 +1,1 @@
-export { default as SearchConditions } from './SeacrhConditions';
+export { SearchConditionsProvider,useSearchConditions } from './SeacrhConditions/searchConditions';
