@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 const files = fs.readdirSync('./src/demo/').reduce((acc, cur) => ({
     ...acc,
     [`App.js`]: {
+        title : cur,
         content: fs.readFileSync(path.resolve(__dirname, `./src/demo/${cur}`), 'utf8')
     }
 }), {});
@@ -41,11 +42,8 @@ const filePromises = Object.entries(files).map(([filePath, file]) => {
     })
         .then(response => response.json())
         .then(({ sandbox_id }) => {
-            const pieces = filePath.split("/");
-            const title = pieces[pieces.length - 1];
             return {
-                title: title,
-                filePath: filePath,
+                title: file.title,
                 sandboxUrl: `https://codesandbox.io/s/${sandbox_id}`
             };
         });
@@ -53,6 +51,16 @@ const filePromises = Object.entries(files).map(([filePath, file]) => {
 
 Promise.all(filePromises)
     .then(sandboxRes => {
+        const sandboxUrls = Object.values(sandboxRes).
+        map(({ sandboxUrl,title },index) => `|${index + 1}| [${title}](${sandboxUrl}) |`);
+        const readmeContent = `# @gwiyeomgo/react-toolkit
+작업하면서 생성했던 react 컴포넌트 모음
+
+\`CodeSandbox Demo\`:\n\n||list|\n|---|---|\n${sandboxUrls.join('\n')}`;
+
+        fs.writeFileSync(path.resolve(__dirname, 'README.md'), readmeContent);
+
+
         console.log(sandboxRes);
     })
     .catch(error => console.error('Error:', error));

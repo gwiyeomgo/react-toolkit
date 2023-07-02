@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-const SearchConditionsContext = createContext();
+const SearchConditionsContext = createContext(undefined);
 const PAGE = 1;
 const PAGE_SIZE = 10;
 const initialSearchConditions = {
@@ -36,7 +36,7 @@ const SearchConditionsProvider = ({ children, pageName })=> {
     );
 }
 
-function useSearchConditions() {
+const useSearchConditions = () => {
     const context = useContext(SearchConditionsContext);
     if (!context) {
         throw new Error('useSearchConditions 는 SearchConditionsProvider 내부에서 사용되어야 합니다');
