@@ -1,0 +1,74 @@
+{
+  "name": "@gwiyeomgo/react-toolkit",
+  "version": "0.0.0",
+  "description": "react components ",
+  "main": "dist/index.js",
+  "private": true,
+  "keywords": [
+    "react",
+    "toolkit",
+    "gwiyeomgo",
+    "design",
+    "seacrhCondition",
+    "component",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gwiyeomgo/react-toolkit"
+  },
+  "author": {
+    "email": "gwiyeomgo@gmail.com",
+    "name": "gwiyeomgo"
+  },
+  "bugs": {
+    "email": "gwiyeomgo@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "codesandbox": "^2.2.3",
+    "node-fetch": "^3.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "build": "yarn make-demo && npx rimraf dist && babel src/lib -d dist && yarn copy-files ",
+    "copy-files": "npx babel src/lib/styles.css --copy-files --out-dir dist ",
+    "make-demo": "node make_demo.mjs",
+    "test": "jest",
+    "test2": "react-scripts test"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.5",
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "eslint-plugin-jest-dom": "^5.0.1",
+    "eslint-plugin-testing-library": "^5.11.0"
+  }
+}
+
+
