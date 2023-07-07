@@ -29,3 +29,5 @@ yarn.lock
 make_demo2.mjs
 make_demo3.mjs
 make_demo4.mjs
+
+./dist

@@ -5,15 +5,7 @@ import fetch from 'node-fetch';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const files = fs.readdirSync('./src/demo/').reduce((acc, cur) => ({
-    ...acc,
-    [`App.js`]: {
-        title : cur,
-        content: fs.readFileSync(path.resolve(__dirname, `./src/demo/${cur}`), 'utf8')
-    }
-}), {});
 
-// 추가할 파일의 경로와 내용을 정의합니다.
 const additionalFiles = {
     'index.js': {
         content: fs.readFileSync(path.resolve(__dirname, './src/demo_init/index.js'), 'utf8')
@@ -26,7 +18,21 @@ const additionalFiles = {
     }
 };
 
-const filePromises = Object.entries(files).map(([filePath, file]) => {
+
+const files = fs.readdirSync('./src/demo/').reduce((acc, fileName) => {
+    const filePath = path.resolve(__dirname, `./src/demo/${fileName}`);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const fileObj = {
+        ['App.js']: {
+            title: fileName,
+            content: fileContent
+        }
+    };
+
+    return [...acc, { ...fileObj, ...additionalFiles }];
+}, []);
+
+const filePromises = files.map((file) => {
     return fetch('https://codesandbox.io/api/v1/sandboxes/define?json=1', {
         method: 'POST',
         headers: {
@@ -34,16 +40,13 @@ const filePromises = Object.entries(files).map(([filePath, file]) => {
             Accept: 'application/json'
         },
         body: JSON.stringify({
-            files: {
-                ...files,
-                ...additionalFiles
-            }
+            files:file
         })
     })
         .then(response => response.json())
         .then(({ sandbox_id }) => {
             return {
-                title: file.title,
+                title: file['App.js'].title,
                 sandboxUrl: `https://codesandbox.io/s/${sandbox_id}`
             };
         });
