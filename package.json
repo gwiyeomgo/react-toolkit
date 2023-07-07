@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.0.12",
+  "version": "0.0.23",
   "description": "react components ",
   "main": "dist/index.js",
   "keywords": [
@@ -25,20 +25,26 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@gwiyeomgo/react-toolkit": "^0.0.12",
+    "@floating-ui/react": "^0.24.5",
+    "@gwiyeomgo/react-toolkit": "^0.0.23",
+    "@react-stately/utils": "^3.7.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "codesandbox": "^2.2.3",
     "node-fetch": "^3.3.1",
+    "radix-ui": "^1.0.1",
+    "rc-select": "^14.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build": "npx rimraf dist && babel src/lib -d dist && yarn copy-files && yarn make-demo",
-    "copy-files": "npx babel src/lib/styles.css --copy-files --out-dir dist ",
+    "build": "npx rimraf dist && yarn copy-js && yarn copy-css && yarn make-demo",
+    "copy-js": "babel src/lib -d dist",
+    "copy-css": "npx babel src/lib/**/*.css --copy-files --out-dir dist ",
     "make-demo": "node make_demo.mjs",
     "test": "jest",
     "test2": "react-scripts test"
@@ -66,6 +72,7 @@
     "@babel/core": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
+    "copyfiles": "^2.4.1",
     "eslint-plugin-jest-dom": "^5.0.1",
     "eslint-plugin-testing-library": "^5.11.0"
   }
