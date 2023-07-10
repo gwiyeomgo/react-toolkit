@@ -49,6 +49,7 @@ const SelectTrigger = () => {
       onClick={() => {
         context.onOpenChange(!context.open);
       }}
+      role="combobox"
       aria-expanded={context.open}
     >
       <span onKeyDown={onKeyDown} tabIndex={0} style={{ width: "120px" }}>
@@ -131,6 +132,7 @@ const Option = ({ index, value, children, context }) => {
   return (
     <Collection.Item
       value={value}
+      index={index}
       onSelectValue={(v) => {
         context.onValueChange(v);
         context.onOpenChange(false);
