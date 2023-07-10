@@ -14,8 +14,11 @@ function CollectionProvider({ children }) {
 
 const ITEM_DATA_ATTR = "data-collection-item";
 
-function CollectionItem({ value, children, onSelectValue }) {
+function CollectionItem({ index,value, children, onSelectValue }) {
   const context = useContext(CollectionContext);
+  if (!context) {
+    throw new Error('CollectionItem 는 Collection.Provider 내부에서 사용되어야 합니다');
+  }
   const ref = useRef(null);
 
   const handleClick = () => {
@@ -73,11 +76,12 @@ function CollectionItem({ value, children, onSelectValue }) {
 
   return (
     <div
-      {...{ [ITEM_DATA_ATTR]: "" }}
+      {...{ [ITEM_DATA_ATTR]: index }}
       ref={ref}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      tabIndex="0"
+      tabIndex={index}
+      role={"listitem"}
     >
       {children}
     </div>
@@ -85,16 +89,18 @@ function CollectionItem({ value, children, onSelectValue }) {
 }
 function useCollection() {
   const context = useContext(CollectionContext);
-
+  if (!context) {
+    throw new Error('useCollection 는 Collection.Provider 내부에서 사용되어야 합니다');
+  }
   const getItems = () => {
-    const options = Array.from(context.itemMap).map((item, index) => {
+
+    const options = Array.from(context.itemMap.current).map((item, index) => {
       return {
         index: index,
-        value: item.value,
-        ref: item.ref
+        value: item[1].value,
+        ref: item[1].ref
       };
     });
-
     return options;
   };
   const focusItem = (v) => {
