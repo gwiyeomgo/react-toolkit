@@ -1,11 +1,4 @@
-import React, {
-  useState,
-  createContext,
-  useRef,
-  useEffect,
-  useContext
-} from "react";
-
+import React, { createContext, useRef, useEffect, useContext } from "react";
 import styles from "../styles.module.css";
 const CollectionContext = createContext();
 
@@ -20,24 +13,55 @@ function CollectionProvider({ children }) {
 }
 
 const ITEM_DATA_ATTR = "data-collection-item";
-function CollectionItem({ value, children, onSelectValue, onKeyDown }) {
+
+function CollectionItem({ value, children, onSelectValue }) {
   const context = useContext(CollectionContext);
+  const ref = useRef(null);
 
-  const ref = useRef([]);
-  const [isSelected, setIsSelected] = useState(false);
-
-  const handleClick = (e) => {
+  const handleClick = () => {
     context.itemMap.current.forEach((item) => {
       if (item.ref === ref) {
-        item.isSelected = true;
         onSelectValue(item.value);
+        item.ref.current.classList.add(styles.selected);
       } else {
         item.ref.current.classList.remove(styles.selected);
-        item.isSelected = false;
       }
     });
+  };
 
-    setIsSelected(!isSelected);
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const items = Array.from(context.itemMap.current.values());
+      const currentIndex = items.findIndex((item) => item.ref === ref);
+      const nextIndex = currentIndex + 1 < items.length ? currentIndex + 1 : 0;
+      const nextItem = items[nextIndex];
+
+      if (nextItem) {
+        nextItem.ref.current.focus();
+        nextItem.ref.current.classList.add(styles.selected); // 스타일 추가
+        ref.current.classList.remove(styles.selected); // 현재 항목의 스타일 제거
+      }
+    }
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const items = Array.from(context.itemMap.current.values());
+      const currentIndex = items.findIndex((item) => item.ref === ref);
+      const prevIndex =
+        currentIndex - 1 >= 0 ? currentIndex - 1 : items.length - 1;
+      const prevItem = items[prevIndex];
+
+      if (prevItem) {
+        prevItem.ref.current.focus();
+        prevItem.ref.current.classList.add(styles.selected); // 스타일 추가
+        ref.current.classList.remove(styles.selected); // 현재 항목의 스타일 제거
+      }
+    }
+    if (e.key === "Enter") {
+      const items = Array.from(context.itemMap.current.values());
+      const currentIndex = items.findIndex((item) => item.ref === ref);
+      onSelectValue(items[currentIndex].value);
+    }
   };
 
   useEffect(() => {
@@ -52,31 +76,39 @@ function CollectionItem({ value, children, onSelectValue, onKeyDown }) {
       {...{ [ITEM_DATA_ATTR]: "" }}
       ref={ref}
       onClick={handleClick}
-      onKeyDown={onKeyDown}
+      onKeyDown={handleKeyDown}
+      tabIndex="0"
     >
       {children}
     </div>
   );
 }
-
 function useCollection() {
   const context = useContext(CollectionContext);
 
   const getItems = () => {
-    const orderedItems = Array.from(context.itemMap.current).map(
-      (item, index) => {
-        return {
-          index: index,
-          value: item.value,
-          isSelected: item.isSelected
-        };
-      }
-    );
+    const options = Array.from(context.itemMap).map((item, index) => {
+      return {
+        index: index,
+        value: item.value,
+        ref: item.ref
+      };
+    });
 
-    return orderedItems;
+    return options;
+  };
+  const focusItem = (v) => {
+    context.itemMap.current.forEach((item) => {
+      if (item.value === v) {
+        item.ref.current.focus();
+        item.ref.current.classList.add(styles.selected);
+      } else {
+        item.ref.current.classList.remove(styles.selected);
+      }
+    });
   };
 
-  return { getItems };
+  return { getItems, focusItem };
 }
 
 const Collection = {
