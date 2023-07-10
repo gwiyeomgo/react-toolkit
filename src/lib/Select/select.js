@@ -1,4 +1,4 @@
-import React, { createContext, useRef, useContext, useState } from "react";
+import React, { createContext, useEffect, useContext, useState } from "react";
 import { Collection, useCollection } from "./collection";
 import styled from "styled-components";
 
@@ -35,12 +35,11 @@ const TriggerButton = styled.button`
 
 const SelectTrigger = () => {
   const context = useSelectContext();
+
   const onKeyDown = (e) => {
     if (e.keyCode === 40) {
       e.preventDefault();
-      if (context.open) {
-        context.onOpenChange(false);
-      } else {
+      if (!context.open) {
         context.onOpenChange(true);
       }
     }
@@ -50,10 +49,9 @@ const SelectTrigger = () => {
       onClick={() => {
         context.onOpenChange(!context.open);
       }}
-      onKeyDown={onKeyDown}
       aria-expanded={context.open}
     >
-      <span tabIndex={0} style={{ width: "120px" }}>
+      <span onKeyDown={onKeyDown} tabIndex={0} style={{ width: "120px" }}>
         {context.value}
       </span>
     </TriggerButton>
@@ -108,32 +106,31 @@ const Li = styled.li`
 
 const OptionList = ({ children }) => {
   const context = useSelectContext();
-
-  const onKeyDown = (e) => {
-    if (e.keyCode === 40) {
-      e.preventDefault();
-    }
-  };
-
   return (
     <Ul open={context.open} role="listbox">
       {context.open &&
-        React.Children.map(children, (child, index) =>
-          React.cloneElement(child, {
+        React.Children.map(children, (child, index) => {
+          return React.cloneElement(child, {
             index,
-            context,
-            onKeyDown
-          })
-        )}
+            context
+          });
+        })}
     </Ul>
   );
 };
 
-const Option = ({ index, value, children, onKeyDown, context }) => {
+const Option = ({ index, value, children, context }) => {
+  const options = useCollection();
+  useEffect(
+    () => {
+      context.open && value === context.value && options.focusItem(value);
+    },
+    [context, options, value],
+    options
+  );
   return (
     <Collection.Item
       value={value}
-      onKeyDown={onKeyDown}
       onSelectValue={(v) => {
         context.onValueChange(v);
         context.onOpenChange(false);
