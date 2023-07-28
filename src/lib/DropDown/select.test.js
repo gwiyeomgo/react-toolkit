@@ -15,7 +15,7 @@ test('렌더링 완료 (성공)', () => {
   );
 });
 
-test('Select.Trigger(combobox) 를 클릭했을때 목록이 열리는가? (성공)', () => {
+test('DropDown.Trigger(combobox) 를 클릭했을때 목록이 열리는가? (성공)', () => {
   render(
     <Select.Provider defaultValue={"a"}>
       <Select.Trigger />
