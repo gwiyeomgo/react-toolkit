@@ -1,5 +1,5 @@
 import html2canvas from "html2canvas";
-import "../styles.module.css";
+import styles from "../styles.module.css";
 import React, { createContext, useState } from "react";
 
 const ViewCaptureDownloadContext = createContext();
@@ -49,8 +49,8 @@ const ViewCaptureDownload = ({
         {downloadButtonName}
       </button>
       <center>
-        <div id="view" className="page">
-          <div className="content">{children}</div>
+        <div id="view" className={styles.paper}>
+          <div className={styles.content}>{children}</div>
         </div>
       </center>
     </ViewCaptureDownloadContext.Provider>
