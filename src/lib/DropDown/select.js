@@ -76,7 +76,7 @@ const SelectContextProvider = ({ children, defaultValue }) => {
 const useSelectContext = () => {
   const context = useContext(SelectContext);
   if (!context) {
-    throw new Error("SelectContext은 Select 컴포넌트 내에서 사용되어야 합니다");
+    throw new Error("SelectContext은 DropDown 컴포넌트 내에서 사용되어야 합니다");
   }
   return context;
 };
