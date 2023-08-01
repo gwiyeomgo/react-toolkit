@@ -1,10 +1,10 @@
+import React from 'react'
 import { render } from '@testing-library/react'
+
 import {SearchConditionsProvider,useSearchConditions} from './searchConditions'
 
 const TestPage = ({ pageName }) => {
     const {searchConditions} = useSearchConditions();
-    console.log("pageName 페이지의 ",pageName)
-    console.log("searchConditions",searchConditions)
 }
 describe("SearchConditionsProvider test",()=>{
 
