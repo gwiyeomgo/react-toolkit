@@ -1,4 +1,6 @@
+
 # @gwiyeomgo/react-toolkit
+[![codecov](https://codecov.io/gh/gwiyeomgo/react-toolkit/branch/main/graph/badge.svg?token=DOGW7757IH)](https://codecov.io/gh/gwiyeomgo/react-toolkit)
 작업하면서 생성했던 react 컴포넌트 모음
 
 `CodeSandbox Demo`:
