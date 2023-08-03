@@ -32,4 +32,4 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
-    if: ${{ github.event.pull_request.merged == true }}
+
