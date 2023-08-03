@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.0.35",
+  "version": "0.0.36",
   "description": "react components ",
   "main": "dist/index.js",
   "keywords": [
@@ -34,13 +34,13 @@
     "styled-components": "^6.0.2"
   },
   "scripts": {
-    "build": "npx rimraf dist && yarn copy-js && yarn copy-css && yarn make-demo",
+    "make-demo": "node make_demo.mjs",
+    "build": "npx rimraf dist && yarn copy-js && yarn copy-css",
+    "publish" : "npm publish",
     "copy-js": "babel src/lib -d dist",
     "copy-css": "npx babel src/lib/**/*.css --copy-files --out-dir dist ",
-    "make-demo": "node make_demo.mjs",
     "test": "jest",
-    "coverage": " jest --coverage",
-    "publish" : "npm publish"
+    "coverage": " jest --coverage"
   },
   "eslintConfig": {
     "extends": [
