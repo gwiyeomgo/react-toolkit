@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.0.33",
+  "version": "0.0.35",
   "description": "react components ",
   "main": "dist/index.js",
   "keywords": [
@@ -39,7 +39,8 @@
     "copy-css": "npx babel src/lib/**/*.css --copy-files --out-dir dist ",
     "make-demo": "node make_demo.mjs",
     "test": "jest",
-    "coverage": " jest --coverage"
+    "coverage": " jest --coverage",
+    "publish" : "npm publish"
   },
   "eslintConfig": {
     "extends": [
