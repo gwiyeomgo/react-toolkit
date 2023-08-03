@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useSelectContext } from '../DropDown/select';
 
 const Header = styled.div`
   display: flex;
@@ -120,6 +119,8 @@ const TimelineItem = ({ url, tag, title, contents }) => {
     </a>
   );
 };
+
+
 const Timeline = {
   List: TimelineList,
   Item: TimelineItem
