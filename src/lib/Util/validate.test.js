@@ -1,4 +1,9 @@
-import { getMinutesFromCurrentTime, checkTimeWithinRange, checkTimeDifferenceWithinRange } from './validate';
+import {
+  getMinutesFromCurrentTime,
+  checkTimeWithinRange,
+  checkTimeDifferenceWithinRange,
+  convertStringToDate, getFormattedTimeObject,
+} from './validate';
 
 describe(' 현재 시간이 범위에 해당하는지  true false 반환', () => {
     // Mock Date 객체를 사용하기 위해 원래 Date 생성자를 저장
@@ -96,5 +101,53 @@ describe('현재 시간과 목표 시간 간의 시간 차이가 제한 시간 �
       expect(err).toEqual(new Error('목표 시간을 지정해야 합니다.'));
     }
   });
+
+})
+
+describe('stringTime 을 date 객체로 반환', () => {
+  it('stringTime 값이 yyyyMMddHHmmss 형식이 아닌 경우 - 실패', () => {
+    try {
+      convertStringToDate("잘못된문자열")
+    } catch (err) {
+      expect(err).toEqual(new Error('yyyyMMddHHmmss 형식이 아닙니다.'));
+    }
+  });
+  it('stringTime 값이 yyyyMMddHHmmss 형식인 경우 - 성공', () => {
+    let yyyyMMddHHmmss ="20231030100100"
+    expect(convertStringToDate(yyyyMMddHHmmss)).toBeInstanceOf(Date);
+  });
+
+})
+
+describe('', () => {
+  it('문자열 - 실패', () => {
+    try {
+      getFormattedTimeObject("12345")
+    } catch (err) {
+      expect(err).toEqual(new Error('양의 정수가 아닙니다.'));
+    }
+  });
+  it('부동소수점 실수 - 실패', () => {
+    try {
+      getFormattedTimeObject(parseFloat('0.0314E+2'))
+    } catch (err) {
+      expect(err).toEqual(new Error('양의 정수가 아닙니다.'));
+    }
+  });
+  it('음수 - 실패', () => {
+    try {
+      getFormattedTimeObject(parseFloat(-123124))
+    } catch (err) {
+      expect(err).toEqual(new Error('양의 정수가 아닙니다.'));
+    }
+
+  });
+  it('양수 - 성공', () => {
+    //1 시간 = 3600000 밀리초
+    expect(getFormattedTimeObject(3600000).seconds ==='00').toBe(true);
+    expect(getFormattedTimeObject(3600000).minutes ==='00').toBe(true);
+    expect(getFormattedTimeObject(3600000).hours ==='01').toBe(true);
+    expect(getFormattedTimeObject(3600000).days ==='0').toBe(true);
+  })
 
 })
