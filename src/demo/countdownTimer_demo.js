@@ -4,10 +4,9 @@ const App = () => {
   return (
     <div>
         <CountdownTimer
-          type="daysSuffix"
+          type={"suffix"}
           targetTime={20231224120000}
-          suffixIndex={0}
-          suffix="일"
+          suffixList={['일']}
         />
         <br />
         <CountdownTimer targetTime={20231224120000} />
@@ -19,20 +18,20 @@ const App = () => {
         <br />
         <div style={{ width: "200px" }}>
             <CountdownTimer
-              keys={["hours", "minutes"]}
+              keyList={["hours", "minutes"]}
               targetTime={20231224120000}
               fontSize={20}
             />
             <br />
             <CountdownTimer
-              keys={["hours", "minutes", "seconds"]}
+              keyList={["hours", "minutes", "seconds"]}
               targetTime={20231224120000}
               fontSize={20}
             />
             <br />
             <CountdownTimer
               type="none"
-              keys={["hours", "minutes", "seconds"]}
+              keyList={["hours", "minutes", "seconds"]}
               targetTime={20231224120000}
               fontSize={20}
             />

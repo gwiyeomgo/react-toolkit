@@ -5,8 +5,9 @@
 
 ||list|
 |---|---|
-|1| [countdownTimmer_demo.js](https://codesandbox.io/s/nsjnww) |
-|2| [dropdown_select_demo.js](https://codesandbox.io/s/p3cp82) |
-|3| [searchConditions_demo.js](https://codesandbox.io/s/h94mk2) |
-|4| [timeLine_demo.js](https://codesandbox.io/s/ljfhtt) |
-|5| [viewCaptureDownload_demo.js](https://codesandbox.io/s/xhx2w5) |
+|1| [badge_demo.js](https://codesandbox.io/s/wkzlxl) |
+|2| [countdownTimer_demo.js](https://codesandbox.io/s/8sx724) |
+|3| [dropdown_select_demo.js](https://codesandbox.io/s/ny3jp3) |
+|4| [searchConditions_demo.js](https://codesandbox.io/s/nvxrh2) |
+|5| [timeLine_demo.js](https://codesandbox.io/s/msm9r5) |
+|6| [viewCaptureDownload_demo.js](https://codesandbox.io/s/vq7q2l) |

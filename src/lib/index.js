@@ -3,4 +3,5 @@ export { Select,useSelectContext } from './DropDown/select';
 export { Collection, useCollection }  from './DropDown/collection';
 export { ViewCaptureDownload }  from './ViewCaptureDownload/viewCaptureDownload';
 export { Timeline }  from './TimeLine/timeLine';
-export { CountdownTimer }  from './CountdownTimmer/countdownTimer';
+export { CountdownTimer }  from './CountdownTimer/countdownTimer';
+export { Badge }  from './Badge/badge';
