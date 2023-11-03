@@ -52,9 +52,9 @@ const config = {
   // errorOnDeprecated: false,
 
   // The default configuration for fake timers
-  // fakeTimers: {
-  //   "enableGlobally": false
-  // },
+   fakeTimers: {
+     "enableGlobally": false
+   },
 
   // Force coverage collection from ignored files using an array of glob patterns
   // forceCoverageMatch: [],

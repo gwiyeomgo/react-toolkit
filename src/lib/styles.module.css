@@ -19,4 +19,26 @@
     padding: 0;
 }
 
+/*Badge */
+
+
+.badgeAboveChildren {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: white;
+    border: solid 1px white;
+    padding: 0.1rem 0.4rem;
+    transform: translate(50%, -50%);
+
+}
+
+.badge {
+    position: relative;
+    top: -1px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
 

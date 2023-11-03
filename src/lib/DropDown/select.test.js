@@ -4,6 +4,15 @@ import { Select } from './select';
 import userEvent from "@testing-library/user-event";
 import { Collection } from './collection';
 
+
+const originalError = console.error;
+beforeEach(() => {
+  console.error = jest.fn()
+})
+
+afterEach(() => {
+  console.error = originalError;
+})
 test('렌더링 완료 (성공)', () => {
  render(
     <Select.Provider defaultValue={"a"}>
@@ -18,9 +27,6 @@ test('렌더링 완료 (성공)', () => {
 });
 
 test('DropDown.Trigger(combobox) 를 클릭했을때 목록이 열리는가? (성공)', async () => {
-  const originalError = console.error;
-  console.error = jest.fn();
-
   render(
     <Select.Provider defaultValue={"a"}>
       <Select.Trigger />
@@ -39,15 +45,10 @@ test('DropDown.Trigger(combobox) 를 클릭했을때 목록이 열리는가? (�
 
    await  userEvent.click(select);
    expect(select).toHaveAttribute('aria-expanded', 'true');
-
-  console.error = originalError;
 });
 
 
 it("Select.Provider 사용 안했을때",()=>{
-  const originalError = console.error;
-  console.error = jest.fn();
-
   expect(() => {
     render(
         <Select.OptionList>
@@ -57,7 +58,5 @@ it("Select.Provider 사용 안했을때",()=>{
         </Select.OptionList>
     );
   }).toThrow( new Error('SelectContext은 DropDown 컴포넌트 내에서 사용되어야 합니다'));
-
-  console.error = originalError;
 
 });

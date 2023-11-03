@@ -4,6 +4,16 @@ import { render, screen } from '@testing-library/react';
 import { useEffect } from 'react';
 import userEvent from '@testing-library/user-event';
 
+
+const originalError = console.error;
+beforeEach(() => {
+  console.error = jest.fn()
+})
+
+afterEach(() => {
+  console.error = originalError;
+})
+
 test("useCollection 의 getItems 사용해서 총 갯수 확인",()=>{
   const TestComponent = ()=>{
     const { getItems } = useCollection();
@@ -47,18 +57,12 @@ test("useCollection 의 focusItem 사용해서 CSS 클래스를 확인", () => {
 
 
 it("Collection.Provider 사용 안했을때",()=>{
-   const originalError = console.error;
-    console.error = jest.fn();
-
     expect(() => {
       render(<>
         <Collection.Item index={0} value={1}>{"title1"}</Collection.Item>
         <Collection.Item index={1}  value={2}>{"title2"}</Collection.Item>
       </>);
     }).toThrow( new Error('CollectionItem 는 Collection.Provider 내부에서 사용되어야 합니다'));
-
-   console.error = originalError;
-
 });
 
 
@@ -89,10 +93,7 @@ test("item 이 여러개 있을때 click 테스트",async ()=>{
 })
 
 test("useCollection 사용시 Collection.Provider 사용 안했을때", () => {
-  const originalError = console.error;
-  console.error = jest.fn();
-
-  const TestComponent = ({ target }) => {
+ const TestComponent = ({ target }) => {
     const { focusItem } = useCollection();
     useEffect(() => {
       focusItem(target);
@@ -105,8 +106,6 @@ test("useCollection 사용시 Collection.Provider 사용 안했을때", () => {
       <TestComponent target={2} />
     </>);
   }).toThrow( new Error('useCollection 는 Collection.Provider 내부에서 사용되어야 합니다'));
-
-  console.error = originalError;
 });
 
 
