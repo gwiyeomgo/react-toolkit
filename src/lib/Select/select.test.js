@@ -57,6 +57,6 @@ it("Select.Provider 사용 안했을때",()=>{
           <Select.Option value="c">Option 3</Select.Option>
         </Select.OptionList>
     );
-  }).toThrow( new Error('SelectContext은 DropDown 컴포넌트 내에서 사용되어야 합니다'));
+  }).toThrow( new Error('SelectContext은 Select.Provider 내에서 사용되어야 합니다'));
 
 });

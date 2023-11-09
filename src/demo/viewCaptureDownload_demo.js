@@ -9,7 +9,10 @@ function App() {
         downloadFileName="test"
         downloadButtonName="download"
       >
-        <div className="content">{"test"}</div>
+        <div style={{
+          padding: 0,
+          backgroundColor:'skyblue'
+        }}>{"test 데이터 입니다."}</div>
       </ViewCaptureDownload>
     </div>
   );

@@ -31,7 +31,6 @@ test("useCollection 의 getItems 사용해서 총 갯수 확인",()=>{
     <TestComponent/>
   </Collection.Provider>);
 });
-
 test("useCollection 의 focusItem 사용해서 CSS 클래스를 확인", () => {
   const TestComponent = ({ target }) => {
     const { focusItem } = useCollection();
@@ -53,47 +52,8 @@ test("useCollection 의 focusItem 사용해서 CSS 클래스를 확인", () => {
   const item2 = screen.getByText("title2")
   expect(item2).toHaveClass('selected');
 });
-
-
-
-it("Collection.Provider 사용 안했을때",()=>{
-    expect(() => {
-      render(<>
-        <Collection.Item index={0} value={1}>{"title1"}</Collection.Item>
-        <Collection.Item index={1}  value={2}>{"title2"}</Collection.Item>
-      </>);
-    }).toThrow( new Error('CollectionItem 는 Collection.Provider 내부에서 사용되어야 합니다'));
-});
-
-
-
-test("click 했을때",async ()=>{
-  render(<Collection.Provider>
-    <Collection.Item index={0} value={1} onSelectValue={()=>{}}>{"title1"}</Collection.Item>
-  </Collection.Provider>);
-
-  const item = screen.getByRole("listitem");
-  expect(item).not.toHaveClass('selected');
-  await  userEvent.click(item);
-  expect(item).toHaveClass('selected');
-})
-
-test("item 이 여러개 있을때 click 테스트",async ()=>{
-  render(<Collection.Provider>
-    <Collection.Item index={0} value={1} onSelectValue={()=>{}}>{"title1"}</Collection.Item>
-    <Collection.Item index={0} value={1} onSelectValue={()=>{}}>{"title2"}</Collection.Item>
-  </Collection.Provider>);
-
-  const item = screen.getByText("title1");
-  const item2 = screen.getByText("title2");
-  await  userEvent.click(item);
-  expect(item).toHaveClass('selected');
-  expect(item2).not.toHaveClass('selected');
-
-})
-
 test("useCollection 사용시 Collection.Provider 사용 안했을때", () => {
- const TestComponent = ({ target }) => {
+  const TestComponent = ({ target }) => {
     const { focusItem } = useCollection();
     useEffect(() => {
       focusItem(target);
@@ -107,10 +67,43 @@ test("useCollection 사용시 Collection.Provider 사용 안했을때", () => {
     </>);
   }).toThrow( new Error('useCollection 는 Collection.Provider 내부에서 사용되어야 합니다'));
 });
+test("Collection.Provider 사용 안했을때",()=>{
+    expect(() => {
+      render(<>
+        <Collection.Item index={0} value={1}>{"title1"}</Collection.Item>
+        <Collection.Item index={1}  value={2}>{"title2"}</Collection.Item>
+      </>);
+    }).toThrow( new Error('CollectionItem 는 Collection.Provider 내부에서 사용되어야 합니다'));
+});
 
+describe('클릭 테스트',()=>{
+  it("item 한개 있을때 클릭 테스트",async ()=>{
+    render(<Collection.Provider>
+      <Collection.Item index={0} value={1} onSelectValue={()=>{}}>{"title1"}</Collection.Item>
+    </Collection.Provider>);
+
+    const item = screen.getByRole("listitem");
+    expect(item).not.toHaveClass('selected');
+    await  userEvent.click(item);
+    expect(item).toHaveClass('selected');
+  })
+  it("item 여러개 있을때 클릭 테스트",async ()=>{
+    render(<Collection.Provider>
+      <Collection.Item index={0} value={1} onSelectValue={()=>{}}>{"title1"}</Collection.Item>
+      <Collection.Item index={0} value={1} onSelectValue={()=>{}}>{"title2"}</Collection.Item>
+    </Collection.Provider>);
+
+    const item = screen.getByText("title1");
+    const item2 = screen.getByText("title2");
+    await  userEvent.click(item);
+    expect(item).toHaveClass('selected');
+    expect(item2).not.toHaveClass('selected');
+
+  })
+})
 
 describe("키보드 이벤트 테스트", ()=>{
-  it("onkeydown 클릭",()=>{
+  it("onkeydown,onkeyup 클릭",()=>{
     render(<Collection.Provider>
       <Collection.Item index={0} value={1} onSelectValue={()=>{}}>{"title1"}</Collection.Item>
       <Collection.Item index={1} value={2} onSelectValue={()=>{}}>{"title2"}</Collection.Item>
@@ -122,22 +115,9 @@ describe("키보드 이벤트 테스트", ()=>{
     expect(item1).toHaveFocus();
     userEvent.keyboard('{arrowdown}');
     expect(item2).toHaveFocus();
-  })
-
-  it("onkeydown 클릭",()=>{
-    render(<Collection.Provider>
-      <Collection.Item index={0} value={1} onSelectValue={()=>{}}>{"title1"}</Collection.Item>
-      <Collection.Item index={1} value={2} onSelectValue={()=>{}}>{"title2"}</Collection.Item>
-    </Collection.Provider>);
-
-    const item1 = screen.getByText("title1");
-    const item2 = screen.getByText("title2");
-    userEvent.click(item1);
+    userEvent.keyboard('{arrowup}');
     expect(item1).toHaveFocus();
-    userEvent.keyboard('{arrowdown}');
-    expect(item2).toHaveFocus();
   })
-
   it("Enter 클릭",async()=>{
     render(<Collection.Provider>
       <Collection.Item index={0} value={1} onSelectValue={()=>{}}>{"title1"}</Collection.Item>

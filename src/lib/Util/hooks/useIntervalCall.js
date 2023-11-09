@@ -1,22 +1,23 @@
 import { useEffect, useRef } from 'react';
 
-const useIntervalCall = (callback, delay) =>{
+export default function useIntervalCall(callback, delay){
   const savedCallback = useRef( null);
 
   useEffect(() => {
-    savedCallback.current = callback;
+    if (typeof callback === "function") {
+      savedCallback.current = callback;
+    }else {
+      throw new Error(`실행 함수를 입력해 주세요 (callback:${typeof callback})`)
+    }
   }, [callback]);
 
   useEffect(() => {
-    if (delay !== null) {
-     const intervalId = setInterval(()=>{
-        if (typeof savedCallback.current === "function") {
-          savedCallback.current();
-        }
-      }, delay);
-      return () => clearInterval(intervalId);
+    if (delay === 0 || delay === undefined ||delay === null) {
+      throw new Error(`delay 값을 입력해 주세요.`)
     }
+    const intervalId = setInterval(()=>{
+        savedCallback.current();
+    }, delay);
+    return () => clearInterval(intervalId);
   }, [delay]);
 }
-
-export default useIntervalCall;
