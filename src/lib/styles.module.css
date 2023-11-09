@@ -41,4 +41,44 @@
     display: inline-block;
 }
 
+/*Input */
+
+.defaultInput {
+    font: inherit;
+    letter-spacing: inherit;
+    color: black;
+
+    background: none;
+    border: 0px;
+
+    display: block;
+    box-sizing: content-box;
+    min-width: 0px;
+    width: 100%;
+    margin: 0px;
+    padding: 16.5px 14px;
+}
+
+.innerLabel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 10%;
+
+}
+.backgroundWhite{
+    background-color:white
+}
+
+.defaultLabel {
+    display: block;
+    float: left;
+    clear: left;
+    width: 120px;
+}
+
+.expandInput {
+    height: 50px;
+    padding: 15px 15px 5px;
+}
 
