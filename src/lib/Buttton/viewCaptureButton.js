@@ -1,14 +1,29 @@
 import html2canvas from "html2canvas";
-import styles from "../styles.module.css";
 import React, { createContext, useState } from "react";
+import { Button } from './button';
+import styled from 'styled-components';
 
-const ViewCaptureDownloadContext = createContext();
-const ViewCaptureDownload = ({
+const View = styled.div`
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm; 
+    margin: 10mm auto;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+`
+const Content = styled.div`
+ padding: 0;
+`
+const ViewCaptureContext = createContext();
+const ViewCaptureButton = ({
                                children,
                                downloadFileName,
-                               downloadButtonName
+                               downloadButtonName,
+                               type,
+                               color
                              }) => {
-  const [testValue, setTestValue] = useState("기본값"); // 기본값으로 '기본값'을 설정합니다.
+  const [testValue, setTestValue] = useState("");
   const saveAs = (blob, fileName) => {
     const elem = window.document.createElement("a");
     elem.href = blob;
@@ -40,21 +55,21 @@ const ViewCaptureDownload = ({
       );
   };
   return (
-    <ViewCaptureDownloadContext.Provider value={{ testValue, setTestValue }}>
-      <button
-        onClick={(val) => exportAsPicture("view")}
-        type="primary"
-        size="default"
+    <ViewCaptureContext.Provider value={{ testValue, setTestValue}}>
+      <Button
+        type={type}
+        color={color}
+        onClick={() => exportAsPicture("view")}
       >
         {downloadButtonName}
-      </button>
+      </Button>
       <center>
-        <div id="view" className={styles.paper}>
-          <div className={styles.content}>{children}</div>
-        </div>
+        <View id="view" >
+          <Content>{children}</Content>
+        </View>
       </center>
-    </ViewCaptureDownloadContext.Provider>
+    </ViewCaptureContext.Provider>
   );
 };
 
-export { ViewCaptureDownload };
+export { ViewCaptureButton };

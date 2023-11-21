@@ -4,22 +4,19 @@ import { CountdownTimer } from './countdownTimer';
 
 //Jest: mocking console.error 처리
 //https://stackoverflow.com/questions/44596915/jest-mocking-console-error-tests-fails
-const originalError = console.error;
-beforeEach(() => {
-  console.error = jest.fn()
-  jest.useFakeTimers()
-  //시간 mocking
-  //https://www.daleseo.com/jest-date-mocking/
-  const fakeDate = new Date(2023, 10, 3, 16, 57);
-  jest.setSystemTime(fakeDate);
-})
 
-afterEach(() => {
-  console.error = originalError;
-  jest.useRealTimers()
-})
 
-describe('렌더링 테스트',()=>{
+describe("실패 ",()=>{
+   beforeEach(() => {
+     jest.spyOn(console, 'error');
+     console.error.mockImplementation(() => {});
+   })
+
+  afterEach(() => {
+    console.error.mockRestore();
+  })
+
+
   it("targetTimer yyyyMMddHHmmss 형식이 아닐때",()=>{
     expect(() => {
       render(<>
@@ -43,6 +40,21 @@ describe('렌더링 테스트',()=>{
       </>);
     }).toThrow( new Error('목표 시간이 이미 지났습니다.'));
   });
+
+
+})
+describe('렌더링 테스트',()=>{
+  beforeEach(() => {
+    jest.useFakeTimers()
+    //시간 mocking
+    //https://www.daleseo.com/jest-date-mocking/
+    const fakeDate = new Date(2023, 10, 3, 16, 57);
+    jest.setSystemTime(fakeDate);
+  })
+
+  afterEach(() => {
+    jest.useRealTimers()
+  })
 
 
   it("type  none 인 경우 - 렌더링 (성공)",()=>{

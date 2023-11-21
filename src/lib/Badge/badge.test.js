@@ -2,17 +2,12 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { Badge } from './badge';
 
-const originalError = console.error;
-beforeEach(() => {
-  console.error = jest.fn()
-})
-
-afterEach(() => {
-  console.error = originalError;
-})
-
 
 it("moveBottom,moveLeft 에 50 이상의 값을 입력한 경우",()=>{
+  //https://github.com/jestjs/jest/issues/5785#issuecomment-590198706
+  jest.spyOn(console, 'error');
+  console.error.mockImplementation(() => {});
+
   expect(() => {
     render(<>
       <Badge count={2} moveBottom={55} moveLeft={30}>
@@ -21,6 +16,8 @@ it("moveBottom,moveLeft 에 50 이상의 값을 입력한 경우",()=>{
       </Badge>
     </>);
   }).toThrow( new Error('moveBottom 과 moveLeft 은 50 이하의 숫자여야 합니다.'));
+
+  console.error.mockRestore();
 });
 
 describe("Badge 컴포넌트 테스트 - 숫자가 있는 경우 - 렌더링 테스트",()=> {
