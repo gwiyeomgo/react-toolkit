@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.0.68",
+  "version": "0.0.93",
   "repository": {
     "type": "git",
     "url": "https://github.com/gwiyeomgo/react-toolkit"
@@ -28,19 +28,22 @@
     "classnames": "^2.3.2",
     "codesandbox": "^2.2.3",
     "html2canvas": "^1.4.1",
+    "jest-axe": "^8.0.0",
     "lodash.debounce": "^4.0.8",
     "node-fetch": "^3.3.1",
     "react": "^18.2.0",
+    "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
     "styled-components": "^6.0.2"
   },
   "scripts": {
     "make-demo": "node make_demo.mjs",
-    "build": "npx rimraf dist && yarn copy-js && yarn copy-css",
+    "build": "npx rimraf dist && yarn copy-js && yarn copy-css && yarn copy-svg",
     "publish": "npm publish --access public",
     "copy-js": "babel src/lib -d dist",
     "copy-css": "npx babel src/lib/**/*.css --copy-files --out-dir dist ",
+    "copy-svg": "npx babel src/lib/**/*.svg --copy-files --out-dir dist/icon/assets ",
     "test": "jest",
     "coverage": " jest --coverage"
   },

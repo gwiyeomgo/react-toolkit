@@ -1,11 +1,11 @@
 import {
-  ViewCaptureDownload
+  ViewCaptureButton
 } from "@gwiyeomgo/react-toolkit";
 
 function App() {
   return (
     <div className="App">
-      <ViewCaptureDownload
+      <ViewCaptureButton
         downloadFileName="test"
         downloadButtonName="download"
       >
@@ -13,7 +13,7 @@ function App() {
           padding: 0,
           backgroundColor:'skyblue'
         }}>{"test 데이터 입니다."}</div>
-      </ViewCaptureDownload>
+      </ViewCaptureButton>
     </div>
   );
 }

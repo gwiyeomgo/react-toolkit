@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import useIntervalCall from '../Util/hooks/useIntervalCall';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const TimerContainer = styled.div`
    width: 100%;
    display: flex;
    flex-direction: row;
@@ -47,11 +47,10 @@ const CountdownTimer = ({
   let widthPercentage = allWidth / totalKeys;
 
   return (
-    <Container>
+    <TimerContainer>
       {keyList.map((key, index) => (
-        <>
+        <div key={index}>
           <div
-            key={index}
             style={{
               width: `${widthPercentage}%`,
               minWidth: `${fontSize * 1.5}px`,
@@ -69,9 +68,9 @@ const CountdownTimer = ({
           ) : (
             <></>
           )}
-        </>
+        </div>
       ))}
-    </Container>
+    </TimerContainer>
   );
 };
 

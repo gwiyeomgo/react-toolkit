@@ -188,6 +188,7 @@ const config = {
   // Indicates whether each individual test should be reported during the run
   // verbose: undefined,
   moduleNameMapper: {
+   '\\.svg$': '<rootDir>/__mocks__/svg.js',
     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
   },
   setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],

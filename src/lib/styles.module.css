@@ -1,27 +1,9 @@
-
-
 /*DropDown*/
 .selected {
     background-color: skyblue;
 }
 
-/* Capture Download */
-.paper {
-    width: 210mm;
-    min-height: 297mm;
-    padding: 20mm; /* set contents area */
-    margin: 10mm auto;
-    border-radius: 5px;
-    background: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-.content {
-    padding: 0;
-}
-
 /*Badge */
-
-
 .badgeAboveChildren {
     position: absolute;
     top: 0;
@@ -82,3 +64,98 @@
     padding: 15px 15px 5px;
 }
 
+/*button*/
+:root {
+    --button-color: #ffffff;
+    --button-bg-color: #212529;
+    --button-hover-bg-color: #000000;
+    --button-outline-color: #212529;
+}
+
+.btn {
+    background: var(--button-bg-color);
+    color: var(--button-color);
+
+    font-family: "Noto Sans Kr", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+
+    border: none;
+    border-radius: 4px;
+    box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+
+    transition: 0.25s;
+
+    margin: 0;
+    padding: 0.5rem 1rem;
+}
+
+.btn:hover,
+.btn:focus {
+    background: var(--button-hover-bg-color);
+    outline: 0;
+}
+
+/*https://stackoverflow.com/questions/14750078/style-disabled-button-with-css*/
+.btn :disabled,
+.btn[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor:default;
+}
+
+.primary {
+    --button-bg-color: #0d6efd;
+    --button-hover-bg-color: #025ce2;
+}
+.success {
+    --button-bg-color: #28a745;
+    --button-hover-bg-color: #218838;
+}
+
+.danger {
+    --button-bg-color: #dc3545;
+    --button-hover-bg-color: #c82333;
+}
+
+.warning {
+    --button-bg-color: #ff9900;
+    --button-hover-bg-color: #ff8700;
+}
+
+.outline {
+    outline: 1px solid var(--button-outline-color);
+    background: #ffffff;
+    color: var(--button-bg-color);
+    --button-hover-bg-color: #eeeeee;
+}
+
+.outline.primary {
+    --button-color: #0d6efd;
+    --button-outline-color: #0d6efd;
+}
+
+.outline.success {
+    --button-color: #28a745;
+    --button-outline-color: #28a745;
+}
+.outline.danger {
+    --button-color: #dc3545;
+    --button-outline-color: #dc3545;
+}
+
+.outline.warning {
+    --button-color: #ff9900;
+    --button-outline-color: #ff9900;
+}
+
+.icon-container {
+    display: flex;
+}
+.child-space {
+    padding-left: 10px;
+}
