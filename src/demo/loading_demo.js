@@ -3,105 +3,24 @@ import { Loading } from "@gwiyeomgo/react-toolkit";
 const App = () => {
   return (
     <>
-      <div
-        style={{
-          Width: "100%",
-          height: "auto",
-          display: " flex",
-          backgroundColor: "pink",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "10px"
-        }}
-      >
+      <div>
+        <Loading type="default" size={30} speed={1} color={"pink"} />
+        <br />
         <Loading
+          type="default"
+          size={30}
           style={{
-            width: "40px",
-            height: "40px"
+            border: "8px dotted red",
           }}
         />
       </div>
-      <br />
-      <div
-        style={{
-          Width: "100%",
-          height: "auto",
-          display: " flex",
-          backgroundColor: "#87CEEB",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "10px"
-        }}
-      >
+      <div>
+        <Loading type="line" size={20} />
         <Loading
-          style={{
-            width: "30px",
-            height: "30px",
-            border: "4px solid #fff",
-            borderBottomColor: "transparent"
-          }}
-        />
-      </div>
-      <br />
-      <div
-        style={{
-          Width: "100%",
-          height: "auto",
-          display: " flex",
-          backgroundColor: "#B6D7A8",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "10px"
-        }}
-      >
-        <Loading
-          style={{
-            width: "40px",
-            height: "40px",
-            border: "8px dotted #fff"
-          }}
-        />
-      </div>
-      <br />
-      <div
-        style={{
-          Width: "100%",
-          height: "auto",
-          display: " flex",
-          backgroundColor: "#D1C9E7",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "10px"
-        }}
-      >
-        <Loading
-          style={{
-            width: "40px",
-            height: "40px",
-            border: "4px solid transparent",
-            borderBottomColor: "#fff"
-          }}
-        />
-      </div>
-      <br/>
-      <div
-        style={{
-          Width: "100%",
-          height: "auto",
-          display: " flex",
-          backgroundColor: "#FFD966",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "10px"
-        }}
-      >
-        <Loading
-          style={{
-            width: "30px",
-            height: "30px",
-            border: "4px solid transparent",
-            borderBottomColor: "red"
-          }}
+          type="line"
+          size={30}
+          speed={5}
+          colorPalette={["#00b8ff", "#0097e1", "#0876b8", "#004fa7"]}
         />
       </div>
     </>

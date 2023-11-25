@@ -27,8 +27,6 @@ describe("실패 ",()=>{
         />
       </>);
     }).toThrow( new Error('yyyyMMddHHmmss 형식이 아닙니다.'));
-
-
   });
 
   it("targetTime 과거",()=>{

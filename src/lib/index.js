@@ -12,3 +12,4 @@ export { Loading }  from './Loading/loading';
 export { useDebounce } from './Util/hooks/useDebounce'
 export { Icon } from "./Icon/icon";
 export { IconName } from "./Icon/icon";
+export { ToggleButton }  from "./ToggleButton/toggle_button";

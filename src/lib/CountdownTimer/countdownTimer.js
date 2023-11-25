@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { convertStringToDate, getFormattedTimeObject, yyyyMMddHHmmssRegex } from '../Util/validate';
+import { convertStringToDate, getFormattedTimeObject, yyyyMMddHHmmssRegex } from '../Util/convert';
 import { useEffect, useState } from 'react';
 import useIntervalCall from '../Util/hooks/useIntervalCall';
 import styled from 'styled-components';
