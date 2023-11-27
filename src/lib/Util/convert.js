@@ -8,7 +8,7 @@ Date.prototype.YYYYMMDDHHMMSS = function () {
   const mm = pad(this.getMinutes(), 2);
   const ss = pad(this.getSeconds(), 2);
 
-  return yyyy +  MM + dd+  hh + mm + ss;
+  return yyyy + MM + dd + hh + mm + ss;
 };
 
 function pad(number, length) {
@@ -32,20 +32,19 @@ export const yyyyMMddHHmmssRegex = /^\d{4}\d{2}\d{2}\d{2}\d{2}\d{2}$/;
  * @returns {Date}
  * @throws {Error} - yyyyMMddHHmmss 형식이 아닌 경우
  */
-export const convertStringToDate = (stringTime) =>{
+export const convertStringToDate = (stringTime) => {
   if (!yyyyMMddHHmmssRegex.test(stringTime)) {
     throw new Error('yyyyMMddHHmmss 형식이 아닙니다.');
   }
   // 날짜와 시간을 추출합니다
-  const year = Math.floor(stringTime / YEAR_IN_SECONDS);  // 연도
-  const month = Math.floor((stringTime % YEAR_IN_SECONDS) / MONTH_IN_SECONDS);  // 월
-  const day = Math.floor((stringTime % MONTH_IN_SECONDS) / DAY_IN_SECONDS);  // 일
-  const hour = Math.floor((stringTime % DAY_IN_SECONDS) / HOUR_IN_SECONDS);  // 시
-  const minute = Math.floor((stringTime % HOUR_IN_SECONDS) / MINUTE_IN_SECONDS);  // 분
-  const second = stringTime % MINUTE_IN_SECONDS;  // 초
-  return new Date(year, month - 1, day, hour, minute, second)
-}
-
+  const year = Math.floor(stringTime / YEAR_IN_SECONDS); // 연도
+  const month = Math.floor((stringTime % YEAR_IN_SECONDS) / MONTH_IN_SECONDS); // 월
+  const day = Math.floor((stringTime % MONTH_IN_SECONDS) / DAY_IN_SECONDS); // 일
+  const hour = Math.floor((stringTime % DAY_IN_SECONDS) / HOUR_IN_SECONDS); // 시
+  const minute = Math.floor((stringTime % HOUR_IN_SECONDS) / MINUTE_IN_SECONDS); // 분
+  const second = stringTime % MINUTE_IN_SECONDS; // 초
+  return new Date(year, month - 1, day, hour, minute, second);
+};
 
 /**
  * 디지털 카운트다운 타이머
@@ -64,10 +63,9 @@ export const getFormattedTimeObject = (milliseconds) => {
   const days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
 
   return {
-    "seconds": seconds.toString().padStart(2, "0"),
-    "minutes":minutes.toString().padStart(2, "0"),
-    "hours":hours.toString().padStart(2, "0"),
-    "days":days.toString(),
-  }
-}
-
+    seconds: seconds.toString().padStart(2, '0'),
+    minutes: minutes.toString().padStart(2, '0'),
+    hours: hours.toString().padStart(2, '0'),
+    days: days.toString(),
+  };
+};

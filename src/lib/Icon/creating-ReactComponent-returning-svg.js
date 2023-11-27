@@ -49,7 +49,7 @@ const IconMenuBurger = ({ size, color }) => (
     y="0px"
     viewBox="0 0 512 512"
     style={{
-      enableBackground:"new 0 0 512 512"
+      enableBackground: 'new 0 0 512 512',
     }}
     xmlSpace="preserve"
     width={size}
@@ -93,7 +93,7 @@ const IconCross = ({ size, color }) => (
     y="0px"
     viewBox="0 0 512.021 512.021"
     style={{
-      enableBackground:"new 0 0 512.021 512.021"
+      enableBackground: 'new 0 0 512.021 512.021',
     }}
     xmlSpace="preserve"
     width={size}

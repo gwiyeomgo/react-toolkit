@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useContext, useState } from "react";
-import { Collection, useCollection } from "./collection";
-import styled from "styled-components";
+import React, { createContext, useEffect, useContext, useState } from 'react';
+import { Collection, useCollection } from './collection';
+import styled from 'styled-components';
 
 const TriggerButton = styled.button`
   position: relative;
@@ -14,7 +14,7 @@ const TriggerButton = styled.button`
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     right: 10px;
@@ -26,7 +26,7 @@ const TriggerButton = styled.button`
     border-top: 5px solid #000;
   }
 
-  &[aria-expanded="true"]::after {
+  &[aria-expanded='true']::after {
     border-top: none;
     border-bottom: 5px solid #000;
     transform: translateY(-50%) rotate(180deg);
@@ -52,7 +52,7 @@ const SelectTrigger = () => {
       role="combobox"
       aria-expanded={context.open}
     >
-      <span onKeyDown={onKeyDown} tabIndex={0} style={{ width: "120px" }}>
+      <span onKeyDown={onKeyDown} tabIndex={0} style={{ width: '120px' }}>
         {context.value}
       </span>
     </TriggerButton>
@@ -76,13 +76,13 @@ const SelectContextProvider = ({ children, defaultValue }) => {
 const useSelectContext = () => {
   const context = useContext(SelectContext);
   if (!context) {
-    throw new Error("SelectContext은 Select.Provider 내에서 사용되어야 합니다");
+    throw new Error('SelectContext은 Select.Provider 내에서 사용되어야 합니다');
   }
   return context;
 };
 
 const Ul = styled.ul`
-  display: ${(props) => (props.open ? "block" : "none")};
+  display: ${(props) => (props.open ? 'block' : 'none')};
   width: 100px;
   background-color: white;
   position: absolute;
@@ -113,7 +113,7 @@ const OptionList = ({ children }) => {
         React.Children.map(children, (child, index) => {
           return React.cloneElement(child, {
             index,
-            context
+            context,
           });
         })}
     </Ul>
@@ -127,7 +127,7 @@ const Option = ({ index, value, children, context }) => {
       context.open && value === context.value && options.focusItem(value);
     },
     [context, options, value],
-    options
+    options,
   );
   return (
     <Collection.Item
@@ -147,7 +147,7 @@ const Select = {
   Option,
   OptionList,
   Provider: SelectContextProvider,
-  Trigger: SelectTrigger
+  Trigger: SelectTrigger,
 };
 
 export { Select, useSelectContext };

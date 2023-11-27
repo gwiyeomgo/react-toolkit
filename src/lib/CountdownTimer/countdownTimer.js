@@ -1,23 +1,27 @@
 import * as React from 'react';
-import { convertStringToDate, getFormattedTimeObject, yyyyMMddHHmmssRegex } from '../Util/convert';
+import {
+  convertStringToDate,
+  getFormattedTimeObject,
+  yyyyMMddHHmmssRegex,
+} from '../Util/convert';
 import { useEffect, useState } from 'react';
 import useIntervalCall from '../Util/hooks/useIntervalCall';
 import styled from 'styled-components';
 
 const TimerContainer = styled.div`
-   width: 100%;
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const CountdownTimer = ({
-                          fontSize = "60",
-                          targetTime,
-                          type = "default",
-                          keyList = ["days", "hours","minutes", "seconds"],
-                          suffixList= ["일", "시", "분", "초"],
-                        }) => {
+  fontSize = '60',
+  targetTime,
+  type = 'default',
+  keyList = ['days', 'hours', 'minutes', 'seconds'],
+  suffixList = ['일', '시', '분', '초'],
+}) => {
   const [remainingTime, setRemainingTime] = useState(0);
   const [time, setTime] = useState({});
 
@@ -33,7 +37,7 @@ const CountdownTimer = ({
     throw new Error('목표 시간이 이미 지났습니다.');
   }
 
-  useIntervalCall(() =>  setRemainingTime(timeDifference), 1000);
+  useIntervalCall(() => setRemainingTime(timeDifference), 1000);
 
   useEffect(() => {
     setTime(getFormattedTimeObject(remainingTime));
@@ -41,7 +45,7 @@ const CountdownTimer = ({
 
   let totalKeys = keyList.length;
   let allWidth = 100;
-  if (type === "default") {
+  if (type === 'default') {
     allWidth -= 3;
   }
   let widthPercentage = allWidth / totalKeys;
@@ -54,16 +58,20 @@ const CountdownTimer = ({
             style={{
               width: `${widthPercentage}%`,
               minWidth: `${fontSize * 1.5}px`,
-              textAlign: "center",
-              fontSize: `${fontSize}px`
+              textAlign: 'center',
+              fontSize: `${fontSize}px`,
             }}
           >
             {time[key]}
-            {type === "suffix" && suffixList.length > 0  && suffixList[index] ? suffixList[index] : <></>}
+            {type === 'suffix' && suffixList.length > 0 && suffixList[index] ? (
+              suffixList[index]
+            ) : (
+              <></>
+            )}
           </div>
-          {type === "default" && index !== keyList.length - 1 ? (
-            <span style={{ width: "1%", fontSize: `${fontSize}px` }}>
-              {":"}
+          {type === 'default' && index !== keyList.length - 1 ? (
+            <span style={{ width: '1%', fontSize: `${fontSize}px` }}>
+              {':'}
             </span>
           ) : (
             <></>
@@ -75,5 +83,3 @@ const CountdownTimer = ({
 };
 
 export { CountdownTimer };
-
-

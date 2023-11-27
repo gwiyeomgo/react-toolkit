@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from 'react';
+import styled from 'styled-components';
 
 const Header = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ const Item = styled.div`
     }
   }
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 40px;
     left: -7px;
@@ -58,7 +58,7 @@ const Item = styled.div`
     box-shadow: #8794c0 0 0 10px rgba(0, 0, 0, 1);
   }
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 40px;
     left: -6px;
@@ -89,11 +89,9 @@ const Ul = styled.ul`
 `;
 
 const TimelineList = ({ children }) => {
-   return (
+  return (
     <Container>
-      <Ul>
-        {children}
-      </Ul>
+      <Ul>{children}</Ul>
     </Container>
   );
 };
@@ -101,8 +99,8 @@ const TimelineItem = ({ url, tag, title, contents }) => {
   return (
     <a
       style={{
-        fontWeight: "bold",
-        textDecoration: "none"
+        fontWeight: 'bold',
+        textDecoration: 'none',
       }}
       href={url}
       target="_blank"
@@ -120,11 +118,9 @@ const TimelineItem = ({ url, tag, title, contents }) => {
   );
 };
 
-
 const Timeline = {
   List: TimelineList,
-  Item: TimelineItem
+  Item: TimelineItem,
 };
-
 
 export { Timeline };

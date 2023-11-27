@@ -13,17 +13,16 @@ import { useEffect, useState } from 'react';
  * @param {number} delay - 지연 시간 (단위:밀리초)(지연시간 기본값: 1초)(1초 = 1000밀리초)
  * @returns {string} - 디바운스된 결과 :마지막에 입력된 값
  */
-export function useDebounce(value, delay =1000){
+export function useDebounce(value, delay = 1000) {
   const [debounceValue, setDebounceValue] = useState(value);
   useEffect(() => {
-
     const timeoutId = setTimeout(() => {
       setDebounceValue(value);
     }, delay);
 
     return () => {
       clearTimeout(timeoutId);
-    }
+    };
   }, [value, delay]);
 
   return debounceValue;
