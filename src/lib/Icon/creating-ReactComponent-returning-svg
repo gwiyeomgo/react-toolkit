@@ -105,4 +105,4 @@ const IconCross = ({ size, color }) => (
     </g>
   </svg>
 );
-//export { IconDownload, Icon360Degrees, IconMenuBurger, IconStar, IconCross };
+export { IconDownload, Icon360Degrees, IconMenuBurger, IconStar, IconCross };

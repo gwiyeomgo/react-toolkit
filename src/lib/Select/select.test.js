@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Select } from './select';
 import userEvent from '@testing-library/user-event';
-import { Collection } from './collection';
 
 const originalError = console.error;
 beforeEach(() => {

@@ -62,7 +62,7 @@ export const checkTimePassed = (targetTime) => {
  * isNaN(' ')         // false
  * isNaN(false)       // false
  **/
-const 문자가숫자로변환가능한가 = (str) => {
+export const ConvertVerifyStringToNumber = (str) => {
   if (typeof str !== 'string') return false;
   return !isNaN(str) && !isNaN(parseFloat(str)); //true && true
 };

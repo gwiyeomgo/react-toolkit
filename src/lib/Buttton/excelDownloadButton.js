@@ -1,9 +1,14 @@
 import { CSVLink } from 'react-csv';
-import { forwardRef, useRef, useState } from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
 import { Button } from './button';
 
 // Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
 //https://sambalim.tistory.com/151
+
+//eslint 에러:Component definition is missing display name for forwardRef
+//forwardRef => React.forwardRef<HTMLInputElement>
+//https://stackoverflow.com/questions/67992894/component-definition-is-missing-display-name-for-forwardref
+
 // 부모 컴포넌트(ExcelDownloadButton)에서 자식 컴포넌트(CSVLink)의 DOM요소에  접근할 수 있게 하도록 forwardRef 사용
 let ChildCSVLink = forwardRef((props, ref) => <CSVLink {...props} ref={ref} />);
 /*https://fonts.google.com/noto/specimen/Noto+Sans+KR*/
@@ -63,4 +68,9 @@ const ExcelDownloadButton = (props) => {
     </div>
   );
 };
-export { ExcelDownloadButton, ChildCSVLink };
+
+//eslint 에러:  Component definition is missing display name
+// displayName 지정
+ChildCSVLink.displayName = 'ChildCSVLink';
+ExcelDownloadButton.displayName = 'ExcelDownloadButton';
+export { ChildCSVLink, ExcelDownloadButton };

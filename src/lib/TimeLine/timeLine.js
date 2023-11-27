@@ -103,7 +103,9 @@ const TimelineItem = ({ url, tag, title, contents }) => {
         textDecoration: 'none',
       }}
       href={url}
+      //eslint 에러: Using target="_blank" without rel="noreferrer" (which implies rel="noopener") is a security risk in older browsers:
       target="_blank"
+      rel="noreferrer"
     >
       <Item>
         <Header>
