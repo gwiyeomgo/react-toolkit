@@ -1,7 +1,7 @@
 //https://codesandbox.io/p/sandbox/react-styled-components-toggle-switch-3ft38?file=%2Fsrc%2Freact-styled-switch.js%3A23%2C7-23%2C13
 
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const HiddenInput = styled.input`
   height: 0;
@@ -23,7 +23,7 @@ const Outline = styled.label`
 `;
 
 const Toggle = styled.span`
-  content: "";
+  content: '';
   position: absolute;
   top: 2px;
   left: 2px;
@@ -53,11 +53,10 @@ const ToggleButton = ({ id, toggled, onChange }) => {
         onChange={onChange}
       />
       <Outline htmlFor={id}>
-        <Toggle  />
+        <Toggle />
       </Outline>
     </>
   );
 };
 
-export {ToggleButton};
-
+export { ToggleButton };

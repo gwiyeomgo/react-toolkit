@@ -5,58 +5,67 @@ import fetch from 'node-fetch';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
 const additionalFiles = {
-    'index.js': {
-        content: fs.readFileSync(path.resolve(__dirname, './src/demo_init/index.js'), 'utf8')
-    },
-    'index.html': {
-        content: fs.readFileSync(path.resolve(__dirname, './src/demo_init/index.html'), 'utf8')
-    },
-    'package.json': {
-        content: fs.readFileSync(path.resolve(__dirname, './src/demo_init/package.json'), 'utf8')
-    }
+  'index.js': {
+    content: fs.readFileSync(
+      path.resolve(__dirname, './src/demo_init/index.js'),
+      'utf8',
+    ),
+  },
+  'index.html': {
+    content: fs.readFileSync(
+      path.resolve(__dirname, './src/demo_init/index.html'),
+      'utf8',
+    ),
+  },
+  'package.json': {
+    content: fs.readFileSync(
+      path.resolve(__dirname, './src/demo_init/package.json'),
+      'utf8',
+    ),
+  },
 };
 
-
 const files = fs.readdirSync('./src/demo/').reduce((acc, fileName) => {
-    const filePath = path.resolve(__dirname, `./src/demo/${fileName}`);
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const fileObj = {
-        ['App.js']: {
-            title: fileName,
-            content: fileContent
-        }
-    };
+  const filePath = path.resolve(__dirname, `./src/demo/${fileName}`);
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const fileObj = {
+    ['App.js']: {
+      title: fileName,
+      content: fileContent,
+    },
+  };
 
-    return [...acc, { ...fileObj, ...additionalFiles }];
+  return [...acc, { ...fileObj, ...additionalFiles }];
 }, []);
 
 const filePromises = files.map((file) => {
-    return fetch('https://codesandbox.io/api/v1/sandboxes/define?json=1', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-        },
-        body: JSON.stringify({
-            files:file
-        })
-    })
-        .then(response => response.json())
-        .then(({ sandbox_id }) => {
-            return {
-                title: file['App.js'].title,
-                sandboxUrl: `https://codesandbox.io/s/${sandbox_id}`
-            };
-        });
+  return fetch('https://codesandbox.io/api/v1/sandboxes/define?json=1', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      files: file,
+    }),
+  })
+    .then((response) => response.json())
+    .then(({ sandbox_id }) => {
+      return {
+        title: file['App.js'].title,
+        sandboxUrl: `https://codesandbox.io/s/${sandbox_id}`,
+      };
+    });
 });
 
 Promise.all(filePromises)
-    .then(sandboxRes => {
-        const sandboxUrls = Object.values(sandboxRes).
-        map(({ sandboxUrl,title },index) => `|${index + 1}| [${title}](${sandboxUrl}) |`);
-        const readmeContent = `# @gwiyeomgo/react-toolkit
+  .then((sandboxRes) => {
+    const sandboxUrls = Object.values(sandboxRes).map(
+      ({ sandboxUrl, title }, index) =>
+        `|${index + 1}| [${title}](${sandboxUrl}) |`,
+    );
+    const readmeContent = `# @gwiyeomgo/react-toolkit
 [![codecov][codecov-image]][codecov-url][![NPM version][npm-image]][npm-url][![NPM downloads][download-image]][download-url]
 ___
 ![ract Version](https://img.shields.io/badge/Node.js-18.16.0-blue?logo=Node.js&logoColor=339933)
@@ -73,9 +82,8 @@ ___
 
 \`CodeSandbox Demo\`:\n\n||list|\n|---|---|\n${sandboxUrls.join('\n')}`;
 
-        fs.writeFileSync(path.resolve(__dirname, 'README.md'), readmeContent);
+    fs.writeFileSync(path.resolve(__dirname, 'README.md'), readmeContent);
 
-
-        console.log(sandboxRes);
-    })
-    .catch(error => console.error('Error:', error));
+    console.log(sandboxRes);
+  })
+  .catch((error) => console.error('Error:', error));

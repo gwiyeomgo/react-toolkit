@@ -45,7 +45,11 @@
     "copy-css": "npx babel src/lib/**/*.css --copy-files --out-dir dist ",
     "copy-svg": "npx babel src/lib/**/*.svg --copy-files --out-dir dist/icon/assets ",
     "test": "jest",
-    "coverage": " jest --coverage"
+    "coverage": " jest --coverage",
+    "format:fix": "prettier --write ./src",
+    "format": "prettier --check ./src",
+    "fomat:fix:all": "yarn prettier --write .",
+    "fomat:all": "yarn prettier --check ."
   },
   "eslintConfig": {
     "extends": [
@@ -74,6 +78,7 @@
     "@testing-library/user-event": "^13.5.0",
     "jest": "28.0.0",
     "jest-environment-jsdom": "^29.6.2",
-    "jest-watch-typeahead": "1.1.0"
+    "jest-watch-typeahead": "1.1.0",
+    "prettier": "^3.1.0"
   }
 }

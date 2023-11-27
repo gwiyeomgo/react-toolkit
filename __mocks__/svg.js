@@ -1,2 +1,2 @@
-export default 'SvgrURL'
-export const ReactComponent = jest.fn()
+export default 'SvgrURL';
+export const ReactComponent = jest.fn();

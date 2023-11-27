@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { keyframes, css } from "styled-components";
+import React from 'react';
+import styled, { keyframes, css } from 'styled-components';
 
 const rotation = keyframes`
   0% {
@@ -31,9 +31,9 @@ const DefaultSpan = styled.span`
   display: inline-block;
 
   ${({ type, speed, color, colorPalette }) => {
-  switch (type) {
-    case "line":
-      return css`
+    switch (type) {
+      case 'line':
+        return css`
           background-color: grey;
 
           &:nth-child(1) {
@@ -52,27 +52,27 @@ const DefaultSpan = styled.span`
           }
           animation: ${load} ${speed}s linear infinite;
         `;
-    default:
-      return css`
-          border: 3px solid ${color || "#fff"};
+      default:
+        return css`
+          border: 3px solid ${color || '#fff'};
           border-bottom-color: transparent;
           animation: ${rotation} ${speed}s linear infinite;
         `;
-  }
-}}
+    }
+  }}
 `;
 
 const Loading = (props) => {
   const {
-    type = "default",
+    type = 'default',
     size = 10,
     color,
     speed = 2,
-    colorPalette = ["#ffc2e1", "#ffb4be", "#ff97bb", "#ff7cb4"],
+    colorPalette = ['#ffc2e1', '#ffb4be', '#ff97bb', '#ff7cb4'],
     ...rest
   } = props;
 
-  return type === "default" ? (
+  return type === 'default' ? (
     <DefaultSpan
       {...rest}
       speed={speed}

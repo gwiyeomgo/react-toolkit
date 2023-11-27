@@ -24,7 +24,7 @@ const config = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -35,10 +35,10 @@ const config = {
   // coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
-   coverageReporters: [
+  coverageReporters: [
     // "json",
-     "text",
-     "lcov",
+    'text',
+    'lcov',
     // "clover"
   ],
 
@@ -52,9 +52,9 @@ const config = {
   // errorOnDeprecated: false,
 
   // The default configuration for fake timers
-   fakeTimers: {
-     "enableGlobally": false
-   },
+  fakeTimers: {
+    enableGlobally: false,
+  },
 
   // Force coverage collection from ignored files using an array of glob patterns
   // forceCoverageMatch: [],
@@ -145,7 +145,7 @@ const config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -188,7 +188,7 @@ const config = {
   // Indicates whether each individual test should be reported during the run
   // verbose: undefined,
   moduleNameMapper: {
-   '\\.svg$': '<rootDir>/__mocks__/svg.js',
+    '\\.svg$': '<rootDir>/__mocks__/svg.js',
     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
   },
   setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
@@ -198,7 +198,7 @@ const config = {
       branches: 70,
       functions: 70,
       lines: 70,
-    }
+    },
   },
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],

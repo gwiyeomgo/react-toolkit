@@ -1,18 +1,15 @@
 {
-    "plugins": [
-        "testing-library",
-        "jest-dom"
-    ],
-    "extends": [
-        "react-app",
-        "react-app/jest",
-        "plugin:testing-library/react",
-        "plugin:jest-dom/recommended"
-    ],
-    "rules": {
-        "max-depth": ["error", 2],
-        "max-params": ["error", 3],
-        "max-lines-per-function": ["error", { "max": 100 }]
-    },
-    "jest": true
+  "plugins": ["testing-library", "jest-dom"],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
+  ],
+  "rules": {
+    "max-depth": ["error", 2],
+    "max-params": ["error", 3],
+    "max-lines-per-function": ["error", { "max": 100 }]
+  },
+  "jest": true
 }

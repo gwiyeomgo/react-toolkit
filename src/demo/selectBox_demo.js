@@ -1,9 +1,9 @@
-import { Select } from "@gwiyeomgo/react-toolkit";
+import { Select } from '@gwiyeomgo/react-toolkit';
 
 const App = () => {
   return (
     <div>
-      <Select.Provider defaultValue={"a"}>
+      <Select.Provider defaultValue={'a'}>
         <Select.Trigger />
         <Select.OptionList>
           <Select.Option value="a">Option 1</Select.Option>
