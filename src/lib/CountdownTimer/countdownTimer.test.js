@@ -8,7 +8,7 @@ import { CountdownTimer } from './countdownTimer';
 describe('실패 ', () => {
   beforeEach(() => {
     jest.spyOn(console, 'error');
-    console.error.mockImplementation(() => {});
+    console.error.mockImplementation(() => undefined);
   });
 
   afterEach(() => {

@@ -5,7 +5,10 @@ import { Badge } from './badge';
 it('moveBottom,moveLeft 에 50 이상의 값을 입력한 경우', () => {
   //https://github.com/jestjs/jest/issues/5785#issuecomment-590198706
   jest.spyOn(console, 'error');
-  console.error.mockImplementation(() => {});
+
+  //typescript-eslint: Unexpected empty arrow function () => {}
+  //https://stackoverflow.com/questions/31605781/why-do-tslint-and-jslint-report-empty-blocks
+  console.error.mockImplementation(() => undefined);
 
   expect(() => {
     render(

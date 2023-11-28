@@ -1,21 +1,29 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import * as excel from './excelDownloadButton';
-import { CountdownTimer } from '../CountdownTimer/countdownTimer';
 import React from 'react';
+import * as excel from './excelDownloadButton';
 
-excel.ChildCSVLink = jest.fn();
+//eslint 에러:The members of 'excel' are read-only
+//https://eslint.org/docs/latest/rules/no-import-assign#rule-details
+function mock(obj) {
+  obj.ChildCSVLink = jest.fn();
+}
+mock(excel);
 
 const headers = [
   { label: 'A', key: 'a' },
   { label: 'B', key: 'b' },
 ];
+
 const data = [{ a: 'aaa', b: 'bbb' }];
 
 describe('test', () => {
   it('버튼 렌더링 확인', async () => {
     render(
-      <excel.ExcelDownloadButton buttonName="버튼1" fetchData={() => {}} />,
+      <excel.ExcelDownloadButton
+        buttonName="버튼1"
+        fetchData={() => undefined}
+      />,
     );
     const buttonElement = screen.getByText('버튼1');
     expect(buttonElement).toBeInTheDocument();

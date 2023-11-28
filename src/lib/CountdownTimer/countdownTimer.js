@@ -28,7 +28,6 @@ const CountdownTimer = ({
   if (!yyyyMMddHHmmssRegex.test(targetTime)) {
     throw new Error('yyyyMMddHHmmss 형식이 아닙니다.');
   }
-
   const targetDate = targetTime > 0 && convertStringToDate(targetTime);
   const currentDate = new Date();
 

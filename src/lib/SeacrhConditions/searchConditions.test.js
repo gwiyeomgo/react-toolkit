@@ -6,7 +6,7 @@ import {
 } from './searchConditions';
 import userEvent from '@testing-library/user-event';
 
-const TestPage = ({ pageName }) => {
+const TestPage = () => {
   const setSearchCondition = (key, value) => {
     setValue(key, value);
   };
@@ -18,6 +18,7 @@ const TestPage = ({ pageName }) => {
   return (
     <div>
       <div role="textbox">{searchConditions.pageSize}</div>
+
       <button
         role="button"
         onClick={() => {
@@ -38,6 +39,7 @@ const TestPage = ({ pageName }) => {
     </div>
   );
 };
+
 const originalError = console.error;
 beforeEach(() => {
   console.error = jest.fn();

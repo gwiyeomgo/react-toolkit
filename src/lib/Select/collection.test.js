@@ -106,7 +106,7 @@ describe('클릭 테스트', () => {
   it('item 한개 있을때 클릭 테스트', async () => {
     render(
       <Collection.Provider>
-        <Collection.Item index={0} value={1} onSelectValue={() => {}}>
+        <Collection.Item index={0} value={1} onSelectValue={() => undefined}>
           {'title1'}
         </Collection.Item>
       </Collection.Provider>,
@@ -120,10 +120,10 @@ describe('클릭 테스트', () => {
   it('item 여러개 있을때 클릭 테스트', async () => {
     render(
       <Collection.Provider>
-        <Collection.Item index={0} value={1} onSelectValue={() => {}}>
+        <Collection.Item index={0} value={1} onSelectValue={() => undefined}>
           {'title1'}
         </Collection.Item>
-        <Collection.Item index={0} value={1} onSelectValue={() => {}}>
+        <Collection.Item index={0} value={1} onSelectValue={() => undefined}>
           {'title2'}
         </Collection.Item>
       </Collection.Provider>,
@@ -141,10 +141,10 @@ describe('키보드 이벤트 테스트', () => {
   it('onkeydown,onkeyup 클릭', () => {
     render(
       <Collection.Provider>
-        <Collection.Item index={0} value={1} onSelectValue={() => {}}>
+        <Collection.Item index={0} value={1} onSelectValue={() => undefined}>
           {'title1'}
         </Collection.Item>
-        <Collection.Item index={1} value={2} onSelectValue={() => {}}>
+        <Collection.Item index={1} value={2} onSelectValue={() => undefined}>
           {'title2'}
         </Collection.Item>
       </Collection.Provider>,
@@ -162,10 +162,10 @@ describe('키보드 이벤트 테스트', () => {
   it('Enter 클릭', async () => {
     render(
       <Collection.Provider>
-        <Collection.Item index={0} value={1} onSelectValue={() => {}}>
+        <Collection.Item index={0} value={1} onSelectValue={() => undefined}>
           {'title1'}
         </Collection.Item>
-        <Collection.Item index={1} value={2} onSelectValue={() => {}}>
+        <Collection.Item index={1} value={2} onSelectValue={() => undefined}>
           {'title2'}
         </Collection.Item>
       </Collection.Provider>,

@@ -1,4 +1,3 @@
-import React from 'react';
 import { act } from '@testing-library/react';
 import { renderHook } from '@testing-library/react';
 import useIntervalCall from './useIntervalCall';
@@ -18,7 +17,7 @@ describe('useDebounce 테스트', () => {
   it('useIntervalCall에서 callback을 2초간 실행 - 호출 횟수 2회', () => {
     const callback = jest.fn();
     const delay = 1000;
-    let hook = renderHook(() => useIntervalCall(callback, delay));
+    renderHook(() => useIntervalCall(callback, delay));
     act(() => {
       jest.advanceTimersByTime(delay); // 타이머 진행 (1초)
       jest.advanceTimersByTime(delay); // 타이머 진행 (1초)
