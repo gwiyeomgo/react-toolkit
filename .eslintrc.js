@@ -1,7 +1,7 @@
 module.exports = {
   settings: {
     react: {
-      version: 'detect', //react 버전 지정
+      version: 'detect', //eslint 가 react 버전을 인식할 수 있도록 추가
     },
   },
   env: {
@@ -36,7 +36,9 @@ module.exports = {
     'react',
   ],
   rules: {
-    'react/react-in-jsx-scope': 'off', //import React from 'react'; 표시 안해도 사용 가능
+    '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/no-explicit-any': ['off'],
+    'react/react-in-jsx-scope': 'off', //import React from 'react' 등 불필요한 import 문 제거
     'react/prop-types': 'off', //eslint 에러:missing in props validation react/prop-types,props의 타입체크를 처리에 proptypes가 아닌 typescript 사용
   },
 };
