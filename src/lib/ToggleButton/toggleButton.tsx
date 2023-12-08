@@ -44,8 +44,8 @@ const Toggle = styled.span`
 `;
 
 interface ToggleButtonProps {
-  id: string;
-  toggled: boolean;
+  id?: string;
+  toggled?: boolean;
   onChange?: () => void;
 }
 const ToggleButton = ({ id, toggled, onChange }: ToggleButtonProps) => {

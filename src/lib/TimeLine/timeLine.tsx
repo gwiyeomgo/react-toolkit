@@ -105,6 +105,7 @@ interface TimeLineItemProps {
 const TimelineItem = ({ url, tag, title, contents }: TimeLineItemProps) => {
   return (
     <a
+      role="button"
       style={{
         fontWeight: 'bold',
         textDecoration: 'none',

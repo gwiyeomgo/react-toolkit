@@ -1,12 +1,16 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.0.95",
+  "version": "0.1.9",
   "repository": {
     "type": "git",
     "url": "https://github.com/gwiyeomgo/react-toolkit"
   },
   "description": "react components",
-  "main": "dist/index.js",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "react",
     "toolkit",
@@ -48,7 +52,7 @@
     "copy-js": "babel src/lib -d dist",
     "build-ts": "yarn clean && tsc && yarn copy-css && yarn copy-svg",
     "clean": "npx rimraf dist ",
-    "copy-css": "npx babel src/lib/**/*.css --copy-files --out-dir dist",
+    "copy-css": "npx babel src/lib/**/*.css --copy-files --out-dir dist/lib",
     "copy-svg": "npx babel src/lib/**/*.svg --copy-files --out-dir dist/lib/icon/assets ",
     "test": "jest",
     "coverage": " jest --coverage",

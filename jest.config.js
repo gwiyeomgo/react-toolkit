@@ -54,5 +54,5 @@ module.exports = {
   //커버리지 수집 범위 설정
   //collectCoverageFrom: ['**/*.[jt]s?(x)', '!**/*.stories.[jt]s?(x)','!**/*.types.[jt]s?(x)'],
   collectCoverageFrom: ['**/*.tsx'], // "**/*.[jt]s?(x)" 는  파일 확장자가 js, jsx, ts, 또는 tsx인 모든 파일을 의미
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'], //  "<rootDir>/src/setupTests.js"
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'], //  "<rootDir>/src/setupTests.js"
 };

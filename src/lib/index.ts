@@ -12,7 +12,7 @@ export { CountdownTimer } from './CountdownTimer/countdownTimer';
 export { Badge } from './Badge/badge';
 export { Input } from './Input/input';
 export { Loading } from './Loading/loading';
-export { useDebounce } from '#hooks/useDebounce';
+export { useDebounce } from './Util/hooks/useDebounce';
 export { Icon } from './Icon/icon';
 export { IconName } from './Icon/icon';
 export { ToggleButton } from './ToggleButton/toggleButton';
