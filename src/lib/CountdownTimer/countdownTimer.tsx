@@ -3,9 +3,9 @@ import {
   convertStringToDate,
   getFormattedTimeObject,
   yyyyMMddHHmmssRegex,
-} from '#/Util/convert';
+} from '../Util/convert';
 import { useEffect, useState } from 'react';
-import useIntervalCall from '#hooks/useIntervalCall';
+import useIntervalCall from '../Util/hooks/useIntervalCall';
 import styled from 'styled-components';
 
 const TimerContainer = styled.div`

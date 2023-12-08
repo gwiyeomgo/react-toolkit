@@ -20,7 +20,7 @@ interface ViewCaptureButtonProps {
   children?: React.ReactNode;
   downloadFileName: string;
   downloadButtonName: string;
-  type: ButtonType;
+  type?: ButtonType;
   color?: ButtonColors;
 }
 const ViewCaptureButton = ({
@@ -54,7 +54,7 @@ const ViewCaptureButton = ({
     const data = document.getElementById(id);
     if (data) {
       html2canvas(data)
-        .then((canvas) => {
+        ?.then((canvas) => {
           return canvas.toDataURL('image/png', 1.0);
         })
         .then((image) =>

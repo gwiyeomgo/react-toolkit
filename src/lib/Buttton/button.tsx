@@ -46,6 +46,7 @@ const Button: React.ForwardRefRenderFunction<
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     const { onClick } = props;
     if (innerLoading) {
+      //브라우저 기본 동작을 취소
       e.preventDefault();
       return;
     }

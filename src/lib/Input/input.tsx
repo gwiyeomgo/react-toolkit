@@ -30,7 +30,7 @@ const InputComponent = styled.input`
 type positionType = 'outer' | 'inner';
 interface InputProps {
   label?: string;
-  labelPosition: positionType;
+  labelPosition?: positionType;
   labelStyle?: React.CSSProperties;
 }
 const Input = (props: InputProps) => {

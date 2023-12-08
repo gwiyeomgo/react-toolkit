@@ -14,9 +14,9 @@ function lazy(importFn: () => any) {
 }
 
 export const icons = {
-  Cross: lazy(async () => import('lib/Icon/assets/cross.svg')),
-  Download: lazy(async () => import('lib/Icon/assets/download.svg')),
-  Degrees360: lazy(async () => import('lib/Icon/assets/360-degrees.svg')),
-  MenuBurger: lazy(async () => import('lib/Icon/assets/menu-burger.svg')),
-  Star: lazy(async () => import('lib/Icon/assets/star.svg')),
+  Cross: lazy(async () => import('./assets/cross.svg')),
+  Download: lazy(async () => import('./assets/download.svg')),
+  Degrees360: lazy(async () => import('./assets/360-degrees.svg')),
+  MenuBurger: lazy(async () => import('./assets/menu-burger.svg')),
+  Star: lazy(async () => import('./assets/star.svg')),
 };
