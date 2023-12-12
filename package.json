@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.1.9",
+  "version": "0.1.25",
   "repository": {
     "type": "git",
     "url": "https://github.com/gwiyeomgo/react-toolkit"
@@ -48,12 +48,13 @@
   "scripts": {
     "publish": "npm publish --access public",
     "make-demo": "node make_demo.mjs",
+    "make-demo_ts": "node make_demo_ts.mjs",
     "build": "npx rimraf dist && yarn copy-js && yarn copy-css && yarn copy-svg",
     "copy-js": "babel src/lib -d dist",
     "build-ts": "yarn clean && tsc && yarn copy-css && yarn copy-svg",
     "clean": "npx rimraf dist ",
     "copy-css": "npx babel src/lib/**/*.css --copy-files --out-dir dist/lib",
-    "copy-svg": "npx babel src/lib/**/*.svg --copy-files --out-dir dist/lib/icon/assets ",
+    "copy-svg": "npx babel src/lib/**/*.svg --copy-files --out-dir dist/lib/Icon/assets ",
     "test": "jest",
     "coverage": " jest --coverage",
     "format:fix": "prettier --write ./src",

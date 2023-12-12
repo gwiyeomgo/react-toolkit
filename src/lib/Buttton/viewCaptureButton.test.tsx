@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ViewCaptureButton } from "./viewCaptureButton"
+import { ViewCaptureButton } from './viewCaptureButton';
 import React from 'react';
 
 jest.mock('html2canvas', () => ({

@@ -1,4 +1,4 @@
-import { Button, IconName, Icon } from '@gwiyeomgo/react-toolkit';
+import { Button, Icon } from '@gwiyeomgo/react-toolkit';
 import React from 'react';
 
 const App = () => {
@@ -13,14 +13,12 @@ const App = () => {
       <Button disabled>한글로말해요한글로</Button>
       <br />
       <br />
-      <Button
-        icon={<Icon icon={IconName.Download} size={size} color={color} />}
-      >
+      <Button icon={<Icon icon={'Download'} size={size} color={color} />}>
         한글로말해요한글로
       </Button>
       <Button
         loading
-        icon={<Icon icon={IconName.Download} size={size} fill={color} />}
+        icon={<Icon icon={'Download'} size={size} fill={color} />}
       >
         한글로말해요한글로
       </Button>
