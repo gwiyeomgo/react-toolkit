@@ -22,7 +22,7 @@ module.exports = {
   // Module file extensions for importing
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'json'],
 
-  modulePathIgnorePatterns: ['<rootDir>/dist/'],
+  modulePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/src/demo_init_ts/'],
   //https://stackoverflow.com/questions/49263429/jest-gives-an-error-syntaxerror-unexpected-token-export
   transformIgnorePatterns: [
     '<rootDir>/node_modules/',

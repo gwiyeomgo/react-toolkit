@@ -46,9 +46,11 @@
     //TypeScript 컴파일러가 .tsx 파일을 .js 파일로 컴파일할 때 원래의 JavaScript 파일을 덮어쓰지 않고, 새로운 디렉토리에 컴파일된 파일을 생성하게 됩니다.
     //TypeScript 컴파일러에게 .tsx 파일을 컴파일할 때 기존에 이미 존재하는 .js 파일을 덮어쓰지 않도록 설정
     // 타입 선언 파일 (.d.ts)만 생성하도록
-    "declaration": true
+    "declaration": true,
+    //https://kyounghwan01.github.io/blog/TS/React/dependency-install/#types-xxx-가-없을때
+    "typeRoots": ["./node_modules/@types", "types"]
   },
   "include": ["src/**/*.tsx", "src/**/*.ts"],
   //"include": ["src/**/*"],
-  "exclude": ["node_modules", "lib"]
+  "exclude": ["node_modules", "./src/demo_init_ts"]
 }

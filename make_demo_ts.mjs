@@ -6,21 +6,27 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const additionalFiles = {
-  'index.js': {
+  'index.tsx': {
     content: fs.readFileSync(
-      path.resolve(__dirname, './src/demo_init_js/index.js'),
+      path.resolve(__dirname, './src/demo_init_ts/index.tsx'),
       'utf8',
     ),
   },
-  'index.html': {
+  'public/index.html': {
     content: fs.readFileSync(
-      path.resolve(__dirname, './src/demo_init_js/index.html'),
+      path.resolve(__dirname, './src/demo_init_ts/index.html'),
       'utf8',
     ),
   },
   'package.json': {
     content: fs.readFileSync(
-      path.resolve(__dirname, './src/demo_init_js/package.json'),
+      path.resolve(__dirname, './src/demo_init_ts/package.json'),
+      'utf8',
+    ),
+  },
+  'tsconfig.json': {
+    content: fs.readFileSync(
+      path.resolve(__dirname, './src/demo_init_ts/tsconfig.json'),
       'utf8',
     ),
   },
@@ -30,7 +36,7 @@ const files = fs.readdirSync('./src/demo/').reduce((acc, fileName) => {
   const filePath = path.resolve(__dirname, `./src/demo/${fileName}`);
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const fileObj = {
-    ['App.js']: {
+    ['App.tsx']: {
       title: fileName,
       content: fileContent,
     },
@@ -53,7 +59,7 @@ const filePromises = files.map((file) => {
     .then((response) => response.json())
     .then(({ sandbox_id }) => {
       return {
-        title: file['App.js'].title,
+        title: file['App.tsx'].title,
         sandboxUrl: `https://codesandbox.io/s/${sandbox_id}`,
       };
     });
