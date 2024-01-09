@@ -16,3 +16,5 @@ export { useDebounce } from './Util/hooks/useDebounce';
 export { Icon } from './Icon/icon';
 export { IconName } from './Icon/icon';
 export { ToggleButton } from './ToggleButton/toggleButton';
+export { NotificationList } from './NotificationMessages/NotificationList';
+export { Message } from './NotificationMessages/Message';
