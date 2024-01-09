@@ -14,6 +14,9 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
  * @param icon string key icon name
  * @param className string classes for styling
  * @param rotate optional number rotation of the icon
+ * @param size optional number size of the icon
+ * @param color optional string color of the icon
+ * @param ...rest
  * @returns Icon react component
  */
 export const Icon = ({
@@ -45,7 +48,7 @@ export const Icon = ({
       {...rest}
     >
       <Suspense fallback={null}>
-        <SvgIcon style={{ width: '100%', height: '100%' }} />
+        <SvgIcon />
       </Suspense>
     </div>
   );
