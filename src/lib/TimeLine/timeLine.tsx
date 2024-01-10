@@ -7,16 +7,26 @@ const Header = styled.div`
 
 const Date = styled.div`
   padding: 4px 10px;
-  background: #5a6794;
-  color: #1c2135;
+  border: none;
+  cursor: pointer;
+  background: #0d6efd;
+  color: white;
   border-radius: 18px;
-  border: #5a6794 solid 2px;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+    rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
 `;
 
 const Title = styled.div`
   margin: 5px 10px 0;
   padding: 0;
-  color: #5a6794;
+  color: black;
   opacity: 0.8;
   flex-shrink: 0;
   width: 100px;
@@ -25,7 +35,7 @@ const Title = styled.div`
 
 const Contents = styled.div`
   margin: 8px 0 0;
-  color: #5a6794;
+  color: black;
 `;
 
 const Item = styled.div`
@@ -33,39 +43,48 @@ const Item = styled.div`
   padding: 25px 20px;
   &:hover {
     ${Date} {
-      background: #1c2135;
-      border: #1c2135 solid 2px;
       color: white;
-      font-weight: bold;
+      box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     }
     ${Title} {
-      color: #5a6794;
+      color: grey;
       font-weight: bold;
     }
     ${Contents} {
-      color: #8794c0;
+      color: grey;
+    }
+  }
+  &:active {
+    ${Date} {
     }
   }
   &::before {
     content: '';
     position: absolute;
-    top: 40px;
+    top: 30px;
     left: -7px;
     width: 12px;
     height: 12px;
-    background: #5a6794;
+    background: #0d6efd;
     border-radius: 50%;
-    box-shadow: #8794c0 0 0 10px rgba(0, 0, 0, 1);
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0px -23px 25px 0px inset,
+      rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+      rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+      rgba(0, 0, 0, 0.06) 0px 2px 1px,
+      rgba(0, 0, 0, 0.09) 0px 4px 2px,
+      rgba(0, 0, 0, 0.09) 0px 8px 4px,
+      rgba(0, 0, 0, 0.09) 0px 16px 8px,
+      rgba(0, 0, 0, 0.09) 0px 32px 16px;
   }
   &::after {
-    content: '';
     position: absolute;
-    top: 40px;
+    top: 30px;
     left: -6px;
     width: 12px;
     height: 12px;
-    background: #5a6794;
-    border-radius: 50%;
     box-shadow: #e7e9ee 0 0 10px rgba(0, 255, 0, 1);
     box-shadow: #e7e9ee 0 0 10px rgba(0, 255, 0, 1);
     opacity: 0;
@@ -76,7 +95,6 @@ const Item = styled.div`
 `;
 
 const Container = styled.div`
-  color: white;
   max-width: 500px;
   box-sizing: border-box;
 `;
@@ -84,7 +102,7 @@ const Container = styled.div`
 const Ul = styled.ul`
   margin: 0;
   padding: 0;
-  border-left: 2px solid #5a6794;
+  border-left: 1px solid #5a6794;
   list-style: none;
 `;
 

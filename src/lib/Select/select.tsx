@@ -13,13 +13,20 @@ const TriggerButton = styled.button`
   position: relative;
   padding: 10px;
   background-color: white;
-  border: 1px solid;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
   span {
     display: inline-block;
     vertical-align: middle;
   }
-
+  box-shadow:
+    rgba(0, 0, 0, 0.07) 0px 1px 2px,
+    rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px,
+    rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px,
+    rgba(0, 0, 0, 0.07) 0px 32px 64px;
   &::after {
     content: '';
     position: absolute;
@@ -109,16 +116,20 @@ interface UlProps {
 const Ul = styled.ul<UlProps>`
   display: ${(props) => (props.open ? 'block' : 'none')};
   width: 100px;
+  margin: auto;
+  border-radius: 10px;
   background-color: white;
   position: absolute;
-  border: 2px solid lightgray;
+  box-shadow:
+    rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 `;
 
 const Li = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 9px 14px;
+  padding: 9px 14px;x
   border-bottom: 2px solid #d2d2d2;
   border-top: none;
   &:hover {

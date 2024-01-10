@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.1.34",
+  "version": "0.1.44",
   "repository": {
     "type": "git",
     "url": "https://github.com/gwiyeomgo/react-toolkit"
@@ -47,8 +47,11 @@
   },
   "scripts": {
     "run-storybook": "npm run storybook",
-    "js-build": " npm-run-all clean  build-js fomat:fix:all coverage   make-demo-js",
-    "ts-build": " npm-run-all clean  build-ts fomat:fix:all coverage  make-demo-ts",
+    "version-major": "npm --no-git-tag-version version major",
+    "version-minor": "npm --no-git-tag-version version minor",
+    "version-patch": "npm --no-git-tag-version version patch",
+    "js-build": " npm-run-all clean build-js fomat:fix:all coverage make-demo-js",
+    "ts-build": " npm-run-all clean build-ts fomat:fix:all coverage make-demo-ts",
     "publish": "npm publish --access public",
     "clean": "npx rimraf dist",
     "make-demo-js": "node make_demo.mjs",
@@ -68,7 +71,7 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint --fix ./src",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build -o docs"
   },
   "eslintConfig": {
     "extends": [
@@ -95,6 +98,19 @@
     "@babel/preset-env": "^7.23.5",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.1",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/react-csv": "^1.1.9",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.54.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.1.0",
+    "ts-jest": "^29.1.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^4.9.5",
     "@storybook/addon-essentials": "^7.6.7",
     "@storybook/addon-interactions": "^7.6.7",
     "@storybook/addon-links": "^7.6.7",
@@ -104,23 +120,10 @@
     "@storybook/react": "^7.6.7",
     "@storybook/react-webpack5": "^7.6.7",
     "@storybook/test": "^7.6.7",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.1",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/react-csv": "^1.1.9",
-    "babel-jest": "^29.7.0",
-    "eslint": "^8.54.0",
     "eslint-plugin-storybook": "^0.6.15",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.1.0",
     "prop-types": "^15.8.1",
     "sb": "^7.6.7",
     "storybook": "^7.6.7",
-    "ts-jest": "^29.1.1",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^4.9.5",
     "webpack": "^5.89.0"
   }
 }

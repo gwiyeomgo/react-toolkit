@@ -1,4 +1,4 @@
-//jest.config.js
+//jest.config.ts
 module.exports = {
   verbose: true,
   testEnvironment: 'jsdom', //테스트 환경 : Consider using the "jsdom" test environment.
@@ -12,9 +12,9 @@ module.exports = {
   testMatch: ['<rootDir>/src/**/*.test.tsx'], //타입스크립트만 테스트
 
   moduleNameMapper: {
-    '^#/(.*)$': '<rootDir>/src/lib/$1',
-    '^#utils/(.*)$': '<rootDir>/src/lib/Util/$1',
-    '^#hooks/(.*)$': '<rootDir>/src/lib/Util/hooks/$1',
+    //  '^#/(.*)$': '<rootDir>/src/lib/$1',
+    // '^#utils/(.*)$': '<rootDir>/src/lib/Util/$1',
+    // '^#hooks/(.*)$': '<rootDir>/src/lib/Util/hooks/$1',
     '\\.svg$': '<rootDir>/__mocks__/svg.js',
     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
   },
@@ -53,6 +53,6 @@ module.exports = {
   },
   //커버리지 수집 범위 설정
   //collectCoverageFrom: ['**/*.[jt]s?(x)', '!**/*.stories.[jt]s?(x)','!**/*.types.[jt]s?(x)'],
-  collectCoverageFrom: ['**/*.tsx'], // "**/*.[jt]s?(x)" 는  파일 확장자가 js, jsx, ts, 또는 tsx인 모든 파일을 의미
+  collectCoverageFrom: ['src/lib/**/*.tsx'], // "**/*.[jt]s?(x)" 는  파일 확장자가 js, jsx, ts, 또는 tsx인 모든 파일을 의미
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'], //  "<rootDir>/src/setupTests.js"
 };

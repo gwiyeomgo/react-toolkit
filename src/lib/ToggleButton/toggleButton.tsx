@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-
 const HiddenInput = styled.input`
   height: 0;
   width: 0;
@@ -17,7 +16,10 @@ const Outline = styled.label`
   width: 80px;
   height: 40px;
   border-radius: 100px;
-  border: 2px solid red;
+  background-color: #f0f0f0;
+  box-shadow:
+    rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   position: relative;
   transition: background-color 0.2s;
 `;
@@ -25,14 +27,18 @@ const Outline = styled.label`
 const Toggle = styled.span`
   content: '';
   position: absolute;
-  top: 2px;
+  top: 1px;
   left: 2px;
   width: 36px;
   height: 36px;
   border-radius: 45px;
   transition: 0.2s;
-  background: blue;
-  box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+  border: 1px solid white;
+  background-color: #f8f8f8;
+  box-shadow:
+    rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
   ${HiddenInput}:checked + ${Outline} & {
     left: calc(100% - 2px);
     transform: translateX(-100%);
@@ -43,11 +49,11 @@ const Toggle = styled.span`
   }
 `;
 
-interface ToggleButtonProps {
+type ToggleButtonProps = {
   id?: string;
   toggled?: boolean;
   onChange?: () => void;
-}
+};
 const ToggleButton = ({ id, toggled, onChange }: ToggleButtonProps) => {
   return (
     <>

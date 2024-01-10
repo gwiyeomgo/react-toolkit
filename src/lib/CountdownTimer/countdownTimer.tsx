@@ -1,18 +1,19 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import {
   convertStringToDate,
   getFormattedTimeObject,
   yyyyMMddHHmmssRegex,
 } from '../Util/convert';
-import { useEffect, useState } from 'react';
 import useIntervalCall from '../Util/hooks/useIntervalCall';
 import styled from 'styled-components';
+import styles from '../styles.module.css';
 
 const TimerContainer = styled.div`
-  width: 100%;
+  width: 10rem;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 interface TimeUnit {
@@ -20,6 +21,7 @@ interface TimeUnit {
   hours: string;
   minutes: string;
   seconds: string;
+  suffix?: string;
 }
 
 const TimeUnitDefault: TimeUnit = {
@@ -27,30 +29,45 @@ const TimeUnitDefault: TimeUnit = {
   hours: '00',
   minutes: '00',
   seconds: '00',
+  suffix: ':',
 };
 
 export type TimerType = 'default' | 'suffix' | 'none';
-export type TimeSuffix = keyof TimeUnit;
-//export type TimeSuffix = keyof typeof TimeUnitDefault
-export type KoreanTimeSuffix = '일' | '시' | '분' | '초';
+export type TimeKeys = keyof typeof TimeUnitDefault;
+
 interface CountdownTimerProps {
   fontSize?: number;
   targetTime: string;
   type?: TimerType;
-  keyList?: Array<TimeSuffix>;
-  suffixList?: Array<KoreanTimeSuffix>;
 }
 
 const CountdownTimer = ({
   fontSize = 60,
   targetTime,
   type = 'default',
-  keyList = ['days', 'hours', 'minutes', 'seconds'],
-  suffixList = ['일', '시', '분', '초'],
 }: CountdownTimerProps) => {
   const [remainingTime, setRemainingTime] = useState(0);
-
   const [time, setTime] = React.useState<TimeUnit>(TimeUnitDefault);
+  const [keys, setKeys] = useState<TimeKeys[]>([]);
+
+  useEffect(() => {
+    const keyList: TimeKeys[] = [
+      'days',
+      'suffix',
+      'hours',
+      'suffix',
+      'minutes',
+      'suffix',
+      'seconds',
+    ];
+    const suffixes: TimeKeys[] =
+      type === 'suffix'
+        ? keyList
+            .filter((item) => item !== 'suffix')
+            .flatMap((item) => [item, item])
+        : keyList;
+    setKeys(suffixes);
+  }, [type]);
 
   if (!yyyyMMddHHmmssRegex.test(targetTime)) {
     throw new Error('yyyyMMddHHmmss 형식이 아닙니다.');
@@ -68,46 +85,41 @@ const CountdownTimer = ({
   useIntervalCall(() => setRemainingTime(timeDifference), 1000);
 
   useEffect(() => {
-    setTime(getFormattedTimeObject(remainingTime));
+    return setTime({
+      ...getFormattedTimeObject(remainingTime),
+      suffix: type === 'default' ? ':' : '',
+    });
   }, [remainingTime]);
-
-  const totalKeys = keyList.length;
-  let allWidth = 100;
-  if (type === 'default') {
-    allWidth -= 3;
-  }
-  const widthPercentage = allWidth / totalKeys;
 
   return (
     <TimerContainer>
-      {keyList.map((key, index) => (
-        <div key={index}>
+      {keys.map((key, index) => (
+        <div className={styles.timerItem} key={index}>
           <div
+            className={styles.timerValue}
             style={{
-              width: `${widthPercentage}%`,
-              minWidth: `${fontSize * 1.5}px`,
+              minWidth: `${fontSize}px`,
               textAlign: 'center',
-              fontSize: `${fontSize}px`,
+              fontSize:
+                type === 'suffix' && index % 2 === 1
+                  ? `${fontSize / 3}px`
+                  : `${fontSize}px`,
             }}
           >
-            {time[key]}
-            {type === 'suffix' && suffixList.length > 0 && suffixList[index] ? (
-              suffixList[index]
-            ) : (
-              <></>
-            )}
+            <p
+              style={{
+                paddingBlockStart:
+                  type === 'suffix' && index % 2 === 1 ? '80%' : undefined,
+                margin: 'auto',
+              }}
+            >
+              {type === 'suffix' && index % 2 === 1 ? key : time[key]}
+            </p>
           </div>
-          {type === 'default' && index !== keyList.length - 1 ? (
-            <span style={{ width: '1%', fontSize: `${fontSize}px` }}>
-              {':'}
-            </span>
-          ) : (
-            <></>
-          )}
         </div>
       ))}
     </TimerContainer>
   );
 };
 
-export { CountdownTimer };
+export { CountdownTimer, CountdownTimerProps };

@@ -69,7 +69,7 @@ Promise.all(filePromises)
   .then((sandboxRes) => {
     const sandboxUrls = Object.values(sandboxRes).map(
       ({ sandboxUrl, title }, index) =>
-        `|${index + 1}| [${title}](${sandboxUrl}) |`,
+        `${index + 1}, [${title}](${sandboxUrl}) \n\n`,
     );
     const readmeContent = `# @gwiyeomgo/react-toolkit
 [![codecov][codecov-image]][codecov-url][![NPM version][npm-image]][npm-url][![NPM downloads][download-image]][download-url]
@@ -86,9 +86,9 @@ ___
 
 > react 컴포넌트 모음
 
-\`CodeSandbox Demo\`:\n\n||list|\n|---|---|\n${sandboxUrls.join('\n')}`;
+\`CodeSandbox Demo\`:\n\n\n${sandboxUrls.join('\n')}`;
 
-    fs.writeFileSync(path.resolve(__dirname, 'README.md'), readmeContent);
+    fs.writeFileSync(path.resolve(__dirname, 'README.mdx'), readmeContent);
 
     console.log(sandboxRes);
   })

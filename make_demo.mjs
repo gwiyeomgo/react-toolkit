@@ -82,7 +82,7 @@ ___
 
 \`CodeSandbox Demo\`:\n\n||list|\n|---|---|\n${sandboxUrls.join('\n')}`;
 
-    fs.writeFileSync(path.resolve(__dirname, 'README.md'), readmeContent);
+    fs.writeFileSync(path.resolve(__dirname, 'README.mdx'), readmeContent);
 
     console.log(sandboxRes);
   })
