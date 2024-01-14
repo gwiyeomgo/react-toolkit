@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from '../styles.module.css';
 import classNames from 'classnames/bind';
 import { Loading } from '../Loading/loading';
+import classnames from 'classnames';
 const cx = classNames.bind(styles);
 
 export type ButtonType = 'default' | 'outline';
@@ -15,10 +16,10 @@ export interface ButtonProps {
   type?: ButtonType;
   loading?: boolean;
   icon?: React.ReactNode;
-  classNames?: { icon: string };
+  className?: string;
   disabled?: boolean;
   style?: React.CSSProperties;
-  styles?: { icon: React.CSSProperties };
+  isSearchButton?: boolean;
 }
 
 const Button: React.ForwardRefRenderFunction<
@@ -34,6 +35,7 @@ const Button: React.ForwardRefRenderFunction<
     loading = false,
     icon,
     disabled,
+    isSearchButton,
     ...rest
   } = props;
   const hasChildren = children !== undefined && children !== null;
@@ -62,7 +64,11 @@ const Button: React.ForwardRefRenderFunction<
   return (
     <button
       role="button"
-      className={buttonClass}
+      // className={buttonClass}
+
+      className={classnames(buttonClass, {
+        [styles.searchButton]: isSearchButton,
+      })}
       onClick={handleClick}
       disabled={disabled}
       {...rest}

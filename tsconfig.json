@@ -11,7 +11,7 @@
     //별칭 사용을 원할때=> jest 를 사용하는 경우 moduleNameMapper 에 설정도 변경 필요
     "paths": {
       //baseUrl 옵션으로 이미 ./src을 지정해준 경우, paths 옵션에서 ./src를 생략 가능
-      "#/*": ["lib/*"],
+      //  "#/*": ["lib/*"],
       // "#/*": ["*"], //내부 모듈을 대표할 수 있는 특수 기호를 딱 하나만 등록
       "#utils/*": ["lib/Util/*"],
       "#hooks/*": ["lib/Util/hooks/*"]
@@ -52,5 +52,5 @@
   },
   "include": ["src/**/*.tsx", "src/**/*.ts"],
   //"include": ["src/**/*"],
-  "exclude": ["node_modules", "./src/demo_init_ts"]
+  "exclude": ["node_modules", "./src/demo_init_ts", "./src/stories"]
 }

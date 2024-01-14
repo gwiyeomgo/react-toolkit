@@ -3,7 +3,8 @@ import { icons } from './icons';
 import React from 'react';
 
 export type IconName = keyof typeof icons;
-interface Props extends HTMLAttributes<HTMLDivElement> {
+
+interface IconProps extends HTMLAttributes<HTMLDivElement> {
   icon: IconName;
   className?: string;
   rotate?: number;
@@ -19,14 +20,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
  * @param ...rest
  * @returns Icon react component
  */
-export const Icon = ({
-  icon,
-  className,
-  rotate,
-  size,
-  color,
-  ...rest
-}: Props) => {
+const Icon = ({ icon, className, rotate, size, color, ...rest }: IconProps) => {
   const SvgIcon = useMemo(() => icons[icon], [icon]);
 
   if (!SvgIcon) return null;
@@ -53,3 +47,5 @@ export const Icon = ({
     </div>
   );
 };
+
+export { Icon, IconProps };

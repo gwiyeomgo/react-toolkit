@@ -16,8 +16,8 @@ export interface BadgeProps {
 const Container = styled.div`
   position: relative;
   display: inline-block;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
 `;
 
 const Badge = ({
@@ -42,13 +42,21 @@ const Badge = ({
         className={hasChildren ? styles.badgeAboveChildren : styles.badge}
         style={{
           color: 'white',
-          padding: !hasCount ? '4px' : '1px',
+          textAlign: 'center',
+          padding: '4px',
           backgroundColor: color,
           transform: hasChildren
             ? `translate(${50 - moveLeft}%, -${50 - moveBottom}%)`
             : 'none',
           borderRadius:
             hasCount && count.toString().length > 1 ? '15px' : '50%',
+          width: !hasCount
+            ? undefined
+            : count.toString().length === 1
+              ? '18px'
+              : hasCount && count.toString().length === 2
+                ? '20px'
+                : undefined,
         }}
       >
         {count}

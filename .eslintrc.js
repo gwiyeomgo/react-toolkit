@@ -10,7 +10,12 @@ module.exports = {
     node: true, //eslint 에러:module is not defined
     jest: true, //eslint 에러:jest is not defined
   },
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react/recommended', 'plugin:storybook/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:storybook/recommended',
+  ],
   overrides: [
     {
       env: {

@@ -19,4 +19,5 @@ export const icons = {
   Degrees360: lazy(async () => import('./assets/360-degrees.svg')),
   MenuBurger: lazy(async () => import('./assets/menu-burger.svg')),
   Star: lazy(async () => import('./assets/star.svg')),
+  Search: lazy(async () => import('./assets/search.svg')),
 };

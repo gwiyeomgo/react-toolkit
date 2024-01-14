@@ -18,11 +18,7 @@ describe('실패 ', () => {
     expect(() => {
       render(
         <>
-          <CountdownTimer
-            type={'suffix'}
-            targetTime={'124141'}
-            suffixList={['일']}
-          />
+          <CountdownTimer targetTime={'124141'} />
         </>,
       );
     }).toThrow(new Error('yyyyMMddHHmmss 형식이 아닙니다.'));
@@ -56,7 +52,6 @@ describe('렌더링 테스트', () => {
       <>
         <CountdownTimer
           type="none"
-          keyList={['hours', 'minutes', 'seconds']}
           targetTime={'20231224120000'}
           fontSize={20}
         />
@@ -76,14 +71,10 @@ describe('렌더링 테스트', () => {
   it('type  suffix 인 경우 - 렌더링 (성공)', () => {
     render(
       <>
-        <CountdownTimer
-          type={'suffix'}
-          targetTime={'20231224120000'}
-          suffixList={['일']}
-        />
+        <CountdownTimer type={'suffix'} targetTime={'20231224120000'} />
       </>,
     );
-    const textElement = screen.queryAllByText('0일');
+    const textElement = screen.queryAllByText('days');
     expect(textElement.length).toEqual(1);
   });
 });

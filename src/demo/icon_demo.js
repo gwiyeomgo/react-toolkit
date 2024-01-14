@@ -13,7 +13,7 @@ const App = () => {
       <br />
       <Icon rotate={-30} icon={'Cross'} color="#00008B" size={60} />
       <br />
-      <Icon rotate={-30} icon={'Cross'} color="#00008B" size={60} />
+      <Icon rotate={-30} icon={'Search'} color="pink" size={60} />
     </>
   );
 };

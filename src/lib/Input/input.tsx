@@ -11,26 +11,27 @@ import classnames from 'classnames';
 
 const InputRoot = styled.div`
   font-family: Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.4em;
+  font-weight: 50px;
+  line-height: 1.1em;
   letter-spacing: 0.00938em;
   color: black;
-  padding: 10px;
   box-sizing: border-box;
   cursor: text;
-  display: inline-flex;
-  position: relative;
-  align-items: center;
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 `;
 const Label = styled.label`
-  color: black;
-  cursor: default;
+  white-space: nowrap;
+  overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+  text-overflow: ellipsis; /* 넘친 부분에 대해 ...으로 표시 */
 `;
-const InputComponent = styled.input`
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.24);
+const InputComponent = styled.input<{ isSearchInput?: boolean }>`
+  width: 100%;
+  font-size: 1rem;
+  padding: ${(props) => (props.isSearchInput ? '18px' : '10px')};
+  padding-inline-end: ${(props) => (props.isSearchInput ? '60px' : '20px')};
 `;
 export type ValueType = InputHTMLAttributes<HTMLInputElement>['value'] | bigint;
 
@@ -51,7 +52,7 @@ export interface InputFocusOptions extends FocusOptions {
   cursor?: 'start' | 'end' | 'all';
 }
 
-interface InputProps {
+type InputProps = {
   label?: string;
   labelPosition?: positionType;
   labelStyle?: React.CSSProperties;
@@ -60,7 +61,10 @@ interface InputProps {
   readOnly?: boolean;
   ref?: LegacyRef<HTMLInputElement>;
   onChange?: (text: React.ChangeEvent<HTMLInputElement>) => void;
-}
+  className?: string;
+  style?: React.CSSProperties;
+  isSearchInput?: boolean;
+};
 const Input = forwardRef<InputRef, InputProps>((props, ref) => {
   const {
     onChange,
@@ -68,6 +72,7 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
     labelPosition = 'outer',
     labelStyle,
     value,
+    isSearchInput,
     ...inputProps
   } = props;
 
@@ -114,12 +119,6 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e);
   };
-  // console.error
-  //     Warning: A component is changing an uncontrolled input to be controlled.
-  //     This is likely caused by the value changing from undefined to a defined value,
-  //     which should not happen.
-  //     Decide between using a controlled or uncontrolled input element for the lifetime of the component.
-  //     More info: https://reactjs.org/link/controlled-components
   return (
     <InputRoot>
       {label && (
@@ -140,8 +139,10 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
         onChange={handleChange}
         className={classnames(styles.defaultInput, {
           [styles.expandInput]: valid,
+          [styles.searchInput]: isSearchInput,
         })}
         type="text"
+        isSearchInput={isSearchInput}
         {...inputProps}
       />
     </InputRoot>

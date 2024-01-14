@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 
 const rotation = keyframes`
@@ -34,25 +34,30 @@ const DefaultSpan = styled.span<StyledButtonProps>`
   border-radius: 50%;
   box-sizing: border-box;
   display: inline-block;
-
   ${({ type, speed, color, colorPalette }) => {
     switch (type) {
       case 'line':
         return css`
           background-color: grey;
-
+          box-shadow:
+            rgba(0, 0, 0, 0.07) 0px 1px 2px,
+            rgba(0, 0, 0, 0.07) 0px 2px 4px,
+            rgba(0, 0, 0, 0.07) 0px 4px 8px,
+            rgba(0, 0, 0, 0.07) 0px 8px 16px,
+            rgba(0, 0, 0, 0.07) 0px 16px 32px,
+            rgba(0, 0, 0, 0.07) 0px 32px 64px;
           &:nth-child(1) {
             animation-delay: 0s;
             background-color: ${colorPalette && colorPalette[1]};
           }
 
           &:nth-child(2) {
-            animation-delay: 0.2s;
+            animation-delay: 0.5s;
             background-color: ${colorPalette && colorPalette[2]};
           }
 
           &:nth-child(3) {
-            animation-delay: 0.4s;
+            animation-delay: 1s;
             background-color: ${colorPalette && colorPalette[3]};
           }
           animation: ${load} ${speed}s linear infinite;
@@ -73,6 +78,7 @@ interface LoadingProps {
   color?: string;
   speed?: number;
   colorPalette?: string[];
+  style?: CSSProperties;
 }
 const defaultColors: string[] = ['#ffc2e1', '#ffb4be', '#ff97bb', '#ff7cb4'];
 const Loading: React.FC<LoadingProps> = (props) => {
@@ -120,4 +126,4 @@ const Loading: React.FC<LoadingProps> = (props) => {
   );
 };
 
-export { Loading };
+export { Loading, LoadingProps };

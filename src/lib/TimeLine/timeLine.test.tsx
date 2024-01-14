@@ -6,7 +6,6 @@ import React from 'react';
 it('타임라인테스트', () => {
   render(
     <>
-      {' '}
       <Timeline.List>
         <Timeline.Item
           url="/test/2020"

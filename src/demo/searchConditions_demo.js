@@ -1,6 +1,7 @@
 import {
   useSearchConditions,
   SearchConditionsProvider,
+  Button,
 } from '@gwiyeomgo/react-toolkit';
 
 const DemoPage = ({ pageName }) => {
@@ -19,23 +20,23 @@ const DemoPage = ({ pageName }) => {
       <p>페이지 ID: {pageName}</p>
       <p>페이지: {searchConditions.page}</p>
       <p>페이지 크기: {searchConditions.pageSize}</p>
-      <button onClick={() => setSearchCondition('page', 1)}>1</button>
-      <button onClick={() => setSearchCondition('page', 2)}>2</button>
-      <button onClick={() => setSearchCondition('page', 3)}>3</button>
-      <button
+      <Button onClick={() => setSearchCondition('page', 1)}>1</Button>
+      <Button onClick={() => setSearchCondition('page', 2)}>2</Button>
+      <Button onClick={() => setSearchCondition('page', 3)}>3</Button>
+      <Button
         onClick={() => {
           removeSearchCondition('pageSize');
         }}
       >
         페이지 크기 제거
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => {
           setSearchCondition('pageSize', 10);
         }}
       >
         페이지 크기 추가
-      </button>
+      </Button>
     </div>
   );
 };
