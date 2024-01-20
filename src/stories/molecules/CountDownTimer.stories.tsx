@@ -16,14 +16,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default1: Story = {
+export const Default: Story = {
   args: {
     targetTime: '20241224120000',
     fontSize: 20,
   },
 };
 
-export const Default2: Story = {
+export const TimerWithSuffix: Story = {
   args: {
     type: 'suffix',
     targetTime: '20241224120000',
@@ -31,7 +31,7 @@ export const Default2: Story = {
   },
 };
 
-export const Default3: Story = {
+export const OnlyTimer: Story = {
   args: {
     type: 'none',
     targetTime: '20241224120000',

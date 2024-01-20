@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.1.44",
+  "version": "0.1.46",
   "repository": {
     "type": "git",
     "url": "https://github.com/gwiyeomgo/react-toolkit"
@@ -51,7 +51,7 @@
     "version-minor": "npm --no-git-tag-version version minor",
     "version-patch": "npm --no-git-tag-version version patch",
     "js-build": " npm-run-all clean build-js fomat:fix:all coverage make-demo-js",
-    "ts-build": " npm-run-all clean build-ts fomat:fix:all coverage make-demo-ts",
+    "ts-build": " npm-run-all clean build-ts fomat:fix:all coverage",
     "publish": "npm publish --access public",
     "clean": "npx rimraf dist",
     "make-demo-js": "node make_demo.mjs",

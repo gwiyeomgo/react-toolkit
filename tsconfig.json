@@ -48,7 +48,7 @@
     // 타입 선언 파일 (.d.ts)만 생성하도록
     "declaration": true,
     //https://kyounghwan01.github.io/blog/TS/React/dependency-install/#types-xxx-가-없을때
-    "typeRoots": ["./node_modules/@types", "types"]
+    "typeRoots": ["./node_modules/@types", "src/types"]
   },
   "include": ["src/**/*.tsx", "src/**/*.ts"],
   //"include": ["src/**/*"],

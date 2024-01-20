@@ -91,4 +91,4 @@ const ExcelDownloadButton = (props: ExcelDownloadButtonProps) => {
 // displayName 지정
 ChildCSVLink.displayName = 'ChildCSVLink';
 ExcelDownloadButton.displayName = 'ExcelDownloadButton';
-export { ChildCSVLink, ExcelDownloadButton };
+export { ChildCSVLink, ExcelDownloadButton, ExcelDownloadButtonProps };

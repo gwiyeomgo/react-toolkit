@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../../lib/Buttton/button';
+import { Input } from '../../lib/Input/input';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: '1.Atoms/Button',
-  component: Button,
+  title: '1.Atoms/Input',
+  component: Input,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
@@ -13,41 +13,41 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    type: {
-      control: 'select',
-      options: ['default', 'outline'],
-      description: '버튼 유형 선택',
+    value: {
+      control: {},
+      description: '입력값',
     },
-    disabled: {
-      control: 'select',
-      options: [true, false],
+    label: {
+      control: { type: 'string' },
     },
-    color: {
-      control: 'select',
-      options: ['primary', 'success', 'danger', 'warning'],
+    placeholder: {
+      control: { type: 'string' },
     },
+    labelStyle: {},
+    readOnly: { type: 'boolean' },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
+  args: {},
+};
+
+export const LabelInput: Story = {
   args: {
-    type: 'default',
-    color: 'primary',
-    children: '버튼',
-    disabled: false,
+    label: '이름',
+    placeholder: '이름을 입력해 주세요',
+    labelStyle: { color: 'red' },
   },
 };
 
-export const ButtonWithIcon: Story = {
+export const LabelInputReadOnly: Story = {
   args: {
-    type: 'default',
-    color: '#ffff',
-    children: '버튼',
-    loading: true,
-    disabled: false,
+    label: '이름은몇자까지들',
+    value: '홍길동',
+    readOnly: true,
   },
 };

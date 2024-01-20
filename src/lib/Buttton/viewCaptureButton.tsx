@@ -79,4 +79,4 @@ const ViewCaptureButton = ({
   );
 };
 
-export { ViewCaptureButton };
+export { ViewCaptureButton, ViewCaptureButtonProps };

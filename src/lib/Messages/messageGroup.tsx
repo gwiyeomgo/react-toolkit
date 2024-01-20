@@ -29,9 +29,10 @@ const Container = styled.div`
   flex-direction: column;
   background-color: #fcfcfc;
   width: 300px;
+  padding: 20px;
   box-shadow:
-    rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
-    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 `;
 
 const Content = styled.div`
