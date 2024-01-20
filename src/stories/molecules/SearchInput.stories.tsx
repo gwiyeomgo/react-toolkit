@@ -15,12 +15,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const SearchInput3: Story = {
+export const Default: Story = {
   args: {
     buttonStyle: {},
     inputStyle: {},
     onClickSearch: (str) => {
-      console.log(str);
+      console.log('검색', str);
     },
   },
 };

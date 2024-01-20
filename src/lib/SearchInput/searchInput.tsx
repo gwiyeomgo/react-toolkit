@@ -42,7 +42,14 @@ const SearchInput = (props: InputWithDebounceProps) => {
       />
       <Button
         color={'primary'}
-        icon={<Icon icon={'Search'} size={20} color={'white'} />}
+        icon={
+          <Icon
+            icon={'Search'}
+            width={'20px'}
+            height={'20px'}
+            color={'white'}
+          />
+        }
         onClick={handleSearch}
         isSearchButton={true}
         style={{

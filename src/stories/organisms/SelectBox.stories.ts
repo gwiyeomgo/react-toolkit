@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SelectBox from './selectBox';
+import { SelectBox } from '../../lib/SelectBox/selectBox';
 
 const meta = {
   title: '3.Organisms/SelectBox',
@@ -11,5 +11,23 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    data: [
+      {
+        id: 1,
+        value: 'A',
+        label: 'Option 1',
+      },
+      {
+        id: 2,
+        value: 'B',
+        label: 'Option 2',
+      },
+      {
+        id: 3,
+        value: 'C',
+        label: 'Option 3',
+      },
+    ],
+  },
 };

@@ -9,6 +9,11 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    previewTabs: {
+      canvas: {
+        hidden: true, // Canvas는 선택할 수 없도록 막습니다.
+      },
+    },
   },
 };
 

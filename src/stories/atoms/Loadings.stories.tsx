@@ -30,7 +30,7 @@ export const DottedLoading: Story = {
     },
   },
 };
-export const lineLoading1: Story = {
+export const LoadingTypeLine: Story = {
   args: {
     type: 'line',
     size: 10,
@@ -38,7 +38,7 @@ export const lineLoading1: Story = {
   },
 };
 
-export const lineLoading2: Story = {
+export const CustomLoading: Story = {
   args: {
     type: 'line',
     size: 10,

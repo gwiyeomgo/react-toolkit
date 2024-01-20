@@ -2,13 +2,14 @@ import { HTMLAttributes, Suspense, useMemo } from 'react';
 import { icons } from './icons';
 import React from 'react';
 
-export type IconName = keyof typeof icons;
+type IconName = keyof typeof icons;
 
 interface IconProps extends HTMLAttributes<HTMLDivElement> {
   icon: IconName;
   className?: string;
   rotate?: number;
-  size?: number;
+  width?: string;
+  height?: string;
 }
 /**
  *
@@ -20,7 +21,15 @@ interface IconProps extends HTMLAttributes<HTMLDivElement> {
  * @param ...rest
  * @returns Icon react component
  */
-const Icon = ({ icon, className, rotate, size, color, ...rest }: IconProps) => {
+const Icon = ({
+  icon,
+  className,
+  rotate,
+  width,
+  height,
+  color,
+  ...rest
+}: IconProps) => {
   const SvgIcon = useMemo(() => icons[icon], [icon]);
 
   if (!SvgIcon) return null;
@@ -31,8 +40,8 @@ const Icon = ({ icon, className, rotate, size, color, ...rest }: IconProps) => {
       aria-label={icon}
       role="img"
       style={{
-        width: size,
-        height: size,
+        width: width,
+        height: height,
         fill: color,
         display: 'flex',
         justifyContent: 'center',
@@ -48,4 +57,4 @@ const Icon = ({ icon, className, rotate, size, color, ...rest }: IconProps) => {
   );
 };
 
-export { Icon, IconProps };
+export { Icon, IconProps, IconName };

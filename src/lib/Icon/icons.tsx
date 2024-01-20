@@ -20,4 +20,7 @@ export const icons = {
   MenuBurger: lazy(async () => import('./assets/menu-burger.svg')),
   Star: lazy(async () => import('./assets/star.svg')),
   Search: lazy(async () => import('./assets/search.svg')),
+  Heart: lazy(async () => import('./assets/heart.svg')),
+  Minus: lazy(async () => import('./assets/minus.svg')),
+  Plus: lazy(async () => import('./assets/plus.svg')),
 };

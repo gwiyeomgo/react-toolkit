@@ -88,7 +88,7 @@ ___
 
 \`CodeSandbox Demo\`:\n\n\n${sandboxUrls.join('\n')}`;
 
-    fs.writeFileSync(path.resolve(__dirname, 'README.mdx'), readmeContent);
+    fs.writeFileSync(path.resolve(__dirname, 'README.md'), readmeContent);
 
     console.log(sandboxRes);
   })
