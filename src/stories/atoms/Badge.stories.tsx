@@ -70,13 +70,13 @@ export const BadgeWithNumber: Story = {
   },
 };
 
-export const BadgeWithAvatar: Story = {
+export const BadgeWithNumber2: Story = {
   args: {
     count: 223230,
   },
 };
 
-export const RoundAvatar: Story = {
+export const BadgeWithAvatar: Story = {
   args: {
     children: (
       <Avatar

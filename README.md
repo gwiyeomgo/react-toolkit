@@ -14,4 +14,6 @@
 [download-image]: https://img.shields.io/npm/dm/@gwiyeomgo/react-toolkit?style=flat-square
 [download-url]: https://www.npmjs.com/package/@gwiyeomgo/react-toolkit
 
+> 아래 스토리북을 클릭하시면 사용법을 확인하실 수 있습니다.
+
 [![Storybook](https://img.shields.io/badge/Storybook-FF4785?style=flat-square&logo=Storybook&logoColor=white)](https://gwiyeomgo.github.io/react-toolkit)

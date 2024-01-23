@@ -56,3 +56,10 @@ it('blur()', () => {
   render(<Input ref={ref} />);
   ref.current?.blur();
 });
+
+//clear
+it('clear()', () => {
+  const ref = React.createRef<InputRef>();
+  render(<Input ref={ref} />);
+  ref.current?.clear();
+});
