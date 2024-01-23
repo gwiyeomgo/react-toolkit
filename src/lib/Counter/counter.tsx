@@ -45,6 +45,7 @@ const Counter: React.FC<{ getDebouncedResult: (param: string) => void }> = ({
         onClick={() => setCount(count + 1)}
       />
       <Input
+        readOnly={true}
         style={{
           textAlign: 'center',
           outline: 'none',

@@ -42,7 +42,7 @@ export const Default: Story = {
   },
 };
 
-export const ButtonWithIcon: Story = {
+export const ButtonWithLoading: Story = {
   args: {
     type: 'default',
     color: '#ffff',

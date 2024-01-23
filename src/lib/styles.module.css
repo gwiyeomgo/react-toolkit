@@ -31,7 +31,16 @@
 }
 
 /*Input */
-
+.inputRoot {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
 .defaultInput {
   font: inherit;
   letter-spacing: inherit;
@@ -44,9 +53,6 @@
   min-width: 0px;
   height: 30px;
   margin: 0px;
-  box-shadow:
-    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .innerLabel {
@@ -214,14 +220,16 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
-
-  padding: 10px;
+  outline: none;
+  border-radius: 30px;
+  padding: 0;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .searchButton {
   border-radius: 50px;
-  position: absolute;
-  right: 10px;
   outline: none;
   border: 0;
   box-shadow:
@@ -234,25 +242,24 @@
     rgba(0, 0, 0, 0.09) 0px 16px 8px,
     rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
-
+.searchInputRoot {
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+}
 .searchInput {
   border-radius: 30px;
   outline: none;
   border: 0;
   box-sizing: border-box;
-  box-shadow:
-    rgb(204, 219, 232) 3px 3px 6px 0px inset,
-    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-}
-
-.searchButton:focus {
-  position: absolute;
 }
 
 @media (max-width: 567px) {
   .search {
     flex-direction: column;
+    border-radius: 0;
   }
+  .searchInputRoot,
   .searchButton,
   .searchInput {
     position: static;

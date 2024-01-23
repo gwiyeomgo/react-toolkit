@@ -1,5 +1,5 @@
 import { Button } from '../Buttton/button';
-import { Input } from '../Input/input';
+import { Input, InputRef } from '../Input/input';
 import { useDebounce } from '../Util/hooks/useDebounce';
 import { Icon } from '../Icon/icon';
 import { ChangeEvent, CSSProperties, useState } from 'react';
@@ -19,6 +19,7 @@ const SearchInput = (props: InputWithDebounceProps) => {
   const { buttonStyle, inputStyle } = props;
   const [value, setValue] = useState('');
   const debouncedResult = useDebounce(value, 500);
+  const ref = React.createRef<InputRef>();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -27,12 +28,15 @@ const SearchInput = (props: InputWithDebounceProps) => {
   // 검색 작업에 debouncedValue 사용
   const handleSearch = () => {
     props.onClickSearch?.(debouncedResult);
+
     setValue('');
+    ref.current?.clear();
   };
 
   return (
     <Container className={styles.search}>
       <Input
+        ref={ref}
         isSearchInput={true}
         style={{
           ...inputStyle,

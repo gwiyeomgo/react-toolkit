@@ -4,6 +4,8 @@ import React, {
   InputHTMLAttributes,
   useImperativeHandle,
   useRef,
+  useState,
+  useEffect,
 } from 'react';
 import styles from '../styles.module.css';
 import styled from 'styled-components';
@@ -31,8 +33,26 @@ const InputComponent = styled.input<{ isSearchInput?: boolean }>`
   width: 100%;
   font-size: 1rem;
   padding: ${(props) => (props.isSearchInput ? '18px' : '10px')};
-  padding-inline-end: ${(props) => (props.isSearchInput ? '60px' : '20px')};
+  padding-inline-end: ${(props) => (props.isSearchInput ? '12px' : '10px')};
 `;
+
+const ClearButton = styled.button`
+  width: 20px;
+  height: 20px;
+  display: flex;
+  position: relative;
+  padding: 10px;
+  background-color: lightgrey;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+`;
+
 export type ValueType = InputHTMLAttributes<HTMLInputElement>['value'] | bigint;
 
 type positionType = 'outer' | 'inner';
@@ -40,6 +60,7 @@ type positionType = 'outer' | 'inner';
 export interface InputRef {
   focus: (options?: InputFocusOptions) => void;
   blur: () => void;
+  clear: () => void;
   setSelectionRange: (
     start: number,
     end: number,
@@ -73,15 +94,27 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
     labelStyle,
     value,
     isSearchInput,
+    readOnly,
     ...inputProps
   } = props;
 
   const valid = labelPosition === 'inner';
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const formatValue =
-    value === undefined || value === null ? '' : String(value);
+  const [inputValue, setInputValue] = useState('');
+  useEffect(() => {
+    const formatValue =
+      value === undefined || value === null ? '' : String(value);
 
+    setInputValue(formatValue);
+  }, [value]);
+
+  const clearInputValue = () => {
+    if (inputRef.current) {
+      setInputValue('');
+      inputRef.current.value = '';
+    }
+  };
   /**
    useImperativeHandle :  부모 컴포넌트에게 제공되는 인터페이스를 정의
    이 코드를 통해 부모 컴포넌트에서 ref로 참조된 자식 컴포넌트에 접근할 수 있는 메서드들이 정의
@@ -95,7 +128,8 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
       // inputRef가 존재하면 blur 메서드를 호출
       inputRef.current?.blur();
     },
-
+    // 부모 컴포넌트에서 호출 가능한 clear 메서드
+    clear: clearInputValue,
     // 부모 컴포넌트에서 호출 가능한 setSelectionRange 메서드
     setSelectionRange: (
       start: number,
@@ -117,6 +151,7 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
   }));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
     onChange?.(e);
   };
   return (
@@ -133,18 +168,28 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
           {label}
         </Label>
       )}
-      <InputComponent
-        value={formatValue || undefined} //undefined 는 React에서는 해당 프로퍼티를 전달하지 않은 것과 동일
-        ref={inputRef}
-        onChange={handleChange}
-        className={classnames(styles.defaultInput, {
-          [styles.expandInput]: valid,
-          [styles.searchInput]: isSearchInput,
+      <div
+        className={classnames(styles.inputRoot, {
+          [styles.searchInputRoot]: isSearchInput,
         })}
-        type="text"
-        isSearchInput={isSearchInput}
-        {...inputProps}
-      />
+      >
+        <InputComponent
+          disabled={readOnly}
+          value={inputValue || undefined} //undefined 는 React에서는 해당 프로퍼티를 전달하지 않은 것과 동일
+          ref={inputRef}
+          onChange={handleChange}
+          className={classnames(styles.defaultInput, {
+            [styles.expandInput]: valid,
+            [styles.searchInput]: isSearchInput,
+          })}
+          type="text"
+          isSearchInput={isSearchInput}
+          {...inputProps}
+        />
+        {!readOnly && inputValue.length > 0 && (
+          <ClearButton onClick={clearInputValue}>X</ClearButton>
+        )}
+      </div>
     </InputRoot>
   );
 });
