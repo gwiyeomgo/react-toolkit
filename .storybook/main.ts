@@ -8,15 +8,6 @@ const config: StorybookConfig = {
     '@storybook/preset-create-react-app',
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
-    {
-      name: '@storybook/addon-google-analytics',
-      options: {
-        gaOptions: {
-          // GA4 Measurement ID를
-          measurementId: 'G-1F4HHWF098',
-        },
-      },
-    },
   ],
   framework: {
     name: '@storybook/react-webpack5',
