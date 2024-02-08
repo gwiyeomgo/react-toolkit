@@ -3,5 +3,5 @@ import { Textarea } from '../Textarea/textarea';
 import React from 'react';
 
 it('Textarea 렌더링', () => {
-  render(<Textarea />);
+  render(<Textarea height={10} />);
 });

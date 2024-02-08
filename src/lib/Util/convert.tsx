@@ -1,5 +1,6 @@
 //Date 객체에 새로운 메서드를 추가하려면 TypeScript에서 확장을 선언 필요
 //TS2339: Property 'YYYYMMDDHHMMSS' does not exist on type 'Date'.
+//JavaScript의 Date 객체에는 직접적으로 메서드를 추가하거나 프로토타입을 확장하는 것이 권장되지 않음
 declare global {
   interface Date {
     YYYYMMDDHHMMSS(): string;
@@ -16,12 +17,18 @@ Date.prototype.YYYYMMDDHHMMSS = function (this: Date): string {
   return yyyy + MM + dd + hh + mm + ss;
 };
 
-function pad(number: number, length: number): string {
+export const pad = (number: number, length: number): string => {
   let str = '' + number;
   while (str.length < length) {
     str = '0' + str;
   }
   return str;
+};
+
+declare module 'dayjs' {
+  interface Dayjs {
+    YYYYMMDDHHMMSS(): string;
+  }
 }
 
 export const YEAR_IN_SECONDS = 10000000000;
