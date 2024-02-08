@@ -7,8 +7,7 @@ const StyledTextarea = styled.textarea<{ height?: number }>`
   border-radius: 10px;
   ${(props) =>
     props.height &&
-    `
-        height: ${props.height}px;
+    ` height: ${props.height}px;
     `}
   padding:20px;
   font-size: 16px;

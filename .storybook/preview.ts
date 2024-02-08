@@ -1,11 +1,11 @@
 import type { Preview } from '@storybook/react';
-import ReactGA from "react-ga4";
+import ReactGA from 'react-ga4';
 
 ReactGA.initialize('G-1F4HHWF098', {
   gtagOptions: {
     debug_mode: true,
-    content_group: 'storybook'
-  }
+    content_group: 'storybook',
+  },
 });
 
 const preview: Preview = {

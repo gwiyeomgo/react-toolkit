@@ -1,4 +1,4 @@
-import { convertStringToDate, getFormattedTimeObject } from './convert';
+import { convertStringToDate, getFormattedTimeObject, pad } from './convert';
 
 describe('stringTime 을 date 객체로 반환', () => {
   it('stringTime 값이 yyyyMMddHHmmss 형식이 아닌 경우 - 실패', () => {
@@ -13,7 +13,17 @@ describe('stringTime 을 date 객체로 반환', () => {
     expect(convertStringToDate(yyyyMMddHHmmss)).toBeInstanceOf(Date);
   });
 });
+it('pad', () => {
+  expect(pad(2, 2)).toBe('02');
+  expect(pad(2, 3)).toBe('002');
+  expect(pad(12, 5)).toBe('00012');
+});
 
+it('.prototype.YYYYMMDDHHMMSS', () => {
+  const date = new Date('2024-02-06T12:34:56');
+  const formatted = date.YYYYMMDDHHMMSS();
+  expect(formatted).toBe('20240206123456');
+});
 describe('', () => {
   it('부동소수점 실수 - 실패', () => {
     try {

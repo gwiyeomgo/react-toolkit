@@ -23,6 +23,7 @@ interface ViewCaptureButtonProps {
   type?: ButtonType;
   color?: ButtonColors;
 }
+
 const ViewCaptureButton = ({
   children,
   downloadFileName,
@@ -71,7 +72,7 @@ const ViewCaptureButton = ({
         {downloadButtonName}
       </Button>
       <center>
-        <View id="view">
+        <View id="view" data-testid="test-view">
           <Content>{children}</Content>
         </View>
       </center>
