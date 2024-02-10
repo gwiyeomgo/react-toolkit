@@ -179,10 +179,17 @@ const OptionList: React.FC<{ children: ReactNode; width?: string }> = ({
         React.Children.map(children, (child, index) => {
           if (React.isValidElement(child) && index > -1) {
             //React.cloneElement 함수는 자식 엘리먼트에 적용할 프로퍼티를 받아서 새로운 React 엘리먼트를 생성합니
-            return React.cloneElement(child as ReactElement, {
-              index,
-              context,
-            });
+            return React.cloneElement(
+              child as ReactElement<{
+                context: SelectContextProps;
+                index: number;
+              }>,
+              {
+                ...child.props,
+                index,
+                context,
+              },
+            );
           }
         })}
     </Ul>
@@ -226,4 +233,4 @@ const Select = {
   Trigger: SelectTrigger,
 };
 
-export { Select, useSelectContext };
+export { Select, useSelectContext, SelectContextProps };

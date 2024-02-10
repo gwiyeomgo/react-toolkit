@@ -80,6 +80,7 @@ const MessageGroup = ({
       {addMessage && (
         <Footer>
           <SearchInput
+            delay={delay}
             onClickSearch={(message) => {
               const newItem: ListItem = {
                 id: statusList ? statusList.length + 1 : 1,

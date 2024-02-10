@@ -29,6 +29,7 @@ const Button: React.ForwardRefRenderFunction<
   //primary,danger,success, warning
   //default outline
   const {
+    onClick,
     children,
     color,
     type,
@@ -39,16 +40,15 @@ const Button: React.ForwardRefRenderFunction<
     ...rest
   } = props;
   const hasChildren = children !== undefined && children !== null;
-  const [innerLoading, setLoading] = useState(loading);
+  const [innerLoading, setInnerLoading] = useState(loading);
 
   useEffect(() => {
-    setLoading(loading);
+    setInnerLoading(loading);
   }, [loading]);
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    const { onClick } = props;
     if (innerLoading) {
-      //브라우저 기본 동작을 취소
+      //해당 이벤트 객체에 대한 기본 동작이 이미 취소되었기 때문에 추가적인 반환은 필요하지 않습니다.
       e.preventDefault();
       return;
     }
@@ -64,8 +64,6 @@ const Button: React.ForwardRefRenderFunction<
   return (
     <button
       role="button"
-      // className={buttonClass}
-
       className={classnames(buttonClass, {
         [styles.searchButton]: isSearchButton,
       })}

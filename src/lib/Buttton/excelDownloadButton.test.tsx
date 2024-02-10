@@ -3,6 +3,29 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import * as excel from './excelDownloadButton';
 
+//https://stackoverflow.com/questions/54090231/how-to-fix-error-not-implemented-navigation-except-hash-changes
+//console.error
+//Error: Not implemented: navigation (except hash changes)
+//jsdom does not support navigation
+//URL mock
+const originalURL: OriginalURL = globalThis.URL;
+
+interface OriginalURL {
+  revokeObjectURL: (href: string) => void;
+  new (url: string | URL, base?: string | URL | undefined): URL;
+  prototype: URL;
+  createObjectURL(obj: Blob | MediaSource): string;
+}
+
+beforeEach(() => {
+  globalThis.URL = {
+    createObjectURL: jest.fn(),
+  } as unknown as OriginalURL;
+});
+afterEach(() => {
+  globalThis.URL = originalURL;
+});
+
 //TODO any 말고 다른거 쓰고 싶음
 //eslint 에러:The members of 'excel' are read-only
 //https://eslint.org/docs/latest/rules/no-import-assign#rule-details
@@ -20,33 +43,40 @@ const data = [{ a: 'aaa', b: 'bbb' }];
 
 describe('test', () => {
   it('버튼 렌더링 확인', async () => {
-    render(
-      <excel.ExcelDownloadButton
-        headers={[]}
-        fileName="다운로드"
-        buttonName="버튼1"
-        fetchData={() => undefined}
-      />,
-    );
-    const buttonElement = screen.getByText('버튼1');
-    expect(buttonElement).toBeInTheDocument();
+    await act(async () => {
+      render(
+        <excel.ExcelDownloadButton
+          headers={[]}
+          fileName="다운로드"
+          buttonName="버튼1"
+          fetchData={() => undefined}
+        />,
+      );
+    });
+
+    await waitFor(() => {
+      const buttonElement = screen.getByText('버튼1');
+      expect(buttonElement).toBeInTheDocument();
+    });
   });
 
   it('파일 다운로드', async () => {
     const fetchData = jest.fn(() => {
       return data;
     });
-    render(
-      <excel.ExcelDownloadButton
-        buttonName="버튼2"
-        fileName="test.csv"
-        headers={headers}
-        fetchData={fetchData}
-      />,
-    );
+    await act(async () => {
+      render(
+        <excel.ExcelDownloadButton
+          buttonName="버튼2"
+          fileName="test.csv"
+          headers={headers}
+          fetchData={fetchData}
+        />,
+      );
+    });
 
-    const buttonElement = screen.getByText('버튼2');
-    act(() => {
+    await act(async () => {
+      const buttonElement = screen.getByText('버튼2');
       userEvent.click(buttonElement);
     });
 
@@ -54,17 +84,4 @@ describe('test', () => {
       expect(fetchData).toHaveBeenCalled();
     });
   });
-
-  /*  it("fetchData 값이 없는 경우 - 에러", () => {
-
-    render(<excel.ExcelDownloadButton
-      buttonName="버튼2"
-      fileName='test.csv'
-      headers={headers}
-    />);
-    const buttonElement = screen.getByText("버튼2")
-    userEvent.click(buttonElement);
-
-
-  });*/
 });

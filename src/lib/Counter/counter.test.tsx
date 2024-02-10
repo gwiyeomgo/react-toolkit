@@ -1,27 +1,35 @@
-import { render, screen } from '@testing-library/react';
-import { Counter } from '../Counter/counter';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
+import { Counter } from './counter';
 import userEvent from '@testing-library/user-event';
 
 it('Counter 렌더링', async () => {
-  // const [count,setCount] = useState("")
-  render(
-    <Counter
-      getDebouncedResult={(value) => {
-        try {
-          console.log(value);
-        } catch (error) {
-          console.error('Error calling API:', error);
-        }
-      }}
-    />,
-  );
+  const mock = jest.fn();
+  render(<Counter getDebouncedResult={mock} />);
 
   // "button" 역할을 가진 모든 요소를 찾음
   const buttons = screen.getAllByRole('button');
   expect(buttons.length).toBe(2);
 
-  // Click the button
-  userEvent.click(buttons[0]);
-  userEvent.click(buttons[1]);
+  await act(() => {
+    // + 버튼 클릭
+    userEvent.click(buttons[0]);
+  });
+
+  // waitFor 사용 변경된 값이 화면에 나타날 때까지 기다림
+  await waitFor(() => {
+    const inputElement = screen.getByRole('input');
+    expect(inputElement).toHaveValue('1');
+  });
+
+  await act(() => {
+    // - 버튼 클릭
+    userEvent.click(buttons[1]);
+  });
+
+  // waitFor 사용 변경된 값이 화면에 나타날 때까지 기다림
+  await waitFor(() => {
+    const inputElement = screen.getByRole('input');
+    expect(inputElement).toHaveValue('0');
+  });
 });

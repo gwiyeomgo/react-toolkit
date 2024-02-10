@@ -5,3 +5,13 @@ import React from 'react';
 it('EntranceControlModule 렌더링', () => {
   render(<EntranceControlModule entranceBtn={true} exitBtn={true} />);
 });
+
+it('EntranceControlModule 렌더링', () => {
+  render(
+    <EntranceControlModule
+      entranceBtn={true}
+      exitBtn={true}
+      maxCapacity={20}
+    />,
+  );
+});

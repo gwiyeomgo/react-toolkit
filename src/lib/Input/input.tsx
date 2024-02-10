@@ -29,11 +29,15 @@ const Label = styled.label`
   overflow: hidden; /* 내용이 넘칠 경우 숨김 */
   text-overflow: ellipsis; /* 넘친 부분에 대해 ...으로 표시 */
 `;
-const InputComponent = styled.input<{ isSearchInput?: boolean }>`
+
+const InputComponent = styled.input<{
+  padding: string;
+  paddinginlineend: string;
+}>`
   width: 100%;
   font-size: 1rem;
-  padding: ${(props) => (props.isSearchInput ? '18px' : '10px')};
-  padding-inline-end: ${(props) => (props.isSearchInput ? '12px' : '10px')};
+  padding: ${(props) => props.padding};
+  padding-inline-end: ${(props) => props.paddinginlineend};
 `;
 
 const ClearButton = styled.button`
@@ -84,7 +88,7 @@ type InputProps = {
   onChange?: (text: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   style?: React.CSSProperties;
-  isSearchInput?: boolean;
+  typeSearch?: boolean;
 };
 const Input = forwardRef<InputRef, InputProps>((props, ref) => {
   const {
@@ -93,7 +97,7 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
     labelPosition = 'outer',
     labelStyle,
     value,
-    isSearchInput,
+    typeSearch = false,
     readOnly,
     ...inputProps
   } = props;
@@ -170,20 +174,22 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
       )}
       <div
         className={classnames(styles.inputRoot, {
-          [styles.searchInputRoot]: isSearchInput,
+          [styles.searchInputRoot]: typeSearch,
         })}
       >
         <InputComponent
+          role="input"
           disabled={readOnly}
-          value={inputValue || undefined} //undefined 는 React에서는 해당 프로퍼티를 전달하지 않은 것과 동일
+          value={inputValue}
           ref={inputRef}
           onChange={handleChange}
           className={classnames(styles.defaultInput, {
             [styles.expandInput]: valid,
-            [styles.searchInput]: isSearchInput,
+            [styles.searchInput]: typeSearch,
           })}
           type="text"
-          isSearchInput={isSearchInput}
+          padding={typeSearch ? '18px' : '10px'}
+          paddinginlineend={typeSearch ? '12px' : '10px'}
           {...inputProps}
         />
         {!readOnly && inputValue.length > 0 && (

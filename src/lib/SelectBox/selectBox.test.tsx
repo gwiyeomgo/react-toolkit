@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import { SelectBox } from '../SelectBox/selectBox';
 import React from 'react';
 
@@ -14,4 +14,5 @@ it('SelectBox 렌더링', () => {
       ]}
     />,
   );
+  act(() => {});
 });
