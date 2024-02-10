@@ -19,7 +19,6 @@ export { Loading } from './Loading/loading';
 export { useDebounce } from './Util/hooks/useDebounce';
 export { useCounter } from './Util/hooks/useCounter';
 export { Icon } from './Icon/icon';
-export { IconName } from './Icon/icon';
 export { ToggleButton } from './ToggleButton/toggleButton';
 export { SearchInput } from './SearchInput/searchInput';
 export { MessageGroup } from './Messages/messageGroup';

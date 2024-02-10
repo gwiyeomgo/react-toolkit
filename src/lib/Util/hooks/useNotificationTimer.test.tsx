@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react';
+import { act, renderHook, waitFor } from '@testing-library/react';
 
 import { useNotificationTimer } from '../hooks/useNotificationTimer';
 beforeAll(() => {
@@ -8,9 +8,9 @@ beforeAll(() => {
 afterAll(() => {
   jest.useRealTimers();
 });
-it('useNotificationTimer', () => {
+it('useNotificationTimer', async () => {
   //https://www.daleseo.com/react-hooks-testing-library/
-  const list = ['1', '2', '3'];
+  const list = ['1', '2'];
   const delay = 100;
   const { result } = renderHook(() => useNotificationTimer(list, delay));
 
@@ -18,18 +18,32 @@ it('useNotificationTimer', () => {
   expect(result.current).toStrictEqual([]);
 
   // 타이머 진행100
-  act(() => {
+  await act(() => {
     jest.advanceTimersByTime(delay);
   });
-  expect(result.current).toStrictEqual(['1']);
+  await waitFor(() => {
+    expect(result.current).toStrictEqual(['1']);
+  });
   // 타이머 진행200
-  act(() => {
+  await act(() => {
     jest.advanceTimersByTime(delay);
   });
-  expect(result.current).toStrictEqual(['1', '2']);
+
+  await waitFor(() => {
+    expect(result.current).toStrictEqual(['1', '2']);
+  });
+
+  // 클리어
+  await act(() => {
+    jest.advanceTimersByTime(delay);
+  });
+
+  await waitFor(() => {
+    expect(result.current).toStrictEqual([]);
+  });
 });
 
-it('useNotificationTimer - 다시 랜더링', () => {
+it('useNotificationTimer - 다시 랜더링', async () => {
   const initialList = ['a'];
   const delay = 100;
   const { result, rerender } = renderHook(
@@ -41,19 +55,26 @@ it('useNotificationTimer - 다시 랜더링', () => {
 
   expect(result.current).toStrictEqual([]);
   // 타이머 진행100
-  act(() => {
+  await act(() => {
     jest.advanceTimersByTime(delay);
   });
-  expect(result.current).toStrictEqual(['a']);
+
+  await waitFor(() => {
+    expect(result.current).toStrictEqual(['a']);
+  });
 
   // 값 변경 및 재랜더링
   act(() => {
     rerender({ list: ['b', 'c'], delay: delay });
   });
-  expect(result.current).toStrictEqual([]);
+  await waitFor(() => {
+    expect(result.current).toStrictEqual([]);
+  });
   // 타이머 진행100
   act(() => {
     jest.advanceTimersByTime(delay);
   });
-  expect(result.current).toStrictEqual(['b']);
+  await waitFor(() => {
+    expect(result.current).toStrictEqual(['b']);
+  });
 });

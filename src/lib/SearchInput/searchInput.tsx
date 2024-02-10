@@ -12,13 +12,14 @@ export interface InputWithDebounceProps {
   buttonStyle?: CSSProperties;
   inputStyle?: CSSProperties;
   onClickSearch?: (text: string) => void;
+  delay: number;
 }
 const Container = styled.div``;
 
 const SearchInput = (props: InputWithDebounceProps) => {
   const { buttonStyle, inputStyle } = props;
   const [value, setValue] = useState('');
-  const debouncedResult = useDebounce(value, 500);
+  const debouncedResult = useDebounce(value, props.delay);
   const ref = React.createRef<InputRef>();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +38,7 @@ const SearchInput = (props: InputWithDebounceProps) => {
     <Container className={styles.search}>
       <Input
         ref={ref}
-        isSearchInput={true}
+        typeSearch={true}
         style={{
           ...inputStyle,
         }}

@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Select } from './select';
+import { act, render, screen } from '@testing-library/react';
+import { Select, SelectContextProps } from './select';
 import userEvent from '@testing-library/user-event';
 
 const originalError = console.error;
@@ -16,18 +16,17 @@ test('렌더링 완료 (성공)', () => {
     <Select.Provider defaultValue={'a'}>
       <Select.Trigger />
       <Select.OptionList>
-        <Select.Option value="a" index={0}>
-          Option 1
-        </Select.Option>
-        <Select.Option value="b" index={1}>
-          Option 2
-        </Select.Option>
-        <Select.Option value="c" index={2}>
-          Option 3
-        </Select.Option>
+        {
+          ((context: SelectContextProps, index: number) => (
+            <Select.Option context={context} value={index} index={index}>
+              Option {index}
+            </Select.Option>
+          )) as unknown as React.ReactNode
+        }
       </Select.OptionList>
     </Select.Provider>,
   );
+  act(() => {});
 });
 
 test('SelectBox.Trigger(combobox) 를 클릭했을때 목록이 열리는가? (성공)', async () => {
@@ -53,7 +52,9 @@ test('SelectBox.Trigger(combobox) 를 클릭했을때 목록이 열리는가? (�
   });
   expect(select).toHaveAttribute('aria-expanded', 'false');
 
-  await userEvent.click(select);
+  await act(() => {
+    userEvent.click(select);
+  });
   expect(select).toHaveAttribute('aria-expanded', 'true');
 });
 

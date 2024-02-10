@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { Button } from './button';
 import userEvent from '@testing-library/user-event';
 //import userEvent from '@testing-library/user-event';
@@ -30,7 +30,7 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
     expect(buttonElement).toHaveClass('outline');
   });
 
-  it('버튼이 disabled 인 경우 버튼을 클릭한 후에 onClick 함수가 호출되지 않음 ', () => {
+  it('버튼이 disabled 인 경우 버튼을 클릭한 후에 onClick 함수가 호출되지 않음 ', async () => {
     const onClick = jest.fn();
 
     render(
@@ -42,15 +42,14 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
     //disabled
     expect(buttonElement).toBeDisabled();
 
-    userEvent.click(buttonElement);
-
+    await act(() => {
+      userEvent.click(buttonElement);
+    });
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  //TODO loading true 인 경우 버튼을 클릭한 후에 onClick 함수가 호출되지 않음
-  /*  it('loading true 인 경우 버튼을 클릭한 후에 onClick 함수가 호출되지 않음 ', () => {
+  it('loading true 인 경우 버튼을 클릭한 후에 onClick 함수가 호출되지 않음 ', async () => {
     const onClickMock = jest.fn();
-
     render(
       <>
         <Button loading={true} onClick={onClickMock} />
@@ -58,15 +57,9 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
     );
     const buttonElement = screen.getByRole('button');
 
-
-    fireEvent.click(buttonElement);
-
-    // Check if onClick function was not called
-  //  expect(onClickMock).not.toHaveBeenCalled();
-
-    // Check if preventDefault was called
-    const event = new MouseEvent('click', { bubbles: true, cancelable: true });
-    fireEvent(buttonElement, event);
-    expect(event.defaultPrevented).toBeTruthy();
-  });*/
+    await act(() => {
+      userEvent.click(buttonElement);
+    });
+    expect(onClickMock).toHaveBeenCalledTimes(0);
+  });
 });

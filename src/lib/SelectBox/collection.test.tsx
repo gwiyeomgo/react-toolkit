@@ -1,6 +1,6 @@
 import React from 'react';
 import { Collection, useCollection } from './collection';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { useEffect } from 'react';
 import userEvent from '@testing-library/user-event';
 
@@ -114,8 +114,11 @@ describe('클릭 테스트', () => {
 
     const item = screen.getByRole('listitem');
     expect(item).not.toHaveClass('selected');
-    await userEvent.click(item);
-    expect(item).toHaveClass('selected');
+
+    await act(() => {
+      userEvent.click(item);
+      expect(item).toHaveClass('selected');
+    });
   });
   it('item 여러개 있을때 클릭 테스트', async () => {
     render(
@@ -131,9 +134,12 @@ describe('클릭 테스트', () => {
 
     const item = screen.getByText('title1');
     const item2 = screen.getByText('title2');
-    await userEvent.click(item);
-    expect(item).toHaveClass('selected');
-    expect(item2).not.toHaveClass('selected');
+    await act(() => {
+      userEvent.click(item);
+
+      expect(item).toHaveClass('selected');
+      expect(item2).not.toHaveClass('selected');
+    });
   });
 });
 
@@ -152,11 +158,18 @@ describe('키보드 이벤트 테스트', () => {
 
     const item1 = screen.getByText('title1');
     const item2 = screen.getByText('title2');
-    userEvent.click(item1);
+
+    act(() => {
+      userEvent.click(item1);
+    });
     expect(item1).toHaveFocus();
-    userEvent.keyboard('{arrowdown}');
+    act(() => {
+      userEvent.keyboard('{arrowdown}');
+    });
     expect(item2).toHaveFocus();
-    userEvent.keyboard('{arrowup}');
+    act(() => {
+      userEvent.keyboard('{arrowup}');
+    });
     expect(item1).toHaveFocus();
   });
   it('Enter 클릭', async () => {
@@ -172,8 +185,11 @@ describe('키보드 이벤트 테스트', () => {
     );
 
     const item1 = screen.getByText('title1');
-    userEvent.click(item1);
-    userEvent.keyboard('{enter}');
+
+    act(() => {
+      userEvent.click(item1);
+      userEvent.keyboard('{enter}');
+    });
     expect(item1).toHaveFocus();
   });
 });

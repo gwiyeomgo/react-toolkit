@@ -1,20 +1,21 @@
-import { fireEvent, render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import { Input, InputRef } from './input';
 import React, { useState } from 'react';
+import { fireEvent } from '@storybook/test';
 
 it('Input 렌더링', () => {
   render(<Input />);
 });
 
 //onChange
-it('onChange()', () => {
+it('onChange()', async () => {
   const App: React.FC = () => {
     const [data, setData] = useState('init');
     return (
       <Input
         value={data}
         onChange={(e) => {
-          setData(() => e.target.value);
+          setData(e.target.value);
         }}
       />
     );
@@ -22,13 +23,15 @@ it('onChange()', () => {
 
   const { container, unmount } = render(<App />);
 
-  container.querySelector('input')?.focus();
-  fireEvent.change(container.querySelector('input')!, {
-    target: { value: '111' },
-  });
-  expect(container.querySelector('input')?.value).toEqual('111');
+  await act(() => {
+    container.querySelector('input')?.focus();
+    fireEvent.change(container.querySelector('input')!, {
+      target: { value: '111' },
+    });
+    expect(container.querySelector('input')?.value).toEqual('111');
 
-  unmount();
+    unmount();
+  });
 });
 
 it('set mouse cursor position', () => {

@@ -39,6 +39,7 @@ const ViewCaptureButton = ({
     if (typeof elem.click === 'function') {
       elem.click();
     } else {
+      //새로운 창이나 탭에서 링크를 열도록 브라우저에 지시
       elem.target = '_blank';
       elem.dispatchEvent(
         new MouseEvent('click', {
