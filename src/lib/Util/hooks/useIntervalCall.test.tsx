@@ -28,7 +28,7 @@ describe('useDebounce 테스트', () => {
     expect(callback).toHaveBeenCalledTimes(2);
   });
 
-  it('useInte', () => {
+  it('useIntervalCall', () => {
     const callback = jest.fn();
 
     expect(() => {
