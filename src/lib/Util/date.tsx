@@ -10,8 +10,3 @@ export const getToday = (dateFormat?: string): string => {
     .tz('UTC')
     .format(dateFormat || 'YYYY-MM-DDTHH:mm:ss[Z]');
 };
-//TODO locale 컨트롤
-/*
-export const date = ()=>{
-    return dayjs().locale('zh-cn')
-}*/
