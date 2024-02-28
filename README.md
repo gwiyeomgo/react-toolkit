@@ -46,6 +46,8 @@
 
 12, [SearchInput](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/2-molecules-searchinput--docs)
 
+13, [SingleUpload](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/2-molecules-singleupload--docs)
+
 ### organisms
 
 13, [Counter](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/3-organisms-counter--docs)
