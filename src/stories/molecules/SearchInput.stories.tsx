@@ -17,10 +17,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    value: '',
     buttonStyle: {},
     inputStyle: {},
     onClickSearch: (str) => {
       console.log('검색', str);
     },
+    delay: 100,
   },
 };
