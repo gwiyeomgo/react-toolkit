@@ -1,30 +1,40 @@
 import { File } from './singleUplaod';
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import React from 'react';
+import styles from '../styles.module.css';
+//import classNames from 'classnames';
+//const cx = classNames.bind(styles);
 
 export const IMAGE_MAX_SIZE = 1 * 1024 * 1024; //1MB
 export const FILE_MAX_SIZE = 10 * 1024 * 1024; //10MB
 
 interface FileUploadProps {
   selectFile: (file: File) => void;
-  isImageFile?: boolean;
   placeholder?: string;
 }
 
 export interface FileUploadInputRef {
   clear: () => void;
+  changeAccept: (str: string) => void;
   onSuccess: () => void;
   onError: (reason: any) => void;
 }
 
+//https://webdir.tistory.com/435
 const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
   (props, ref) => {
-    const { selectFile, isImageFile = false, placeholder } = props;
+    const { selectFile, placeholder } = props;
     const inputRef = useRef<HTMLInputElement | null>(null);
+    const [fileName, setFileName] = useState('');
+    const [accept, setAccept] = useState('');
+
+    const changeAccept = (str: string) => setAccept(str);
+
     const clear = () => {
       if (inputRef.current) {
         inputRef.current.value = '';
         selectFile(null);
+        setFileName('');
       }
     };
     const onSuccess = () => {
@@ -38,6 +48,7 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
       clear,
       onSuccess,
       onError,
+      changeAccept,
       input: inputRef.current,
     }));
     //MIME Type https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
@@ -50,23 +61,30 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
     accept=".mp3, .wav": 오디오 파일
     * */
     return (
-      <input
-        className="upload"
-        placeholder={placeholder}
-        //input 타입이 file 인 경우 accept 옵션으로 유효성 검사 및 검증을 수행
-        type="file"
-        accept={isImageFile ? 'image/*' : undefined}
-        name="imageUpload"
-        ref={inputRef}
-        onChange={(event) => {
-          const file = event.target.files && event.target.files[0];
-          if (file) {
-            file.size > IMAGE_MAX_SIZE
-              ? console.error('용량이 너무 큽니다')
-              : selectFile(file);
-          }
-        }}
-      />
+      <div className={styles.upload}>
+        <input
+          className={styles.name}
+          value={fileName}
+          placeholder={placeholder}
+        />
+        <label htmlFor="file">파일찾기</label>
+        <input
+          //input 타입이 file 인 경우 accept 옵션으로 유효성 검사 및 검증을 수행
+          type="file"
+          id="file"
+          accept={accept}
+          ref={inputRef}
+          onChange={(event) => {
+            const file = event.target.files && event.target.files[0];
+            if (file) {
+              setFileName(file.name);
+              file.size > IMAGE_MAX_SIZE
+                ? console.error('용량이 너무 큽니다')
+                : selectFile(file);
+            }
+          }}
+        />
+      </div>
     );
   },
 );

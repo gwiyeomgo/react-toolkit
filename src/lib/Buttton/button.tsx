@@ -1,10 +1,10 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import styles from '../styles.module.css';
+const cx = classNames.bind(styles);
 import classNames from 'classnames/bind';
 import { Loading } from '../Loading/loading';
 import classnames from 'classnames';
-const cx = classNames.bind(styles);
 
 export type ButtonType = 'default' | 'outline';
 export type ButtonColors = 'primary' | 'success' | 'danger' | 'warning';
