@@ -2,8 +2,6 @@ import { File } from './singleUplaod';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import React from 'react';
 import styles from '../styles.module.css';
-//import classNames from 'classnames';
-//const cx = classNames.bind(styles);
 
 export const IMAGE_MAX_SIZE = 1 * 1024 * 1024; //1MB
 export const FILE_MAX_SIZE = 10 * 1024 * 1024; //10MB
@@ -44,6 +42,15 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
     const onError = () => {
       console.log('error');
     };
+    const changeFile = (file: globalThis.File) => {
+      selectFile(file);
+      setFileName(file.name);
+    };
+    const uploadFail = (maxSize: number, type: string) => {
+      alert(` ${type} Maximum upload size:${maxSize / (1024 * 1024)}MB`);
+      selectFile(null);
+      setFileName('');
+    };
     useImperativeHandle(ref, () => ({
       clear,
       onSuccess,
@@ -77,10 +84,12 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
           onChange={(event) => {
             const file = event.target.files && event.target.files[0];
             if (file) {
-              setFileName(file.name);
-              file.size > IMAGE_MAX_SIZE
-                ? console.error('용량이 너무 큽니다')
-                : selectFile(file);
+              const maxSize = file.type.startsWith('image/')
+                ? IMAGE_MAX_SIZE
+                : FILE_MAX_SIZE;
+              file.size > maxSize
+                ? uploadFail(maxSize, file.type)
+                : changeFile(file);
             }
           }}
         />
