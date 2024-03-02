@@ -2,12 +2,13 @@ import { File } from './singleUplaod';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import React from 'react';
 import styles from '../styles.module.css';
+import heic2any from 'heic2any';
 
 export const IMAGE_MAX_SIZE = 1 * 1024 * 1024; //1MB
 export const FILE_MAX_SIZE = 10 * 1024 * 1024; //10MB
 
 interface FileUploadProps {
-  selectFile: (file: File) => void;
+  selectFile: (p: File | null, s: string) => void;
   placeholder?: string;
 }
 
@@ -31,7 +32,7 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
     const clear = () => {
       if (inputRef.current) {
         inputRef.current.value = '';
-        selectFile(null);
+        selectFile(null, '');
         setFileName('');
       }
     };
@@ -43,14 +44,43 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
       console.log('error');
     };
     const changeFile = (file: globalThis.File) => {
-      selectFile(file);
+      console.log('type', file.type);
+
+      file.type.startsWith('image/')
+        ? blobToObjectURL(file).then((src) => {
+            selectFile(file, src);
+          })
+        : selectFile(file, '');
+
       setFileName(file.name);
     };
     const uploadFail = (maxSize: number, type: string) => {
+      //https://ko.javascript.info/alert-prompt-confirm
       alert(` ${type} Maximum upload size:${maxSize / (1024 * 1024)}MB`);
-      selectFile(null);
+      selectFile(null, '');
       setFileName('');
     };
+
+    const blobToObjectURL = async (blob: Blob) => {
+      let src = '';
+      if (blob.type === 'image/heic') {
+        await heic2any({ blob: blob })
+          .then((imageBlob: Blob | Blob[]) => {
+            if (Array.isArray(imageBlob)) {
+              //TODO 멀티 부분..나중에 고민하기
+              return '';
+            }
+            src = URL.createObjectURL(imageBlob);
+          })
+          .catch((error: Error) => {
+            console.error('HEIF 이미지 변환 중 에러:', error);
+          });
+      } else {
+        return URL.createObjectURL(blob);
+      }
+      return src;
+    };
+
     useImperativeHandle(ref, () => ({
       clear,
       onSuccess,
