@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles.module.css';
 import { Icon } from '../Icon/icon';
+
 interface Image {
   src: string;
   remove: () => void;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FileUpload } from './fileUpload';
 import DisplayImage from './displayImage';
 import { FileUploadInputRef } from './fileUpload';
+
 export type File = globalThis.File | null;
 
 export interface SingleUploadProps {
@@ -11,6 +12,8 @@ export interface SingleUploadProps {
 export const SingleUpload = (props: SingleUploadProps) => {
   const { imageFileOnly = false, onSave } = props;
   const [selectedFile, setSelectedFile] = useState<File>(null);
+  const [src, setSrc] = useState<string>('');
+
   const ref = React.createRef<FileUploadInputRef>();
 
   useEffect(() => {
@@ -24,22 +27,20 @@ export const SingleUpload = (props: SingleUploadProps) => {
     setSelectedFile(null);
     ref.current?.clear();
   };
-  const selectFile = (image: File) => {
+  const selectFile = (image: File, src: string) => {
     setSelectedFile(image);
+    setSrc(src);
     onSave(image)
       .then(() => ref.current?.onSuccess())
       .catch((reason) => ref.current?.onError(reason));
   };
-  const blobToObjectURL = (blob: Blob) => URL.createObjectURL(blob);
+
   return (
     <div style={{ display: 'inline-block' }}>
       <FileUpload ref={ref} selectFile={selectFile} />
       <br />
       {selectedFile && selectedFile.type.startsWith('image/') && (
-        <DisplayImage
-          src={blobToObjectURL(selectedFile)}
-          remove={removeImage}
-        />
+        <DisplayImage src={src} remove={removeImage} />
       )}
     </div>
   );
