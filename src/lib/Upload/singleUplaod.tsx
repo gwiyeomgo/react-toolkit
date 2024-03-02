@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { FileUpload } from './fileUpload';
-import ImagePopup from './displayImage';
+import DisplayImage from './displayImage';
 import { FileUploadInputRef } from './fileUpload';
-
-export type File = Blob | null;
+export type File = globalThis.File | null;
 
 export interface SingleUploadProps {
-  isImageFile?: boolean;
+  imageFileOnly?: boolean;
   onSave: (file: File) => Promise<void | null>;
 }
 export const SingleUpload = (props: SingleUploadProps) => {
-  const { isImageFile = false, onSave } = props;
+  const { imageFileOnly = false, onSave } = props;
   const [selectedFile, setSelectedFile] = useState<File>(null);
   const ref = React.createRef<FileUploadInputRef>();
 
   useEffect(() => {
-    const accept = isImageFile ? 'image/*' : '';
+    const accept = imageFileOnly ? 'image/*' : '';
     if (accept != null) {
       ref.current?.changeAccept(accept);
     }
-  }, [isImageFile]);
+  }, [imageFileOnly]);
 
   const removeImage = () => {
     setSelectedFile(null);
@@ -31,13 +30,14 @@ export const SingleUpload = (props: SingleUploadProps) => {
       .then(() => ref.current?.onSuccess())
       .catch((reason) => ref.current?.onError(reason));
   };
+  const blobToObjectURL = (blob: Blob) => URL.createObjectURL(blob);
   return (
     <div style={{ display: 'inline-block' }}>
       <FileUpload ref={ref} selectFile={selectFile} />
       <br />
-      {selectedFile && isImageFile && (
-        <ImagePopup
-          src={URL.createObjectURL(selectedFile)}
+      {selectedFile && selectedFile.type.startsWith('image/') && (
+        <DisplayImage
+          src={blobToObjectURL(selectedFile)}
           remove={removeImage}
         />
       )}
