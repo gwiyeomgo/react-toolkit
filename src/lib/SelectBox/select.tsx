@@ -47,11 +47,11 @@ const TriggerButton = styled.button`
     transform: translateY(-50%) rotate(180deg);
   }
 `;
-interface SelectTriggerProps {
+type SelectTriggerProps = {
   id: number;
   value: string;
   label: string;
-}
+};
 const SelectTrigger: React.FC<{ data?: SelectTriggerProps[] }> = ({ data }) => {
   const context = useSelectContext();
 
@@ -91,19 +91,19 @@ const SelectTrigger: React.FC<{ data?: SelectTriggerProps[] }> = ({ data }) => {
   );
 };
 
-interface SelectContextProps {
+type SelectContextProps = {
   open: boolean;
   onOpenChange: (isOpen: boolean) => void;
   value: any; // 이 타입은 실제로 사용되는 값의 타입으로 수정해야 합니다.
   onValueChange: (newValue: any) => void;
-}
+};
 
 const SelectContext = createContext<SelectContextProps | undefined>(undefined);
 
-interface SelectContextProviderProps {
+type SelectContextProviderProps = {
   children?: ReactNode;
-  defaultValue?: any; // 이 타입은 실제로 사용되는 기본 값의 타입으로 수정해야 합니다.
-}
+  defaultValue?: any; //TODO 이 타입은 실제로 사용되는 기본 값의 타입으로 수정해야 합니다.
+};
 const SelectContextProvider: React.FC<SelectContextProviderProps> = ({
   children,
   defaultValue,
@@ -195,13 +195,13 @@ const OptionList: React.FC<{ children: ReactNode; width?: string }> = ({
     </Ul>
   );
 };
-interface OptionProps {
+type OptionProps = {
   index: number;
   children: ReactNode;
   value: any; // 이 타입은 실제로 사용되는 값의 타입으로 수정해야 합니다.
   context?: SelectContextProps;
   width?: string;
-}
+};
 const Option = ({ index, value, children, context, width }: OptionProps) => {
   const options = useCollection();
   useEffect(() => {

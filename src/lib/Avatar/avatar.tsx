@@ -1,11 +1,12 @@
 import React from 'react';
 import { CSSProperties } from 'react';
 import styles from '../styles.module.css';
-export interface AvatarProps {
+
+export type AvatarProps = {
   style?: CSSProperties;
   src?: string;
   imageBorderRadius?: number;
-}
+};
 
 const Avatar = (props: AvatarProps) => {
   return (

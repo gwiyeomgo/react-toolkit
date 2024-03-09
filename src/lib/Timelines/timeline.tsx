@@ -114,12 +114,12 @@ const TimelineList = ({ children }: { children?: React.ReactNode }) => {
   );
 };
 
-interface TimeLineItemProps {
+type TimeLineItemProps = {
   url?: string;
   tag?: string;
   title?: string;
   contents?: string;
-}
+};
 const TimelineItem = ({ url, tag, title, contents }: TimeLineItemProps) => {
   return (
     <a

@@ -61,7 +61,7 @@ export type ValueType = InputHTMLAttributes<HTMLInputElement>['value'] | bigint;
 
 type positionType = 'outer' | 'inner';
 
-export interface InputRef {
+export type InputRef = {
   focus: (options?: InputFocusOptions) => void;
   blur: () => void;
   clear: () => void;
@@ -72,7 +72,7 @@ export interface InputRef {
   ) => void;
   select: () => void;
   input: HTMLInputElement | null;
-}
+};
 export interface InputFocusOptions extends FocusOptions {
   cursor?: 'start' | 'end' | 'all';
 }

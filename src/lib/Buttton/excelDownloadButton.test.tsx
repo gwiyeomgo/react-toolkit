@@ -10,12 +10,12 @@ import * as excel from './excelDownloadButton';
 //URL mock
 const originalURL: OriginalURL = globalThis.URL;
 
-interface OriginalURL {
+type OriginalURL = {
   revokeObjectURL: (href: string) => void;
   new (url: string | URL, base?: string | URL | undefined): URL;
   prototype: URL;
   createObjectURL(obj: Blob | MediaSource): string;
-}
+};
 
 beforeEach(() => {
   globalThis.URL = {

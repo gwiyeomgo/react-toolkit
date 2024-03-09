@@ -5,10 +5,10 @@ import { FileUploadInputRef } from './fileUpload';
 
 export type File = globalThis.File | null;
 
-export interface SingleUploadProps {
+export type SingleUploadProps = {
   imageFileOnly?: boolean;
   onSave: (file: File) => Promise<void | null>;
-}
+};
 export const SingleUpload = (props: SingleUploadProps) => {
   const { imageFileOnly = false, onSave } = props;
   const [selectedFile, setSelectedFile] = useState<File>(null);

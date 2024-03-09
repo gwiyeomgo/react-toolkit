@@ -16,13 +16,13 @@ const TimerContainer = styled.div`
   justify-content: space-between;
 `;
 
-interface TimeUnit {
+type TimeUnit = {
   days: string;
   hours: string;
   minutes: string;
   seconds: string;
   suffix?: string;
-}
+};
 
 const TimeUnitDefault: TimeUnit = {
   days: '00',
@@ -35,11 +35,11 @@ const TimeUnitDefault: TimeUnit = {
 export type TimerType = 'default' | 'suffix' | 'none';
 export type TimeKeys = keyof typeof TimeUnitDefault;
 
-interface CountdownTimerProps {
+type CountdownTimerProps = {
   fontSize?: number;
   targetTime: string;
   type?: TimerType;
-}
+};
 
 const CountdownTimer = ({
   fontSize = 60,
