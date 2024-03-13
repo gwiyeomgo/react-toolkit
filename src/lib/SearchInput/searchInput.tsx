@@ -46,7 +46,7 @@ const SearchInput = (props: InputWithDebounceProps) => {
         onChange={onChange}
       />
       <Button
-        color={'primary'}
+        type={'primary'}
         icon={
           <Icon
             icon={'Search'}

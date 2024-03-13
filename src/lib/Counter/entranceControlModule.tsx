@@ -61,9 +61,8 @@ const EntranceControlModule = ({
       {isFull && <p style={{ color: 'red' }}>정원이 가득찼습니다.</p>}
       {entranceBtn && (
         <Button
-          style={{ margin: '5px' }}
-          type={'outline'}
-          color="success"
+          style={{ margin: '5px', backgroundColor: '#28a745' }}
+          type={'secondary'}
           onClick={increaseCount}
           disabled={isFull}
         >
@@ -73,8 +72,8 @@ const EntranceControlModule = ({
       {exitBtn && (
         <Button
           disabled={count === 0}
-          type={'outline'}
-          color="danger"
+          type={'secondary'}
+          danger
           onClick={decreaseCount}
         >
           {exitText ? exitText : '퇴장'}

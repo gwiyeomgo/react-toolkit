@@ -1,6 +1,6 @@
 import html2canvas from 'html2canvas';
 import React from 'react';
-import { Button, ButtonColors, ButtonType } from '../Buttton/button';
+import { Button, ButtonType } from '../Buttton/button';
 import styled from 'styled-components';
 
 const View = styled.div`
@@ -21,7 +21,6 @@ type ViewCaptureButtonProps = {
   downloadFileName: string;
   downloadButtonName: string;
   type?: ButtonType;
-  color?: ButtonColors;
 };
 
 const ViewCaptureButton = ({
@@ -29,7 +28,6 @@ const ViewCaptureButton = ({
   downloadFileName,
   downloadButtonName,
   type,
-  color,
 }: ViewCaptureButtonProps) => {
   const saveAs = (blob: string, fileName: string) => {
     const elem = window.document.createElement('a');
@@ -69,7 +67,7 @@ const ViewCaptureButton = ({
   };
   return (
     <div>
-      <Button type={type} color={color} onClick={() => exportAsPicture('view')}>
+      <Button type={type} onClick={() => exportAsPicture('view')}>
         {downloadButtonName}
       </Button>
       <center>

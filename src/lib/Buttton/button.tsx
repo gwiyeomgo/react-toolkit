@@ -6,37 +6,32 @@ import classNames from 'classnames/bind';
 import { Loading } from '../Loading/loading';
 import classnames from 'classnames';
 
-export type ButtonType = 'default' | 'outline';
-export type ButtonColors = 'primary' | 'success' | 'danger' | 'warning';
-
+export type ButtonType = 'primary' | 'secondary';
 export type ButtonProps = {
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   children?: React.ReactNode;
-  color?: ButtonColors | string;
   type?: ButtonType;
-  loading?: boolean;
   icon?: React.ReactNode;
   className?: string;
-  disabled?: boolean;
   style?: React.CSSProperties;
+  loading?: boolean;
   isSearchButton?: boolean;
+  disabled?: boolean;
+  danger?: boolean;
 };
 
-const Button: React.ForwardRefRenderFunction<
-  HTMLButtonElement | HTMLAnchorElement,
-  ButtonProps
-> = (props) => {
-  //primary,danger,success, warning
-  //default outline
+const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
+  props,
+) => {
   const {
     onClick,
     children,
-    color,
     type,
     loading = false,
     icon,
     disabled,
     isSearchButton,
+    danger = false,
     ...rest
   } = props;
   const hasChildren = children !== undefined && children !== null;
@@ -57,7 +52,7 @@ const Button: React.ForwardRefRenderFunction<
 
   const iconNode = innerLoading ? <Loading /> : icon;
   const childClass = cx({ 'child-space': iconNode });
-  const buttonClass = cx('btn', type, color, {
+  const buttonClass = cx('btn', type, {
     'icon-container': iconNode,
   });
 
@@ -66,6 +61,7 @@ const Button: React.ForwardRefRenderFunction<
       role="button"
       className={classnames(buttonClass, {
         [styles.searchButton]: isSearchButton,
+        [styles.danger]: danger,
       })}
       onClick={handleClick}
       disabled={disabled}
