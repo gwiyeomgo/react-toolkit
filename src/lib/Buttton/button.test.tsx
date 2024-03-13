@@ -10,10 +10,10 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
   it('color 지정시 ', () => {
     render(
       <>
-        <Button color="danger" />
+        <Button danger>zzz</Button>
       </>,
     );
-    const buttonElement = screen.getByRole('button');
+    const buttonElement = screen.getByRole('button'); //class="btn danger"
     //classNaem 체크 방법
     //https://stackoverflow.com/questions/53389956/how-to-test-a-classname-with-the-jest-and-react-testing-library
     expect(buttonElement.classList.contains('danger')).toBe(true);
@@ -23,11 +23,11 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
   it('type 지정시 ', () => {
     render(
       <>
-        <Button type="outline" />
+        <Button type="secondary" />
       </>,
     );
     const buttonElement = screen.getByRole('button');
-    expect(buttonElement).toHaveClass('outline');
+    expect(buttonElement).toHaveClass('secondary');
   });
 
   it('버튼이 disabled 인 경우 버튼을 클릭한 후에 onClick 함수가 호출되지 않음 ', async () => {

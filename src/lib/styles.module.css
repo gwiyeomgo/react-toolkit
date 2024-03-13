@@ -83,7 +83,6 @@
 .btn {
   background: var(--button-bg-color);
   color: var(--button-color);
-
   font-family: 'Noto Sans Kr', sans-serif;
   font-size: 1rem;
   font-weight: 400;
@@ -140,55 +139,28 @@
   --button-bg-color: #0d6efd;
   --button-hover-bg-color: #3d8bfd;
 }
-.success {
-  --button-bg-color: #28a745;
-  --button-hover-bg-color: #53b96a;
-}
 
 .danger {
   --button-bg-color: #dc3545;
   --button-hover-bg-color: #e35d6a;
 }
 
-.warning {
-  --button-bg-color: #ff9900;
-  --button-hover-bg-color: #ff8700;
-}
-
-.outline {
+.secondary {
   outline: 1px solid var(--button-outline-color);
   background: #ffffff;
   color: var(--button-bg-color);
   --button-hover-bg-color: #eeeeee;
-  box-shadow: none;
-}
-.outline:active {
-  box-shadow: none;
-  background: #ffffff;
-}
-
-.outline:hover {
-  box-shadow: none;
-  background: #ffffff;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.outline.primary {
-  --button-color: #0d6efd;
-  --button-outline-color: #0d6efd;
+.secondary:hover {
+  box-shadow: none;
 }
-
-.outline.success {
-  --button-color: #28a745;
-  --button-outline-color: #28a745;
-}
-.outline.danger {
-  --button-color: #dc3545;
+.danger.secondary {
   --button-outline-color: #dc3545;
-}
-
-.outline.warning {
-  --button-color: #ff9900;
-  --button-outline-color: #ff9900;
 }
 
 .icon-container {

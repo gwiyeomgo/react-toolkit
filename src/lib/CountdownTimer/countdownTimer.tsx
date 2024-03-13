@@ -31,10 +31,9 @@ const TimeUnitDefault: TimeUnit = {
   seconds: '00',
   suffix: ':',
 };
-
-export type TimerType = 'default' | 'suffix' | 'none';
 export type TimeKeys = keyof typeof TimeUnitDefault;
 
+export type TimerType = 'default' | 'suffix' | 'none';
 type CountdownTimerProps = {
   fontSize?: number;
   targetTime: string;

@@ -6,11 +6,10 @@ import heic2any from 'heic2any';
 
 export const FILE_MAX_SIZE = 10 * 1024 * 1024; //10MB
 
-type FileUploadProps = {
+export type FileUploadProps = {
   selectFile: (p: File | null, s: string) => void;
   placeholder?: string;
 };
-
 export type FileUploadInputRef = {
   clear: () => void;
   changeAccept: (str: string) => void;
@@ -22,7 +21,7 @@ export type FileUploadInputRef = {
 const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
   (props, ref) => {
     const { selectFile, placeholder } = props;
-    const inputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const [fileName, setFileName] = useState('');
     const [accept, setAccept] = useState('');
 

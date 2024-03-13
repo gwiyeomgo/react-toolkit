@@ -15,16 +15,16 @@ const meta = {
   argTypes: {
     type: {
       control: 'select',
-      options: ['default', 'outline'],
+      options: ['primary', 'secondary'],
       description: '버튼 유형 선택',
     },
     disabled: {
       control: 'select',
       options: [true, false],
     },
-    color: {
+    danger: {
       control: 'select',
-      options: ['primary', 'success', 'danger', 'warning'],
+      options: [true, false],
     },
   },
 } satisfies Meta<typeof Button>;
@@ -35,8 +35,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   args: {
-    type: 'default',
-    color: 'primary',
+    type: 'primary',
     children: '버튼',
     disabled: false,
   },
@@ -44,10 +43,17 @@ export const Default: Story = {
 
 export const ButtonWithLoading: Story = {
   args: {
-    type: 'default',
-    color: '#ffff',
+    type: 'secondary',
     children: '버튼',
     loading: true,
     disabled: false,
+  },
+};
+
+export const ButtonWithDanger: Story = {
+  args: {
+    type: 'secondary',
+    danger: true,
+    children: '버튼',
   },
 };

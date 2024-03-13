@@ -13,7 +13,7 @@ export type SearchConditionKValueTypes = {
   [K in SearchConditionKeys]: (typeof initialSearchConditions)[K];
 };
 
-type SearchConditionsContextProps = {
+export type SearchConditionsContextProps = {
   searchConditions?: SearchConditionKValueTypes;
   setValue: (key: SearchConditionKeys, value: any) => void;
   deleteValue: (key: SearchConditionKeys) => void;

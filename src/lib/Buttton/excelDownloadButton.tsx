@@ -1,6 +1,6 @@
 import { CSVLink } from 'react-csv';
 import React, { ForwardedRef, forwardRef, useRef, useState } from 'react';
-import { Button, ButtonColors, ButtonType } from './button';
+import { Button, ButtonType } from './button';
 
 // Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
 //https://sambalim.tistory.com/151
@@ -27,19 +27,10 @@ type ExcelDownloadButtonProps = {
   fetchData: () => any;
   style?: React.CSSProperties;
   type?: ButtonType;
-  color?: ButtonColors;
 };
 const ExcelDownloadButton = (props: ExcelDownloadButtonProps) => {
-  const {
-    headers,
-    fileName,
-    buttonName,
-    fetchData,
-    style,
-    type,
-    color,
-    ...rest
-  } = props;
+  const { headers, fileName, buttonName, fetchData, style, type, ...rest } =
+    props;
   //https://stackoverflow.com/questions/65611889/how-to-add-ref-to-csvlink-in-react-typescript
   const csvLinkRef: ForwardedRef<
     CSVLink & HTMLAnchorElement & { link: HTMLAnchorElement }
@@ -68,7 +59,6 @@ const ExcelDownloadButton = (props: ExcelDownloadButtonProps) => {
     <div>
       <Button
         type={type}
-        color={color}
         onClick={handleExport}
         style={{ ...style }}
         loading={loading}
