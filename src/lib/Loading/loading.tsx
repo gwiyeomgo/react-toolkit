@@ -21,13 +21,18 @@ const load = keyframes`
     transform: scale(1.2);
   }
 `;
-interface StyledButtonProps {
-  readonly size: number;
-  readonly speed: number;
-  readonly type: LoadingType;
-  readonly colorPalette?: string[];
-}
-const DefaultSpan = styled.span<StyledButtonProps>`
+
+type DefaultSpanProps = {
+  size: number;
+  speed: number;
+  type: LoadingType;
+  colorPalette?: string[];
+};
+type ReadOnly<T> = {
+  readonly [P in keyof T]: T[P];
+};
+
+const DefaultSpan = styled.span<ReadOnly<DefaultSpanProps>>`
   padding: 10px;
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
@@ -72,14 +77,14 @@ const DefaultSpan = styled.span<StyledButtonProps>`
   }}
 `;
 type LoadingType = 'default' | 'line';
-interface LoadingProps {
+export type LoadingProps = {
   type?: LoadingType;
   size?: number;
   color?: string;
   speed?: number;
   colorPalette?: string[];
   style?: CSSProperties;
-}
+};
 const defaultColors: string[] = ['#ffc2e1', '#ffb4be', '#ff97bb', '#ff7cb4'];
 const Loading: React.FC<LoadingProps> = (props) => {
   const {
@@ -126,4 +131,4 @@ const Loading: React.FC<LoadingProps> = (props) => {
   );
 };
 
-export { Loading, LoadingProps };
+export { Loading };

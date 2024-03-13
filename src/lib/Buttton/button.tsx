@@ -9,7 +9,7 @@ import classnames from 'classnames';
 export type ButtonType = 'default' | 'outline';
 export type ButtonColors = 'primary' | 'success' | 'danger' | 'warning';
 
-export interface ButtonProps {
+export type ButtonProps = {
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   children?: React.ReactNode;
   color?: ButtonColors | string;
@@ -20,7 +20,7 @@ export interface ButtonProps {
   disabled?: boolean;
   style?: React.CSSProperties;
   isSearchButton?: boolean;
-}
+};
 
 const Button: React.ForwardRefRenderFunction<
   HTMLButtonElement | HTMLAnchorElement,

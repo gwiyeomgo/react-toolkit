@@ -13,15 +13,15 @@ export type SearchConditionKValueTypes = {
   [K in SearchConditionKeys]: (typeof initialSearchConditions)[K];
 };
 
-interface SearchConditionsContextProps {
+type SearchConditionsContextProps = {
   searchConditions?: SearchConditionKValueTypes;
   setValue: (key: SearchConditionKeys, value: any) => void;
   deleteValue: (key: SearchConditionKeys) => void;
-}
-export interface SearchConditionsProps {
+};
+export type SearchConditionsProps = {
   children?: React.ReactNode;
   pageName?: string;
-}
+};
 
 const SearchConditionsContext = createContext<
   SearchConditionsContextProps | undefined

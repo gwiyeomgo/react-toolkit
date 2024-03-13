@@ -4,12 +4,12 @@ import { useNotificationTimer } from '../Util/hooks/useNotificationTimer';
 import { SearchInput } from '../SearchInput/searchInput';
 import styled from 'styled-components';
 
-export interface ListItem {
+export type ListItem = {
   id: number;
   message: string;
   style?: React.CSSProperties;
   classNames?: string;
-}
+};
 /**
  * JSX나 다른 컴파일된 JavaScript 코드에서는 type으로 정의된 타입이 유지되는 반면,
  *  interface로 정의된 타입은 사라질 수 있습니다.

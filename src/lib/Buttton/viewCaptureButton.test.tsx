@@ -5,12 +5,12 @@ import React from 'react';
 import html2canvas from 'html2canvas';
 
 //URL mock ->revokeObjectURL 로 에러 발생
-interface OriginalURL {
+type OriginalURL = {
   revokeObjectURL: (href: string) => void;
   new (url: string | URL, base?: string | URL | undefined): URL;
   prototype: URL;
   createObjectURL(obj: Blob | MediaSource): string;
-}
+};
 const originalURL: OriginalURL = globalThis.URL;
 beforeEach(() => {
   globalThis.URL = {

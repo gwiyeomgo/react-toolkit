@@ -16,13 +16,13 @@ const Content = styled.div`
   padding: 0;
 `;
 
-interface ViewCaptureButtonProps {
+type ViewCaptureButtonProps = {
   children?: React.ReactNode;
   downloadFileName: string;
   downloadButtonName: string;
   type?: ButtonType;
   color?: ButtonColors;
-}
+};
 
 const ViewCaptureButton = ({
   children,

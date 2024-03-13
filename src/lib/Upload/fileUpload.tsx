@@ -4,26 +4,25 @@ import React from 'react';
 import styles from '../styles.module.css';
 import heic2any from 'heic2any';
 
-export const IMAGE_MAX_SIZE = 1 * 1024 * 1024; //1MB
 export const FILE_MAX_SIZE = 10 * 1024 * 1024; //10MB
 
-interface FileUploadProps {
+type FileUploadProps = {
   selectFile: (p: File | null, s: string) => void;
   placeholder?: string;
-}
+};
 
-export interface FileUploadInputRef {
+export type FileUploadInputRef = {
   clear: () => void;
   changeAccept: (str: string) => void;
   onSuccess: () => void;
   onError: (reason: any) => void;
-}
+};
 
 //https://webdir.tistory.com/435
 const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
   (props, ref) => {
     const { selectFile, placeholder } = props;
-    const inputRef = useRef<HTMLInputElement | null>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
     const [fileName, setFileName] = useState('');
     const [accept, setAccept] = useState('');
 
@@ -64,17 +63,15 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
     const blobToObjectURL = async (blob: Blob) => {
       let src = '';
       if (blob.type === 'image/heic') {
-        await heic2any({ blob: blob })
-          .then((imageBlob: Blob | Blob[]) => {
-            if (Array.isArray(imageBlob)) {
-              //TODO 멀티 부분..나중에 고민하기
-              return '';
-            }
+        const imageBlob = await heic2any({ blob: blob });
+        if (imageBlob) {
+          if (Array.isArray(imageBlob)) {
+            //TODO 멀티 부분..나중에 고민하기
+            return '';
+          } else {
             src = URL.createObjectURL(imageBlob);
-          })
-          .catch((error: Error) => {
-            console.error('HEIF 이미지 변환 중 에러:', error);
-          });
+          }
+        }
       } else {
         return URL.createObjectURL(blob);
       }
@@ -107,6 +104,7 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
         <label htmlFor="file">파일찾기</label>
         <input
           //input 타입이 file 인 경우 accept 옵션으로 유효성 검사 및 검증을 수행
+          data-testid="Upload"
           type="file"
           id="file"
           accept={accept}
@@ -114,11 +112,8 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
           onChange={(event) => {
             const file = event.target.files && event.target.files[0];
             if (file) {
-              const maxSize = file.type.startsWith('image/')
-                ? IMAGE_MAX_SIZE
-                : FILE_MAX_SIZE;
-              file.size > maxSize
-                ? uploadFail(maxSize, file.type)
+              file.size > FILE_MAX_SIZE
+                ? uploadFail(FILE_MAX_SIZE, file.type)
                 : changeFile(file);
             }
           }}

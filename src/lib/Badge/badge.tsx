@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles.module.css';
 import styled from 'styled-components';
 
-export interface BadgeProps {
+export type BadgeProps = {
   children?: React.ReactNode;
   count?: number;
   color?: string;
@@ -12,7 +12,7 @@ export interface BadgeProps {
   className?: string;
   style?: React.CSSProperties;
   textStyle?: React.CSSProperties;
-}
+};
 const Container = styled.div`
   position: relative;
   display: inline-block;

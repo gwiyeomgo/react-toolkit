@@ -7,13 +7,13 @@ import styled from 'styled-components';
 import React from 'react';
 import styles from '../styles.module.css';
 
-export interface InputWithDebounceProps {
+export type InputWithDebounceProps = {
   value?: string;
   buttonStyle?: CSSProperties;
   inputStyle?: CSSProperties;
   onClickSearch?: (text: string) => void;
   delay: number;
-}
+};
 const Container = styled.div``;
 
 const SearchInput = (props: InputWithDebounceProps) => {

@@ -1,11 +1,11 @@
 import { Select } from '../../lib/SelectBox/select';
 import React from 'react';
 
-interface SelectTriggerProps {
+type SelectTriggerProps = {
   id: number;
   value: string;
   label: string;
-}
+};
 const SelectBox = ({ data }: { data: SelectTriggerProps[] }) => {
   return (
     <div>

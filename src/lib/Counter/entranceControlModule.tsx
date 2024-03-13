@@ -28,13 +28,13 @@ const CapacityCount = styled.div`
   font-weight: bold;
   font-size: 20px;
 `;
-interface EntranceControlModuleProps {
+type EntranceControlModuleProps = {
   maxCapacity?: number;
   entranceBtn?: boolean;
   entranceText?: string;
   exitBtn?: boolean;
   exitText?: string;
-}
+};
 
 let MAX_CAPACITY = 10;
 const EntranceControlModule = ({

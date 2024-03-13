@@ -7,16 +7,16 @@ import React, {
 } from 'react';
 import styles from '../styles.module.css';
 
-interface CollectionContextProps {
+type CollectionContextProps = {
   itemMap: React.MutableRefObject<Map<any, any>>;
-}
+};
 export const CollectionContext = createContext<
   CollectionContextProps | undefined
 >(undefined);
 
-interface CollectionProviderProps {
+type CollectionProviderProps = {
   children?: React.ReactNode;
-}
+};
 const CollectionProvider: React.FC<CollectionProviderProps> = ({
   children,
 }) => {
@@ -30,12 +30,12 @@ const CollectionProvider: React.FC<CollectionProviderProps> = ({
 
 const ITEM_DATA_ATTR = 'data-collection-item';
 
-interface CollectionItemProps {
+type CollectionItemProps = {
   index: number;
   value: string | number | boolean;
   children?: React.ReactNode;
   onSelectValue?: (value: React.ReactNode) => void;
-}
+};
 function CollectionItem({
   index,
   value,

@@ -20,7 +20,7 @@ const ChildCSVLink = forwardRef((props: any, ref: any) => (
 /*https://fonts.google.com/noto/specimen/Noto+Sans+KR*/
 /*일정 시간(duration)에 걸쳐 CSS 프로퍼티의 값이 변화 :transition*/
 
-interface ExcelDownloadButtonProps {
+type ExcelDownloadButtonProps = {
   headers: { label: string; key: string }[];
   fileName: string;
   buttonName: string;
@@ -28,7 +28,7 @@ interface ExcelDownloadButtonProps {
   style?: React.CSSProperties;
   type?: ButtonType;
   color?: ButtonColors;
-}
+};
 const ExcelDownloadButton = (props: ExcelDownloadButtonProps) => {
   const {
     headers,

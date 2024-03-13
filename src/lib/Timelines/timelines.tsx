@@ -1,13 +1,13 @@
 import { Timeline } from './timeline';
 import React from 'react';
 
-interface TimelinesProps {
+type TimelinesProps = {
   id: number;
   url?: string;
   tag?: string;
   title?: string;
   contents?: string;
-}
+};
 
 const Timelines: React.FC<{ data: TimelinesProps[] }> = ({ data }) => {
   return (

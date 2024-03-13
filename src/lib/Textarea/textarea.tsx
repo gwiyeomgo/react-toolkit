@@ -18,14 +18,14 @@ const StyledTextarea = styled.textarea<{ height?: number }>`
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 `;
 
-interface TextInputProps {
+type TextInputProps = {
   children?: React.ReactNode;
   height?: number;
   className?: string;
   style?: React.CSSProperties;
   value?: string;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
-}
+};
 
 const Textarea = (props: TextInputProps) => {
   const { height, value, onChange } = props;
