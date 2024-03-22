@@ -34,7 +34,7 @@
 
 7, [Message](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/1-atoms-message--docs)
 
-8, [SortableList](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/1--atoms-sortablelist--docs)
+8, [SortableList](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/1-atoms-sortablelist--docs)
 
 9, [Textarea](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/1-atoms-textarea--docs)
 
