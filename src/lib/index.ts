@@ -29,3 +29,4 @@ export { Avatar } from './Avatar/avatar';
 export { Textarea } from './Textarea/textarea';
 export { SingleUpload, SingleUploadProps } from './Upload/singleUplaod';
 export { FileUpload, FileUploadInputRef } from './Upload/fileUpload';
+export { SortableList } from './SortableList/sortableList';
