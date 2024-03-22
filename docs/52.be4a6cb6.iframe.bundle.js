@@ -1398,6 +1398,116 @@
             });
       } catch (__react_docgen_typescript_loader_error) {}
     },
+    './src/lib/SortableList/sortableList.tsx': (
+      __unused_webpack_module,
+      __webpack_exports__,
+      __webpack_require__,
+    ) => {
+      __webpack_require__.d(__webpack_exports__, { b: () => SortableList });
+      var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+          './node_modules/react/index.js',
+        ),
+        react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+          './node_modules/react/jsx-runtime.js',
+        );
+      let reducer = (state, action) => {
+          let newList;
+          switch (action.type) {
+            case 'SET_DRAG_ITEM':
+              return { ...state, dragItem: action.position };
+            case 'SET_DRAG_OVER_ITEM':
+              return { ...state, dragOverItem: action.position };
+            case 'MOVE_ITEM':
+              if (
+                ((newList = [...state.list]),
+                null !== state.dragItem && null !== state.dragOverItem)
+              ) {
+                let dragItemIndex = state.dragItem,
+                  dragOverItemIndex = state.dragOverItem,
+                  dragItemValue = newList[dragItemIndex];
+                newList.splice(dragItemIndex, 1),
+                  newList.splice(dragOverItemIndex, 0, dragItemValue);
+              }
+              return {
+                ...state,
+                list: newList,
+                dragItem: null,
+                dragOverItem: null,
+              };
+            default:
+              return state;
+          }
+        },
+        SortableList = (_ref) => {
+          let { initialList } = _ref,
+            [state, dispatch] = (0,
+            react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(reducer, {
+              list: initialList,
+              dragItem: null,
+              dragOverItem: null,
+            }),
+            dragStart = (position) => {
+              dispatch({ type: 'SET_DRAG_ITEM', position });
+            },
+            dragEnter = (position) => {
+              dispatch({ type: 'SET_DRAG_OVER_ITEM', position });
+            },
+            drop = () => {
+              dispatch({ type: 'MOVE_ITEM' });
+            };
+          return (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(
+            react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment,
+            {
+              children:
+                state.list.length > 0 &&
+                state.list.map((item, idx) =>
+                  (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(
+                    'div',
+                    {
+                      style: {
+                        backgroundColor: 'lightblue',
+                        margin: '20px 25%',
+                        textAlign: 'center',
+                        fontSize: '40px',
+                      },
+                      draggable: !0,
+                      onDragStart: () => dragStart(idx),
+                      onDragEnter: () => dragEnter(idx),
+                      onDragEnd: drop,
+                      onDragOver: (e) => e.preventDefault(),
+                      children: item,
+                    },
+                    idx,
+                  ),
+                ),
+            },
+          );
+        };
+      try {
+        (SortableList.displayName = 'SortableList'),
+          (SortableList.__docgenInfo = {
+            description: '',
+            displayName: 'SortableList',
+            props: {
+              initialList: {
+                defaultValue: null,
+                description: '',
+                name: 'initialList',
+                required: !0,
+                type: { name: 'string[]' },
+              },
+            },
+          }),
+          'undefined' != typeof STORYBOOK_REACT_CLASSES &&
+            (STORYBOOK_REACT_CLASSES[
+              'src/lib/SortableList/sortableList.tsx#SortableList'
+            ] = {
+              docgenInfo: SortableList.__docgenInfo,
+              name: 'SortableList',
+              path: 'src/lib/SortableList/sortableList.tsx#SortableList',
+            });
+      } catch (__react_docgen_typescript_loader_error) {}
+    },
     './src/lib/Textarea/textarea.tsx': (
       __unused_webpack_module,
       __webpack_exports__,
@@ -2253,7 +2363,8 @@
         __webpack_require__('./src/lib/Avatar/avatar.tsx'),
         __webpack_require__('./src/lib/Textarea/textarea.tsx'),
         __webpack_require__('./src/lib/Upload/singleUplaod.tsx'),
-        __webpack_require__('./src/lib/Upload/fileUpload.tsx');
+        __webpack_require__('./src/lib/Upload/fileUpload.tsx'),
+        __webpack_require__('./src/lib/SortableList/sortableList.tsx');
     },
   },
 ]);

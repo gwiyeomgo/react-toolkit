@@ -145,13 +145,14 @@
         801: 'stories-molecules-SearchInput-stories',
         887: 'stories-atoms-Loadings-stories',
         945: 'stories-atoms-Badge-stories',
+        984: 'stories-atoms-SortableList-stories',
         996: 'stories-templates-ViewCaptureButton-stories',
       }[chunkId] || chunkId) +
       '.' +
       {
         23: 'da6a5991',
         49: '032d9b60',
-        52: '1a7cf55f',
+        52: 'be4a6cb6',
         71: '61ed8e22',
         126: '265c78f4',
         144: '8d9538bf',
@@ -176,7 +177,7 @@
         665: '74a21a66',
         673: 'd0cd7280',
         691: '7b23abf8',
-        703: '473a4276',
+        703: 'eafcb9dc',
         712: '51424517',
         736: '62788694',
         740: '3a2423d1',
@@ -191,6 +192,7 @@
         895: 'ceaea107',
         945: 'a201f46d',
         955: 'b81264da',
+        984: '77a5f504',
         994: '9de3c852',
         996: 'cd7ad161',
       }[chunkId] +

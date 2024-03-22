@@ -209,6 +209,14 @@
             353,
             253,
           ],
+          './stories/atoms/SortableList.stories': [
+            './src/stories/atoms/SortableList.stories.tsx',
+            984,
+          ],
+          './stories/atoms/SortableList.stories.tsx': [
+            './src/stories/atoms/SortableList.stories.tsx',
+            984,
+          ],
           './stories/atoms/Textarea.stories': [
             './src/stories/atoms/Textarea.stories.tsx',
             353,

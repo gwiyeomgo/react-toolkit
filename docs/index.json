@@ -14,6 +14,7 @@
         "./src/stories/atoms/Input.stories.tsx",
         "./src/stories/atoms/Loadings.stories.tsx",
         "./src/stories/atoms/Message.stories.tsx",
+        "./src/stories/atoms/SortableList.stories.tsx",
         "./src/stories/atoms/Textarea.stories.tsx",
         "./src/stories/atoms/ToggleButton.stories.tsx",
         "./src/stories/molecules/CountDownTimer.stories.tsx",
@@ -243,6 +244,23 @@
       "name": "Styled Message",
       "title": "1.Atoms/Message",
       "importPath": "./src/stories/atoms/Message.stories.tsx",
+      "tags": ["autodocs", "story"]
+    },
+    "1-atoms-sortablelist--docs": {
+      "id": "1-atoms-sortablelist--docs",
+      "title": "1.Atoms/SortableList",
+      "name": "Docs",
+      "importPath": "./src/stories/atoms/SortableList.stories.tsx",
+      "type": "docs",
+      "tags": ["autodocs", "docs"],
+      "storiesImports": []
+    },
+    "1-atoms-sortablelist--default": {
+      "type": "story",
+      "id": "1-atoms-sortablelist--default",
+      "name": "Default",
+      "title": "1.Atoms/SortableList",
+      "importPath": "./src/stories/atoms/SortableList.stories.tsx",
       "tags": ["autodocs", "story"]
     },
     "1-atoms-textarea--docs": {
