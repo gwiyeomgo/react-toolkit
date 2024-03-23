@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 
 /*
 * 드래그 앤 드롭 인터랙션을 구현할 때 useReducer를 사용하여 요소의 위치를 관리
@@ -44,6 +44,31 @@ const reducer = (state: State, action: Action): State => {
 };
 
 const SortableList: React.FC<{ initialList: string[] }> = ({ initialList }) => {
+  useEffect(() => {
+    const scripts = [
+      'https://code.jquery.com/jquery-3.6.0.js',
+      'https://code.jquery.com/ui/1.13.0/jquery-ui.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js',
+    ];
+
+    scripts.forEach((src) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+
+      document.body.appendChild(script);
+    });
+
+    return () => {
+      scripts.forEach((src) => {
+        const script = document.querySelector(`script[src="${src}"]`);
+        if (script) {
+          document.body.removeChild(script);
+        }
+      });
+    };
+  }, []);
+
   const initialState: State = {
     list: initialList,
     dragItem: null,
