@@ -17,6 +17,7 @@ export const Default: Story = {
   args: {
     initialList: ['1', '@', '#', 'A', '🤩'],
     height: 100,
-    width: 60,
+    containerStyle: { width: '200px' },
+    itemStyle: { padding: '3px' },
   },
 };
