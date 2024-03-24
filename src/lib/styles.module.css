@@ -387,6 +387,13 @@
   opacity: 1; /* 마우스 hover 시 나타남 */
 }
 
+.sortableList {
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
 .sortableList,
 .sortableList div {
   /*iOS 기기에서 터치시 나타나는 기본 동작인 링크를 클릭했을 때 표시되는 메뉴를 비활성*/
@@ -400,4 +407,13 @@
   /* 터치 강조 효과를 투명하게 설정 */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
+
+  /*색상*/
+  background: white;
+}
+/*https://thebrandsmen.com/css-image-hover-effects/*/
+
+.touched {
+  transform: scale(1.1);
+  transition: 0.2s ease-in-out;
 }
