@@ -1,4 +1,5 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
+import styles from '../styles.module.css';
 
 /*
 * 드래그 앤 드롭 인터랙션을 구현할 때 useReducer를 사용하여 요소의 위치를 관리
@@ -43,32 +44,16 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-const SortableList: React.FC<{ initialList: string[] }> = ({ initialList }) => {
-  useEffect(() => {
-    const scripts = [
-      'https://code.jquery.com/jquery-3.6.0.js',
-      'https://code.jquery.com/ui/1.13.0/jquery-ui.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js',
-    ];
-
-    scripts.forEach((src) => {
-      const script = document.createElement('script');
-      script.src = src;
-      script.async = true;
-
-      document.body.appendChild(script);
-    });
-
-    return () => {
-      scripts.forEach((src) => {
-        const script = document.querySelector(`script[src="${src}"]`);
-        if (script) {
-          document.body.removeChild(script);
-        }
-      });
-    };
-  }, []);
-
+type SortableListProps = {
+  initialList: string[];
+  height: number;
+  width: number;
+};
+const SortableList: React.FC<SortableListProps> = ({
+  initialList,
+  height,
+  width,
+}) => {
   const initialState: State = {
     list: initialList,
     dragItem: null,
@@ -77,7 +62,7 @@ const SortableList: React.FC<{ initialList: string[] }> = ({ initialList }) => {
 
   //useReducer를 사용하여 position을 관리함으로써 드래그 앤 드롭 동작에서 요소의 위치 변경을 효율적으로 처리
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  const [clientY, setClientY] = useState(0);
   //사용자가 요소를 드래그하기 시작
   const dragStart = (position: number) => {
     dispatch({ type: 'SET_DRAG_ITEM', position });
@@ -92,17 +77,44 @@ const SortableList: React.FC<{ initialList: string[] }> = ({ initialList }) => {
     dispatch({ type: 'MOVE_ITEM' });
   };
 
+  const getIndexOfDivByClientY = (clientY: number): number | null => {
+    const boundingClientRects = Array.from(
+      document.querySelectorAll('.draggable-div'),
+    ).map((div) => div.getBoundingClientRect());
+    const index = boundingClientRects.findIndex(
+      (rect) => clientY >= rect.top && clientY <= rect.bottom,
+    );
+    return index !== -1 ? index : null;
+  };
+
   return (
-    <>
+    <div
+      className={styles.sortableList}
+      style={{ width: width, height: height }}
+    >
       {state.list.length > 0 &&
         state.list.map((item, idx) => (
           <div
             key={idx}
+            className="draggable-div"
+            onTouchMove={(e) => {
+              setClientY(e.targetTouches[0].clientY);
+            }}
+            onTouchEnd={() => {
+              const changedIdx = getIndexOfDivByClientY(clientY);
+              if (changedIdx) {
+                dragEnter(changedIdx);
+                drop();
+              }
+            }}
+            onTouchStart={() => {
+              dragStart(idx);
+            }}
             style={{
               backgroundColor: 'lightblue',
-              margin: '20px 25%',
-              textAlign: 'center',
-              fontSize: '40px',
+              border: '1px solid black',
+              width: '100%',
+              height: height / state.list.length,
             }}
             draggable
             onDragStart={() => dragStart(idx)}
@@ -113,7 +125,7 @@ const SortableList: React.FC<{ initialList: string[] }> = ({ initialList }) => {
             {item}
           </div>
         ))}
-    </>
+    </div>
   );
 };
 
