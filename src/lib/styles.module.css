@@ -387,10 +387,15 @@
   opacity: 1; /* 마우스 hover 시 나타남 */
 }
 
-.sortableList {
-  transition: height 0.3s ease-in;
-}
-.sortableList draggable-div :hover > sortableList {
-  display: block;
-  opacity: 1;
+.sortableList,
+.sortableList div {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* 터치 강조 효과를 투명하게 설정 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
