@@ -1,10 +1,10 @@
 /*SelectBox*/
-.selected li {
+.styles_selected__G1NE3 li {
   color: black;
 }
 
 /*Badge */
-.badgeAboveChildren {
+.styles_badgeAboveChildren__zUTJ0 {
   position: absolute;
   top: 0;
   right: 0;
@@ -19,7 +19,7 @@
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.badge {
+.styles_badge__xbdGE {
   position: relative;
   top: -1px;
   border-radius: 50%;
@@ -31,7 +31,7 @@
 }
 
 /*Input */
-.inputRoot {
+.styles_inputRoot__Y9q3y {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
@@ -41,7 +41,7 @@
     rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-.defaultInput {
+.styles_defaultInput__nenXm {
   font: inherit;
   letter-spacing: inherit;
   color: black;
@@ -55,12 +55,12 @@
   margin: 0px;
 }
 
-.innerLabel {
+.styles_innerLabel__1Oc3o {
   position: absolute;
   transform: translateY(-50%);
 }
 
-.defaultLabel {
+.styles_defaultLabel__jfDHF {
   width: 100%;
   color: #999999;
   cursor: default;
@@ -68,7 +68,7 @@
   padding: 10px;
 }
 
-.expandInput {
+.styles_expandInput__d0pZ5 {
   height: 40px;
 }
 
@@ -80,8 +80,10 @@
   --button-outline-color: #212529;
 }
 
-.btn {
+.styles_btn__249Fp {
+  background: #212529;
   background: var(--button-bg-color);
+  color: #ffffff;
   color: var(--button-color);
   font-family: 'Noto Sans Kr', sans-serif;
   font-size: 1rem;
@@ -111,14 +113,15 @@
   padding: 0.5rem 1rem;
 }
 
-.btn:active {
+.styles_btn__249Fp:active {
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   transform: translateY(1px);
 }
 
-.btn:hover {
+.styles_btn__249Fp:hover {
+  background: #000000;
   background: var(--button-hover-bg-color);
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
@@ -126,8 +129,8 @@
 }
 
 /*https://stackoverflow.com/questions/14750078/style-disabled-button-with-css*/
-.btn:disabled,
-.btn[disabled] {
+.styles_btn__249Fp:disabled,
+.styles_btn__249Fp[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
@@ -135,19 +138,21 @@
   cursor: not-allowed; /* 커서를 not-allowed로 변경 */
 }
 
-.primary {
+.styles_primary__YtPEi {
   --button-bg-color: #0d6efd;
   --button-hover-bg-color: #3d8bfd;
 }
 
-.danger {
+.styles_danger__GSoGL {
   --button-bg-color: #dc3545;
   --button-hover-bg-color: #e35d6a;
 }
 
-.secondary {
+.styles_secondary__En3EG {
+  outline: 1px solid #212529;
   outline: 1px solid var(--button-outline-color);
   background: #ffffff;
+  color: #212529;
   color: var(--button-bg-color);
   --button-hover-bg-color: #eeeeee;
   box-shadow:
@@ -156,22 +161,22 @@
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.secondary:hover {
+.styles_secondary__En3EG:hover {
   box-shadow: none;
 }
-.danger.secondary {
+.styles_danger__GSoGL.styles_secondary__En3EG {
   --button-outline-color: #dc3545;
 }
 
-.icon-container {
+.styles_icon-container__W3WbO {
   display: flex;
   align-items: center;
 }
-.child-space {
+.styles_child-space__BlMfr {
   padding-left: 10px;
 }
 /*avatar*/
-.avatar {
+.styles_avatar__Vftca {
   position: relative;
   display: flex;
   align-items: center;
@@ -186,7 +191,7 @@
 }
 
 /*search*/
-.search {
+.styles_search__2ZphF {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -200,7 +205,7 @@
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.searchButton {
+.styles_searchButton__hidCY {
   border-radius: 50px;
   outline: none;
   border: 0;
@@ -214,12 +219,12 @@
     rgba(0, 0, 0, 0.09) 0px 16px 8px,
     rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
-.searchInputRoot {
+.styles_searchInputRoot__fjMNS {
   justify-content: center;
   align-items: center;
   box-shadow: none;
 }
-.searchInput {
+.styles_searchInput__j\+HYR {
   border-radius: 30px;
   outline: none;
   border: 0;
@@ -227,30 +232,30 @@
 }
 
 @media (max-width: 567px) {
-  .search {
+  .styles_search__2ZphF {
     flex-direction: column;
     border-radius: 0;
   }
-  .searchInputRoot,
-  .searchButton,
-  .searchInput {
+  .styles_searchInputRoot__fjMNS,
+  .styles_searchButton__hidCY,
+  .styles_searchInput__j\+HYR {
     position: static;
     width: 100%;
     border-radius: 0;
   }
 }
 
-.timerItem {
+.styles_timerItem__KCvSb {
 }
 
-.timerValue {
+.styles_timerValue__lvDhX {
   color: darkgrey;
 }
-.timerLabel {
+.styles_timerLabel__1k2tC {
   color: darkgrey;
 }
 
-.timerItem:nth-child(odd) {
+.styles_timerItem__KCvSb:nth-child(odd) {
   background: white;
   flex-grow: 2;
   border-radius: 10px;
@@ -261,13 +266,13 @@
     rgb(204, 219, 232) 3px 3px 6px 0px inset,
     rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
-.timerItem:nth-child(even) {
+.styles_timerItem__KCvSb:nth-child(even) {
   flex-grow: 1;
   padding-top: 5px;
 }
 
 /*header*/
-.header {
+.styles_header__AHkbM {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 15px 20px;
@@ -276,12 +281,12 @@
   justify-content: space-between;
 }
 
-.header svg {
+.styles_header__AHkbM svg {
   display: inline-block;
   vertical-align: top;
 }
 
-.header h1 {
+.styles_header__AHkbM h1 {
   font-weight: 700;
   font-size: 20px;
   line-height: 1;
@@ -290,11 +295,11 @@
   vertical-align: top;
 }
 
-.header button + button {
+.styles_header__AHkbM button + button {
   margin-left: 10px;
 }
 
-.header .username {
+.styles_header__AHkbM .styles_username__ypccv {
   color: #333;
   font-size: 14px;
   margin-right: 10px;
@@ -302,7 +307,7 @@
 
 /*upload*/
 
-.upload .name {
+.styles_upload__-uG3S .styles_name__6D7hu {
   display: inline-block;
   padding: 0.5em 0.75em; /* label의 패딩값과 일치 */
   font-size: inherit;
@@ -314,13 +319,12 @@
   border-bottom-color: #e2e2e2;
   border-radius: 0.25em;
   -webkit-appearance: none; /* 네이티브 외형 감추기 */
-  -moz-appearance: none;
   appearance: none;
   cursor: none; /* 커서 숨기기 */
   pointer-events: none; /* 클릭 효과 없애기 */
 }
 
-.upload label {
+.styles_upload__-uG3S label {
   display: inline-block;
   padding: 0.5em 0.75em;
   color: #999;
@@ -334,7 +338,7 @@
   border-radius: 0.25em;
 }
 
-.upload input[type='file'] {
+.styles_upload__-uG3S input[type='file'] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -347,7 +351,7 @@
 
 /*image*/
 
-.squareImg {
+.styles_squareImg__jwxMy {
   width: 10rem;
   height: 10rem;
 
@@ -361,7 +365,7 @@
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-.xButton {
+.styles_xButton__n5Ydk {
   position: absolute;
   background: lightgray;
   padding: 5px;
@@ -377,18 +381,18 @@
   transition: opacity 0.2s ease; /* 부드러운 나타나고 사라짐 효과 */
 }
 
-.image {
+.styles_image__D9uY6 {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Adjust object-fit property based on your requirements */
 }
 
-.squareImg:hover .xButton {
+.styles_squareImg__jwxMy:hover .styles_xButton__n5Ydk {
   opacity: 1; /* 마우스 hover 시 나타남 */
 }
 
-.sortableList,
-.sortableList div {
+.styles_sortableList__peis4,
+.styles_sortableList__peis4 div {
   /*iOS 기기에서 터치시 나타나는 기본 동작인 링크를 클릭했을 때 표시되는 메뉴를 비활성*/
   -webkit-touch-callout: none;
   /*모바일 기기에서 텍스트를 선택하는 것을 비활*/
@@ -401,3 +405,6 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
 }
+
+
+/*# sourceMappingURL=stories-atoms-ToggleButton-stories.706a5685.chunk.css.map*/
