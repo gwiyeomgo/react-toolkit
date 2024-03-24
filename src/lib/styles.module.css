@@ -386,3 +386,11 @@
 .squareImg:hover .xButton {
   opacity: 1; /* 마우스 hover 시 나타남 */
 }
+
+.sortableList {
+  transition: height 0.3s ease-in;
+}
+.sortableList draggable-div :hover > sortableList {
+  display: block;
+  opacity: 1;
+}

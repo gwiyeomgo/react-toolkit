@@ -3,6 +3,8 @@ import React from 'react';
 import { SortableList } from './sortableList';
 
 it('SelectBox 렌더링', () => {
-  render(<SortableList initialList={['1', '2', '3']} />);
+  render(
+    <SortableList initialList={['1', '2', '3']} height={200} width={100} />,
+  );
   act(() => {});
 });
