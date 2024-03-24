@@ -79,7 +79,7 @@ const SortableList: React.FC<SortableListProps> = ({
 
   const getIndexOfDivByClientY = (clientY: number): number | null => {
     const boundingClientRects = Array.from(
-      document.querySelectorAll('.draggable-div'),
+      document.querySelectorAll('.draggableDiv'),
     ).map((div) => div.getBoundingClientRect());
     const index = boundingClientRects.findIndex(
       (rect) => clientY >= rect.top && clientY <= rect.bottom,
@@ -96,7 +96,7 @@ const SortableList: React.FC<SortableListProps> = ({
         state.list.map((item, idx) => (
           <div
             key={idx}
-            className="draggable-div"
+            className="draggableDiv"
             onTouchMove={(e) => {
               setClientY(e.targetTouches[0].clientY);
             }}
