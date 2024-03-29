@@ -1,9 +1,9 @@
 'use strict';
 (self.webpackChunk_gwiyeomgo_react_toolkit =
   self.webpackChunk_gwiyeomgo_react_toolkit || []).push([
-  [8205],
+  [9647],
   {
-    './src/lib/Icon/assets/plus.svg': (
+    './src/lib/Icon/assets/empty-heart.svg': (
       __unused_webpack_module,
       __webpack_exports__,
       __webpack_require__,
@@ -13,7 +13,7 @@
           ReactComponent: () => ForwardRef,
           default: () => __WEBPACK_DEFAULT_EXPORT__,
         });
-      var _g,
+      var _path,
         react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           './node_modules/react/index.js',
         );
@@ -30,20 +30,16 @@
               return target;
             }).apply(this, arguments);
       }
-      function SvgPlus(_ref, svgRef) {
+      function SvgEmptyHeart(_ref, svgRef) {
         let { title, titleId, ...props } = _ref;
         return react__WEBPACK_IMPORTED_MODULE_0__.createElement(
           'svg',
           _extends(
             {
               xmlns: 'http://www.w3.org/2000/svg',
-              xmlnsXlink: 'http://www.w3.org/1999/xlink',
-              id: 'Capa_1',
-              x: '0px',
-              y: '0px',
-              viewBox: '0 0 512 512',
-              style: { enableBackground: 'new 0 0 512 512' },
-              xmlSpace: 'preserve',
+              id: 'Isolation_Mode',
+              'data-name': 'Isolation Mode',
+              viewBox: '0 0 24 24',
               width: 512,
               height: 512,
               ref: svgRef,
@@ -58,20 +54,17 @@
                 title,
               )
             : null,
-          _g ||
-            (_g = react__WEBPACK_IMPORTED_MODULE_0__.createElement(
-              'g',
-              null,
-              react__WEBPACK_IMPORTED_MODULE_0__.createElement('path', {
-                d: 'M480,224H288V32c0-17.673-14.327-32-32-32s-32,14.327-32,32v192H32c-17.673,0-32,14.327-32,32s14.327,32,32,32h192v192   c0,17.673,14.327,32,32,32s32-14.327,32-32V288h192c17.673,0,32-14.327,32-32S497.673,224,480,224z',
-              }),
-            )),
+          _path ||
+            (_path = react__WEBPACK_IMPORTED_MODULE_0__.createElement('path', {
+              d: 'M12,23.462l-.866-.612C9.994,22.044,0,14.783,0,8.15A7.036,7.036,0,0,1,6.75.875,6.57,6.57,0,0,1,12,3.582,6.57,6.57,0,0,1,17.25.875,7.036,7.036,0,0,1,24,8.15c0,6.633-9.994,13.894-11.134,14.7ZM6.75,3.875A4.043,4.043,0,0,0,3,8.15c0,3.916,5.863,9.21,9,11.611,3.137-2.4,9-7.695,9-11.611a4.043,4.043,0,0,0-3.75-4.275A4.043,4.043,0,0,0,13.5,8.15h-3A4.043,4.043,0,0,0,6.75,3.875Z',
+            })),
         );
       }
-      let ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(SvgPlus),
+      let ForwardRef =
+          react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(SvgEmptyHeart),
         __WEBPACK_DEFAULT_EXPORT__ =
           __webpack_require__.p +
-          'static/media/plus.4f0248a93bbc2dfb648c2fb334d15f1b.svg';
+          'static/media/empty-heart.4506ee2c1a01eb0617a577b2940da883.svg';
     },
   },
 ]);

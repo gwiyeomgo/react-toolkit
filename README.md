@@ -40,6 +40,8 @@
 
 10, [ToggleButton](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/1-atoms-togglebutton--docs)
 
+11, [LikeButtons](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/1-atoms-likebutton--docs)
+
 ### molecules
 
 11, [CountdownTimer](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/2-molecules-countdowntimer--docs)
