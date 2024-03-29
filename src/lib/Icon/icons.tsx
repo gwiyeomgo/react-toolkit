@@ -23,4 +23,5 @@ export const icons = {
   Heart: lazy(async () => import('./assets/heart.svg')),
   Minus: lazy(async () => import('./assets/minus.svg')),
   Plus: lazy(async () => import('./assets/plus.svg')),
+  EmptyHeart: lazy(async () => import('./assets/empty-heart.svg')),
 };
