@@ -35,6 +35,8 @@ import * as Timelines from './src/stories/templates/Timelines.stories';
 import * as ViewCaptureButton from './src/stories/templates/ViewCaptureButton.stories';
 import * as SingleUpload from './src/stories/molecules/SingleUpload.stories';
 import * as SortableList from './src/stories/atoms/SortableList.stories';
+import * as LikeButtons from './src/stories/atoms/LikeButtons.stories';
+import * as BroadcastExample from './src/stories/test/BroadcastExample.stories';
 
 # Avatar
 
@@ -50,7 +52,9 @@ import * as SortableList from './src/stories/atoms/SortableList.stories';
 <Canvas of={Badge.BadgeWithText} />
 <Canvas of={Badge.BadgeWithNumber} />
 <Canvas of={Badge.BadgeWithNumber2} />
-<Canvas of={Badge.BadgeWithAvatar} /># Button
+<Canvas of={Badge.BadgeWithAvatar} />
+
+# Button
 
     - 설명
 
@@ -165,3 +169,15 @@ import * as SortableList from './src/stories/atoms/SortableList.stories';
     - 설명
 
 <Canvas of={ViewCaptureButton.Default} />
+
+# LikeButtons
+
+    - 설명
+
+<Canvas of={LikeButtons.Default} />
+
+# useBroadcastExample
+
+    - 설명
+
+<Canvas of={BroadcastExample.Default} />

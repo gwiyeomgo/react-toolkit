@@ -1,7 +1,7 @@
 import { act, render, screen, waitFor } from '@testing-library/react';
 import useForceUpdate from './useForceUpdate';
 import React from 'react';
-
+//https://codesandbox.io/p/sandbox/t-wgdtkh?file=%2Fsrc%2FApp.js%3A3%2C10-3%2C24
 /*
 // 원래의 useForceUpdate 모듈 저장
 const originalUseForceUpdate = jest.requireActual('./useForceUpdate');
