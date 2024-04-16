@@ -3,6 +3,7 @@ import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import React from 'react';
 import styles from '../styles.module.css';
 import heic2any from 'heic2any';
+import imageCompression from 'browser-image-compression';
 
 export const FILE_MAX_SIZE = 10 * 1024 * 1024; //10MB
 
@@ -15,6 +16,36 @@ export type FileUploadInputRef = {
   changeAccept: (str: string) => void;
   onSuccess: () => void;
   onError: (reason: any) => void;
+};
+
+/*
+ * https://velog.io/@suzzjeon/browser-image-compression-heic2any
+ * https://www.npmjs.com/package/browser-image-compression
+ */
+const handleImageUpload = async (file: globalThis.File) => {
+  console.log(`before size ${file.size / 1024 / 1024} MB`);
+  if (file) {
+    try {
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true,
+      };
+      const compressedFile = await imageCompression(file, options);
+      console.log(
+        'compressedFile instanceof Blob',
+        compressedFile instanceof Blob,
+      ); // true
+      console.log(
+        `compressedFile size ${compressedFile.size / 1024 / 1024} MB`,
+      ); // smaller than maxSizeMB
+
+      return compressedFile;
+    } catch (error) {
+      console.error('Image compression error:', error);
+    }
+    return null;
+  }
 };
 
 //https://webdir.tistory.com/435
@@ -35,46 +66,41 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
       }
     };
     const onSuccess = () => {
-      // input 의 색상 변경
+      //TODO input 의 색상 변경
       console.log('upload 완료');
     };
     const onError = () => {
       console.log('error');
     };
-    const changeFile = (file: globalThis.File) => {
-      console.log('type', file.type);
-
-      file.type.startsWith('image/')
-        ? blobToObjectURL(file).then((src) => {
-            selectFile(file, src);
-          })
-        : selectFile(file, '');
-
+    const changeFile = async (file: globalThis.File) => {
+      let src = '';
+      if (file.type.startsWith('image/')) {
+        src = await fileToObjectURL(file);
+      }
+      selectFile(file, src);
       setFileName(file.name);
     };
-    const uploadFail = (maxSize: number, type: string) => {
-      //https://ko.javascript.info/alert-prompt-confirm
-      alert(` ${type} Maximum upload size:${maxSize / (1024 * 1024)}MB`);
-      selectFile(null, '');
-      setFileName('');
-    };
 
-    const blobToObjectURL = async (blob: Blob) => {
-      let src = '';
-      if (blob.type === 'image/heic') {
-        const imageBlob = await heic2any({ blob: blob });
+    const imageResize = (imageBlob: globalThis.File) =>
+      handleImageUpload(imageBlob) || imageBlob;
+    const fileToObjectURL = async (file: globalThis.File): Promise<string> => {
+      // 비동기적으로 실행되므로 반환 유형은 Promise<string>
+      if (file.type === 'image/heic') {
+        const imageBlob = await heic2any({ blob: file });
         if (imageBlob) {
           if (Array.isArray(imageBlob)) {
             //TODO 멀티 부분..나중에 고민하기
             return '';
           } else {
-            src = URL.createObjectURL(imageBlob);
+            const newHeicFile = await imageResize(imageBlob as globalThis.File);
+            return newHeicFile ? URL.createObjectURL(newHeicFile) : '';
           }
         }
       } else {
-        return URL.createObjectURL(blob);
+        const newFile = await imageResize(file);
+        return newFile ? URL.createObjectURL(newFile) : '';
       }
-      return src;
+      return '';
     };
 
     useImperativeHandle(ref, () => ({
@@ -111,9 +137,16 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
           onChange={(event) => {
             const file = event.target.files && event.target.files[0];
             if (file) {
-              file.size > FILE_MAX_SIZE
-                ? uploadFail(FILE_MAX_SIZE, file.type)
-                : changeFile(file);
+              if (file.size > FILE_MAX_SIZE) {
+                //https://ko.javascript.info/alert-prompt-confirm
+                alert(
+                  `${file.type} Maximum upload size:${file.size / (1024 * 1024)}MB`,
+                );
+                selectFile(null, '');
+                setFileName('');
+              } else {
+                changeFile(file);
+              }
             }
           }}
         />
