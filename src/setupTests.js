@@ -19,3 +19,9 @@ jest.mock('html2canvas', () => ({
     toDataURL: jest.fn().mockResolvedValue('mocked-image'),
   }),
 }));
+
+//imageCompression
+jest.mock('browser-image-compression', () => ({
+  __esModule: true,
+  default: jest.fn().mockResolvedValue(''),
+}));

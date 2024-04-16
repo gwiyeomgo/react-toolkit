@@ -519,23 +519,6 @@
       "importPath": "./src/stories/test/BroadcastExample.stories.tsx",
       "tags": ["autodocs", "story"]
     },
-    "5-test-connectuserexample--docs": {
-      "id": "5-test-connectuserexample--docs",
-      "title": "5.Test/ConnectUserExample",
-      "name": "Docs",
-      "importPath": "./src/stories/test/ConnectUserExample.stories.tsx",
-      "type": "docs",
-      "tags": ["autodocs", "docs"],
-      "storiesImports": []
-    },
-    "5-test-connectuserexample--default": {
-      "type": "story",
-      "id": "5-test-connectuserexample--default",
-      "name": "Default",
-      "title": "5.Test/ConnectUserExample",
-      "importPath": "./src/stories/test/ConnectUserExample.stories.tsx",
-      "tags": ["autodocs", "story"]
-    },
     "5-test-searchcondigions--docs": {
       "id": "5-test-searchcondigions--docs",
       "title": "5.Test/SearchCondigions",

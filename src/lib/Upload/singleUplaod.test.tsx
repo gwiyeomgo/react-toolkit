@@ -3,7 +3,7 @@ import React from 'react';
 import { File as file, SingleUpload, SingleUploadProps } from './singleUplaod';
 import { fireEvent } from '@storybook/test';
 
-it('dl', async () => {
+it('SingleUpload', async () => {
   const done = jest.fn();
   const props: SingleUploadProps = {
     imageFileOnly: false,

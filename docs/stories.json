@@ -873,35 +873,6 @@
         "fileName": "./src/stories/test/BroadcastExample.stories.tsx"
       }
     },
-    "5-test-connectuserexample--docs": {
-      "id": "5-test-connectuserexample--docs",
-      "title": "5.Test/ConnectUserExample",
-      "name": "Docs",
-      "importPath": "./src/stories/test/ConnectUserExample.stories.tsx",
-      "tags": ["autodocs", "docs"],
-      "storiesImports": [],
-      "kind": "5.Test/ConnectUserExample",
-      "story": "Docs",
-      "parameters": {
-        "__id": "5-test-connectuserexample--docs",
-        "docsOnly": true,
-        "fileName": "./src/stories/test/ConnectUserExample.stories.tsx"
-      }
-    },
-    "5-test-connectuserexample--default": {
-      "id": "5-test-connectuserexample--default",
-      "name": "Default",
-      "title": "5.Test/ConnectUserExample",
-      "importPath": "./src/stories/test/ConnectUserExample.stories.tsx",
-      "tags": ["autodocs", "story"],
-      "kind": "5.Test/ConnectUserExample",
-      "story": "Default",
-      "parameters": {
-        "__id": "5-test-connectuserexample--default",
-        "docsOnly": false,
-        "fileName": "./src/stories/test/ConnectUserExample.stories.tsx"
-      }
-    },
     "5-test-searchcondigions--docs": {
       "id": "5-test-searchcondigions--docs",
       "title": "5.Test/SearchCondigions",

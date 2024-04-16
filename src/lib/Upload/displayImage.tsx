@@ -12,7 +12,7 @@ type Image = {
 const DisplayImages = ({ src, remove }: Image) => {
   return (
     <div className={styles.squareImg}>
-      <button className={styles.xButton} onClick={remove}>
+      <button role="button" className={styles.xButton} onClick={remove}>
         <Icon icon={'Cross'} color="white" width={'1rem'} height={'1rem'} />
       </button>
       <img className={styles.image} alt="not found" width={'100%'} src={src} />
