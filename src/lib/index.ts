@@ -31,6 +31,7 @@ export { useCounter } from './Util/hooks/useCounter';
 export { useScreenSize } from './Util/hooks/useScreenSize';
 export { useIsMobile } from './Util/hooks/useIsMobile';
 export { useBroadcast } from './Util/hooks/useBroadcast';
+export { doOnce, doOnceWithDelay } from './Util/doOnce';
 export {
   EventBroadcaster,
   LIKE_EVENT_TOPIC,
