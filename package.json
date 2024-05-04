@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.1.80",
+  "version": "0.1.83",
   "repository": {
     "type": "git",
     "url": "https://github.com/gwiyeomgo/react-toolkit"
@@ -29,7 +29,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@testing-library/jest-native": "^5.4.3",
+    "react": "18.3.1",
     "@types/jest": "^29.5.10",
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.39",
@@ -42,7 +42,6 @@
     "html2canvas": "^1.4.1",
     "lru-cache": "^5.1.1",
     "node-fetch": "^3.3.1",
-    "react": "^18.2.0",
     "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-ga4": "^2.1.0",

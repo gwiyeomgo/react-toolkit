@@ -1,8 +1,38 @@
-import { act, render } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import { ToggleButton } from './toggleButton';
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 
-it('ToggleButton 렌더링', () => {
-  render(<ToggleButton />);
-  act(() => {});
+it('ToggleButton left 속성 적용 확인', async () => {
+  render(<ToggleButton toggled={false} />);
+  const toggleElement = screen.getByRole('button');
+
+  await act(() => {
+    userEvent.click(toggleElement);
+  });
+  await waitFor(() => {
+    // button 요소의 style 속성 가져오기
+    const buttonStyles = window.getComputedStyle(toggleElement);
+    // left 속성의 값 가져오기
+    const leftValue = buttonStyles.getPropertyValue('left');
+    // left 속성이 calc(100% - 2px)인지 확인
+    expect(leftValue).toBe('calc(100% - 2px)');
+  });
+});
+
+it('ToggleButton transform 속성 적용 확인', async () => {
+  render(<ToggleButton toggled={false} />);
+  const toggleElement = screen.getByRole('button');
+
+  await act(() => {
+    userEvent.click(toggleElement);
+  });
+  await waitFor(() => {
+    // button 요소의 style 속성 가져오기
+    const buttonStyles = window.getComputedStyle(toggleElement);
+    // transform 속성의 값 가져오기
+    const transformValue = buttonStyles.getPropertyValue('transform');
+    // transform 속성이 translateX(-100%)인지 확인
+    expect(transformValue).toBe('translateX(-100%)');
+  });
 });

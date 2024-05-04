@@ -22,6 +22,8 @@ export { SearchInput } from './SearchInput/searchInput';
 export { MessageGroup } from './Messages/messageGroup';
 export { Message } from './Messages/message';
 export { Avatar } from './Avatar/avatar';
+export { Clock } from './Clock/clock';
+export { AnalogClock } from './Clock/analogClock';
 export { Textarea } from './Textarea/textarea';
 export { SingleUpload, SingleUploadProps } from './Upload/singleUplaod';
 export { FileUpload, FileUploadInputRef } from './Upload/fileUpload';
