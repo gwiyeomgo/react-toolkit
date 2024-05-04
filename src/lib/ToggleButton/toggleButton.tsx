@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
+import { useState } from 'react';
 const HiddenInput = styled.input`
   height: 0;
   width: 0;
@@ -52,19 +53,16 @@ const Toggle = styled.span`
 type ToggleButtonProps = {
   id?: string;
   toggled?: boolean;
-  onChange?: () => void;
 };
-const ToggleButton = ({ id, toggled, onChange }: ToggleButtonProps) => {
+
+const ToggleButton = ({ id, toggled }: ToggleButtonProps) => {
+  const [isToggleOn, setIsToggleOn] = useState(toggled);
+  const handleClick = () => setIsToggleOn((prevState) => !prevState);
   return (
     <>
-      <HiddenInput
-        id={id}
-        type="checkbox"
-        checked={toggled}
-        onChange={onChange}
-      />
+      <HiddenInput id={id} type="checkbox" checked={isToggleOn} />
       <Outline htmlFor={id}>
-        <Toggle />
+        <Toggle role={'button'} onClick={handleClick} />
       </Outline>
     </>
   );
