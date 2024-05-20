@@ -9,12 +9,7 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    isImageFile: {
-      control: { type: 'boolean' },
-      description: '이미지 파일만 업로드',
-    },
-  },
+  argTypes: {},
 } satisfies Meta<typeof SingleUpload>;
 
 export default meta;
@@ -22,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    isImageFile: true,
+    imageFileOnly: true,
     onSave: async (file) => {
       console.log('Default :', file);
     },
