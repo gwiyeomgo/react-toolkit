@@ -97,6 +97,9 @@ type SelectContextProps = {
   value: any; // 이 타입은 실제로 사용되는 값의 타입으로 수정해야 합니다.
   onValueChange: (newValue: any) => void;
 };
+//https://ko.legacy.reactjs.org/docs/context.html
+//context 는 일일이 props를 넘겨주지 않고도 컴포넌트 트리 전체에 데이터를 제공
+//애플리케이션 안의 여러 컴포넌트들에 전해줘야 하는 상황
 
 const SelectContext = createContext<SelectContextProps | undefined>(undefined);
 
@@ -104,6 +107,7 @@ type SelectContextProviderProps = {
   children?: ReactNode;
   defaultValue?: any; //TODO 이 타입은 실제로 사용되는 기본 값의 타입으로 수정해야 합니다.
 };
+//Provider 하위에서 context를 구독하는 모든 컴포넌트는 Provider의 value prop가 바뀔 때마다 다시 렌더링 됩니다
 const SelectContextProvider: React.FC<SelectContextProviderProps> = ({
   children,
   defaultValue,

@@ -21,6 +21,15 @@ interface IconProps extends HTMLAttributes<HTMLDivElement> {
  * @param ...rest
  * @returns Icon react component
  */
+
+/*
+*
+Suspense 컴포넌트는 리액트의 지연된 로딩(lazy loading) 기능과 함께 사용됩니다.
+lazy 함수는 컴포넌트의 지연된 로딩을 가능하게 합니다. 이것은 애플리케이션이 처음 로드될 때 필요하지 않은 컴포넌트를 로드하지 않고, 해당 컴포넌트가 필요한 시점에 비동기적으로 로드하여 성능을 최적화할 수 있게 해줍니다.
+그러나 lazy 함수로 렌더링된 컴포넌트는 초기에 비동기적으로 로드되기 때문에 해당 컴포넌트가 로드될 때까지 부모 컴포넌트가 빈 화면이 될 수 있습니다. 이런 경우에 사용되는 것이 Suspense 컴포넌트입니다.
+Suspense 컴포넌트는 지연된 로딩이 필요한 부분을 감쌀 수 있으며, 해당 부분이 로딩될 때까지 fallback 컨텐츠를 보여줄 수 있습니다. 이를 통해 사용자는 로딩 중에도 어떤 작업이 진행 중인지를 알 수 있고, 빈 화면을 피할 수 있습니다.
+따라서 Suspense 컴포넌트는 지연된 로딩을 사용할 때 사용자 경험을 개선하고, 애플리케이션의 성능을 향상시키는 데 중요한 역할을 합니다.
+* */
 const Icon = ({
   icon,
   className,
@@ -50,6 +59,7 @@ const Icon = ({
       }}
       {...rest}
     >
+      {/*Suspense 컴포넌트는 lazy 컴포넌트를 감쌉*/}
       <Suspense fallback={null}>
         <SvgIcon />
       </Suspense>

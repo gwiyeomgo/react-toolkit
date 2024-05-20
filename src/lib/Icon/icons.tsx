@@ -2,7 +2,7 @@ import { lazy as _lazy } from 'react';
 
 //Unexpected any. Specify a different type
 //"@typescript-eslint/no-explicit-any": ["off"]
-
+//https://ko.legacy.reactjs.org/docs/code-splitting.html#reactlazy
 //Don't use `Function` as a type. The `Function` type accepts any function-like value.
 //https://www.totaltypescript.com/dont-use-function-keyword-in-typescript
 // Function 대신 () => any 사용
@@ -24,4 +24,6 @@ export const icons = {
   Minus: lazy(async () => import('./assets/minus.svg')),
   Plus: lazy(async () => import('./assets/plus.svg')),
   EmptyHeart: lazy(async () => import('./assets/empty-heart.svg')),
+  ArrowRight: lazy(async () => import('./assets/arrow-right.svg')),
+  ArrowLeft: lazy(async () => import('./assets/arrow-left.svg')),
 };
