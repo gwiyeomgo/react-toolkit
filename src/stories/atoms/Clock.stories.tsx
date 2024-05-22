@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Clock } from '../../lib/Clock/clock';
+import { Clock } from '../../lib';
 
 const meta = {
   title: '1.Atoms/Clock',

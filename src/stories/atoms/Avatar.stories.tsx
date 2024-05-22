@@ -1,5 +1,4 @@
-import { Avatar } from '../../lib/Avatar/avatar';
-
+import { Avatar } from '../../lib';
 import type { Meta, StoryObj } from '@storybook/react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
