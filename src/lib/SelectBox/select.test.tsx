@@ -26,7 +26,6 @@ test('렌더링 완료 (성공)', () => {
       </Select.OptionList>
     </Select.Provider>,
   );
-  act(() => {});
 });
 
 test('SelectBox.Trigger(combobox) 를 클릭했을때 목록이 열리는가? (성공)', async () => {

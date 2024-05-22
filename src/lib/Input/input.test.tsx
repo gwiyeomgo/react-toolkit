@@ -25,9 +25,13 @@ it('onChange()', async () => {
 
   await act(() => {
     container.querySelector('input')?.focus();
+    const target = {} as { value: string };
+    target.value = '111';
+    //TODO warning  Forbidden non-null assertion ->
     fireEvent.change(container.querySelector('input')!, {
-      target: { value: '111' },
+      target: target,
     });
+
     expect(container.querySelector('input')?.value).toEqual('111');
 
     unmount();

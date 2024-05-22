@@ -27,8 +27,7 @@ yarn.lock
 .idea
 
 
-/dist
 /node_modules
-
+/docs
 package-lock.json
 

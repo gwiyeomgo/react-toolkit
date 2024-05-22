@@ -1,7 +1,6 @@
-import { act, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Timeline } from './timeline';
 import React from 'react';
-//import userEvent from '@testing-library/user-event';
 
 it('타임라인테스트', () => {
   render(
@@ -16,8 +15,6 @@ it('타임라인테스트', () => {
       </Timeline.List>
     </>,
   );
-
-  act(() => {});
 });
 //hover
 

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { LikeButton } from '../../lib/Buttton/likeButton';
-import { useBroadcast } from '../../lib/Util/hooks/useBroadcast';
-import {
-  LIKE_EVENT_TOPIC,
-  MEMBER_CHANGE_TOPIC,
-} from '../../lib/Util/eventBroadcaster';
+import { useBroadcast } from '../../lib';
+import { LIKE_EVENT_TOPIC, MEMBER_CHANGE_TOPIC } from '../../lib';
 
 export const BroadcastExample = () => {
   const [member, setMember] = useState<{
