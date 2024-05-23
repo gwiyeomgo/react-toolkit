@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.1.85",
+  "version": "0.1.89",
   "repository": {
     "type": "git",
     "url": "https://github.com/gwiyeomgo/react-toolkit"
@@ -33,18 +33,17 @@
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.39",
     "@types/react-dom": "^18.2.17",
-    "browser-image-compression": "^2.0.2",
-    "classnames": "^2.3.2",
-    "dayjs": "^1.11.10",
-    "heic2any": "^0.0.4",
-    "html2canvas": "^1.4.1",
-    "node-fetch": "^3.3.1",
     "react": "18.3.1",
     "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-ga4": "^2.1.0",
     "react-scripts": "^5.0.1",
-    "styled-components": "^6.0.2"
+    "styled-components": "^6.0.2",
+    "browser-image-compression": "^2.0.2",
+    "classnames": "^2.3.2",
+    "dayjs": "^1.11.10",
+    "heic2any": "^0.0.4",
+    "html2canvas": "^1.4.1"
   },
   "scripts": {
     "run-storybook": "npm run storybook",
@@ -55,8 +54,6 @@
     "ts-build": " npm-run-all clean build-ts fomat:fix:all coverage",
     "publish": "npm publish --access public",
     "clean": "npx rimraf dist",
-    "make-demo-js": "node make_demo.mjs",
-    "make-demo-ts": "node make_demo_ts.mjs",
     "build-js": "npx rimraf dist && yarn copy-js && yarn copy-css && yarn copy-svg",
     "build-ts": "yarn clean && tsc && yarn copy-css && yarn copy-svg",
     "copy-js": "babel src/lib -d dist",
