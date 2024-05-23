@@ -28,6 +28,6 @@ yarn.lock
 
 
 /node_modules
-/docs
+/dist
 package-lock.json
 
