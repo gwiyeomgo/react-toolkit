@@ -40,6 +40,7 @@ function TemperatureInput({ temperature, scale, onTemperatureChange }: Props) {
     <fieldset>
       <legend>Enter temperature in {scaleNames[scale]}:</legend>
       <input
+        role="input"
         value={temperature}
         onChange={(e) => onTemperatureChange(e.target.value)}
       />

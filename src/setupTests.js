@@ -4,6 +4,7 @@
 //https://github.com/testing-library/jest-dom/discussions/400
 //require('@testing-library/jest-dom');
 import '@testing-library/jest-dom/extend-expect';
+import React from 'react';
 
 jest.mock('heic2any', () => ({
   __esModule: true,
@@ -25,3 +26,18 @@ jest.mock('browser-image-compression', () => ({
   __esModule: true,
   default: jest.fn().mockResolvedValue(''),
 }));
+
+jest.mock('react-daum-postcode', () => ({
+  ...jest.requireActual('react-daum-postcode'),
+  __esModule: true,
+  default: jest.fn().mockResolvedValue(''),
+}));
+
+jest.mock('focus-trap-react', () => ({
+  ...jest.requireActual('focus-trap-react'),
+  __esModule: true,
+  default: jest.fn().mockResolvedValue(''),
+}));
+//console.error
+//Not implemented: window.scrollTo window
+jest.spyOn(window, 'scrollTo').mockImplementation(() => {});

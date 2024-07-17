@@ -18,6 +18,7 @@ export type ButtonProps = {
   isSearchButton?: boolean;
   disabled?: boolean;
   danger?: boolean;
+  ref?: React.Ref<any>;
 };
 
 const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (

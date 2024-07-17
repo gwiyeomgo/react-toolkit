@@ -74,6 +74,8 @@
 
 3, [ViewCaptureButton](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/4-templates-viewcapturebutton--docs)
 
+4, [DaumAdressSearch](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/4-templates-daumadresssearch--docs)
+
 ### contexts
 
 1, [SearchCondigions](https://gwiyeomgo.github.io/react-toolkit/?path=/docs/contexts-searchcondigions--docs)

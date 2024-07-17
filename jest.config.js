@@ -36,7 +36,6 @@ module.exports = {
   fakeTimers: {
     enableGlobally: false,
   },
-
   //테스트 커버리지
   collectCoverage: true,
   coverageDirectory: 'coverage',
