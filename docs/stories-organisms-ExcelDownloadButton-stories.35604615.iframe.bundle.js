@@ -120,6 +120,7 @@
             'button',
             {
               role: 'button',
+              'aria-label': 'default-button',
               className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(
                 buttonClass,
                 {
@@ -1265,4 +1266,4 @@
     },
   },
 ]);
-//# sourceMappingURL=stories-organisms-ExcelDownloadButton-stories.3eac58a7.iframe.bundle.js.map
+//# sourceMappingURL=stories-organisms-ExcelDownloadButton-stories.35604615.iframe.bundle.js.map

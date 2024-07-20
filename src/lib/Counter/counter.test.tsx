@@ -9,6 +9,9 @@ it('Counter 렌더링', async () => {
 
   // "button" 역할을 가진 모든 요소를 찾음
   const buttons = screen.getAllByRole('button');
+  // aria-label이 "input-field"인 요소를 찾음
+  const inputElement = screen.getByLabelText('input-field');
+
   expect(buttons.length).toBe(2);
 
   await act(() => {
@@ -18,7 +21,6 @@ it('Counter 렌더링', async () => {
 
   // waitFor 사용 변경된 값이 화면에 나타날 때까지 기다림
   await waitFor(() => {
-    const inputElement = screen.getByRole('input');
     expect(inputElement).toHaveValue('1');
   });
 
@@ -29,7 +31,6 @@ it('Counter 렌더링', async () => {
 
   // waitFor 사용 변경된 값이 화면에 나타날 때까지 기다림
   await waitFor(() => {
-    const inputElement = screen.getByRole('input');
     expect(inputElement).toHaveValue('0');
   });
 });

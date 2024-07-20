@@ -308,7 +308,11 @@
           suffix: ':',
         },
         CountdownTimer = (_ref) => {
-          let { fontSize = 60, targetTime, type = 'default' } = _ref,
+          let {
+              fontSize = 60,
+              targetTime = '20240729000000',
+              type = 'default',
+            } = _ref,
             [remainingTime, setRemainingTime] = (0, react.useState)(0),
             [time, setTime] = react.useState(TimeUnitDefault),
             [keys, setKeys] = (0, react.useState)([]);
@@ -395,10 +399,10 @@
                 type: { name: 'number' },
               },
               targetTime: {
-                defaultValue: null,
+                defaultValue: { value: '20240729000000' },
                 description: '',
                 name: 'targetTime',
-                required: !0,
+                required: !1,
                 type: { name: 'string' },
               },
               type: {
@@ -1081,6 +1085,7 @@
               children: [
                 (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Row, {
                   children:
+                    data &&
                     data.length > 0 &&
                     data.map((item, index) =>
                       (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(

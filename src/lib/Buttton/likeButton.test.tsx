@@ -2,23 +2,29 @@ import { act, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { LikeButton } from './likeButton';
 import userEvent from '@testing-library/user-event';
+import accessibilityTest from '../../../tests/accessibilityTest';
+import mountTest from '../../../tests/mountTest';
 
-it('LikeButton ', async () => {
-  render(
-    <LikeButton
-      onClick={() => {
-        console.log('LikeButton click');
-      }}
-    />,
-  );
-  const buttonElement = screen.getByRole('button');
-  const iconElement = screen.getByRole('img');
-  await act(() => {
-    expect(iconElement).toHaveAttribute('aria-label', 'EmptyHeart');
-    userEvent.click(buttonElement);
-  });
+describe('좋아요 버튼 테스트', () => {
+  mountTest(LikeButton as any);
+  accessibilityTest(LikeButton as any);
+  it('LikeButton ', () => {
+    render(
+      <LikeButton
+        onClick={() => {
+          console.log('LikeButton click');
+        }}
+      />,
+    );
+    const buttonElement = screen.getByRole('button');
+    const iconElement = screen.getByRole('img');
+    act(() => {
+      expect(iconElement).toHaveAttribute('aria-label', 'EmptyHeart');
+      userEvent.click(buttonElement);
+    });
 
-  await waitFor(() => {
-    expect(iconElement).toHaveAttribute('aria-label', 'Heart');
+    waitFor(() => {
+      expect(iconElement).toHaveAttribute('aria-label', 'Heart');
+    });
   });
 });

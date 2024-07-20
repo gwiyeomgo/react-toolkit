@@ -42,7 +42,7 @@ type CountdownTimerProps = {
 
 const CountdownTimer = ({
   fontSize = 60,
-  targetTime,
+  targetTime = '20240729000000',
   type = 'default',
 }: CountdownTimerProps) => {
   const [remainingTime, setRemainingTime] = useState(0);

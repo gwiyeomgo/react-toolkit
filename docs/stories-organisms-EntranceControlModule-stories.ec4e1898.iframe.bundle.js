@@ -98,6 +98,7 @@
             'button',
             {
               role: 'button',
+              'aria-label': 'default-button',
               className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(
                 buttonClass,
                 {
@@ -683,4 +684,4 @@
     },
   },
 ]);
-//# sourceMappingURL=stories-organisms-EntranceControlModule-stories.56149a4e.iframe.bundle.js.map
+//# sourceMappingURL=stories-organisms-EntranceControlModule-stories.ec4e1898.iframe.bundle.js.map

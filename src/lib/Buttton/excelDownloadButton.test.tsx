@@ -2,6 +2,8 @@ import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import * as excel from './excelDownloadButton';
+import accessibilityTest from '../../../tests/accessibilityTest';
+import mountTest from '../../../tests/mountTest';
 
 //https://stackoverflow.com/questions/54090231/how-to-fix-error-not-implemented-navigation-except-hash-changes
 //console.error
@@ -42,6 +44,9 @@ const headers = [
 const data = [{ a: 'aaa', b: 'bbb' }];
 
 describe('test', () => {
+  mountTest(excel.ExcelDownloadButton as any);
+  accessibilityTest(excel.ExcelDownloadButton as any);
+
   it('버튼 렌더링 확인', async () => {
     await act(async () => {
       render(
@@ -55,7 +60,8 @@ describe('test', () => {
     });
 
     await waitFor(() => {
-      const buttonElement = screen.getByText('버튼1');
+      const buttonElement = screen.getByRole('button');
+
       expect(buttonElement).toBeInTheDocument();
     });
   });
@@ -71,12 +77,12 @@ describe('test', () => {
           fileName="test.csv"
           headers={headers}
           fetchData={fetchData}
-        />,
+        ></excel.ExcelDownloadButton>,
       );
     });
 
     await act(async () => {
-      const buttonElement = screen.getByText('버튼2');
+      const buttonElement = screen.getByRole('button');
       userEvent.click(buttonElement);
     });
 

@@ -2,15 +2,20 @@ import React from 'react';
 import { act, render, screen } from '@testing-library/react';
 import { Button } from './button';
 import userEvent from '@testing-library/user-event';
+import accessibilityTest from '../../../tests/accessibilityTest';
+import mountTest from '../../../tests/mountTest';
 //import userEvent from '@testing-library/user-event';
 //error  Require statement not part of import statement
 //'@typescript-eslint/no-var-requires': 0,
 
 describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => {
+  mountTest(Button);
+  accessibilityTest(Button as any);
+
   it('color 지정시 ', () => {
     render(
       <>
-        <Button danger>zzz</Button>
+        <Button danger>버튼</Button>
       </>,
     );
     const buttonElement = screen.getByRole('button'); //class="btn danger"
@@ -23,7 +28,7 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
   it('type 지정시 ', () => {
     render(
       <>
-        <Button type="secondary" />
+        <Button type="secondary">버튼</Button>
       </>,
     );
     const buttonElement = screen.getByRole('button');
@@ -35,7 +40,9 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
 
     render(
       <>
-        <Button disabled={true} onClick={onClick} />
+        <Button disabled={true} onClick={onClick}>
+          버튼
+        </Button>
       </>,
     );
     const buttonElement = screen.getByRole('button');
@@ -52,7 +59,9 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
     const onClickMock = jest.fn();
     render(
       <>
-        <Button loading={true} onClick={onClickMock} />
+        <Button loading={true} onClick={onClickMock}>
+          버튼
+        </Button>
       </>,
     );
     const buttonElement = screen.getByRole('button');

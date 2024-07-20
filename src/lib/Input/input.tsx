@@ -89,6 +89,9 @@ type InputProps = {
   className?: string;
   style?: React.CSSProperties;
   typeSearch?: boolean;
+  autoFocus?: boolean;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 };
 const Input = forwardRef<InputRef, InputProps>((props, ref) => {
   const {
@@ -178,7 +181,7 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
         })}
       >
         <InputComponent
-          role="input"
+          aria-label={label || 'input-field'} // aria-label 추가
           disabled={readOnly}
           value={inputValue}
           ref={inputRef}

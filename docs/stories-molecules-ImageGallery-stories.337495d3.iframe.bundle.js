@@ -400,6 +400,7 @@
               children: [
                 (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Row, {
                   children:
+                    data &&
                     data.length > 0 &&
                     data.map((item, index) =>
                       (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(

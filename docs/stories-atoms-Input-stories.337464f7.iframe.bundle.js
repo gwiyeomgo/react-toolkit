@@ -244,7 +244,7 @@
                           react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(
                             InputComponent,
                             {
-                              role: 'input',
+                              'aria-label': label || 'input-field',
                               disabled: readOnly,
                               value: inputValue,
                               ref: inputRef,
@@ -367,6 +367,31 @@
                 required: !1,
                 type: { name: 'boolean' },
               },
+              autoFocus: {
+                defaultValue: null,
+                description: '',
+                name: 'autoFocus',
+                required: !1,
+                type: { name: 'boolean' },
+              },
+              onFocus: {
+                defaultValue: null,
+                description: '',
+                name: 'onFocus',
+                required: !1,
+                type: {
+                  name: '((event: FocusEvent<HTMLInputElement, Element>) => void)',
+                },
+              },
+              onBlur: {
+                defaultValue: null,
+                description: '',
+                name: 'onBlur',
+                required: !1,
+                type: {
+                  name: '((event: FocusEvent<HTMLInputElement, Element>) => void)',
+                },
+              },
             },
           }),
           'undefined' != typeof STORYBOOK_REACT_CLASSES &&
@@ -476,4 +501,4 @@
     },
   },
 ]);
-//# sourceMappingURL=stories-atoms-Input-stories.73036278.iframe.bundle.js.map
+//# sourceMappingURL=stories-atoms-Input-stories.337464f7.iframe.bundle.js.map
