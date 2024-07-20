@@ -15,8 +15,8 @@ module.exports = {
     //  '^#/(.*)$': '<rootDir>/src/lib/$1',
     // '^#utils/(.*)$': '<rootDir>/src/lib/Util/$1',
     // '^#hooks/(.*)$': '<rootDir>/src/lib/Util/hooks/$1',
-    '\\.svg$': '<rootDir>/__mocks__/svg.js',
-    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
+    '\\.svg$': '<rootDir>/tests/__mocks__/svg.js',
+    '\\.(css|less)$': '<rootDir>/tests/__mocks__/styleMock.js',
   },
 
   // Module file extensions for importing
@@ -53,5 +53,5 @@ module.exports = {
   //커버리지 수집 범위 설정
   //collectCoverageFrom: ['**/*.[jt]s?(x)', '!**/*.stories.[jt]s?(x)','!**/*.types.[jt]s?(x)'],
   collectCoverageFrom: ['src/lib/**/*.tsx'], // "**/*.[jt]s?(x)" 는  파일 확장자가 js, jsx, ts, 또는 tsx인 모든 파일을 의미
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'], //  "<rootDir>/src/setupTests.js"
+  setupFilesAfterEnv: ['<rootDir>/tests/setupTests.js'], //  "<rootDir>/src/setupTests.js"
 };

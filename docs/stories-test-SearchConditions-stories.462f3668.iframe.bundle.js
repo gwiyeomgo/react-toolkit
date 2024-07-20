@@ -162,6 +162,7 @@
             'button',
             {
               role: 'button',
+              'aria-label': 'default-button',
               className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(
                 buttonClass,
                 {
@@ -636,4 +637,4 @@
     },
   },
 ]);
-//# sourceMappingURL=stories-test-SearchConditions-stories.eaa7624d.iframe.bundle.js.map
+//# sourceMappingURL=stories-test-SearchConditions-stories.462f3668.iframe.bundle.js.map

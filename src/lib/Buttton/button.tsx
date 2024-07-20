@@ -60,6 +60,7 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
   return (
     <button
       role="button"
+      aria-label="default-button"
       className={classnames(buttonClass, {
         [styles.searchButton]: isSearchButton,
         [styles.danger]: danger,

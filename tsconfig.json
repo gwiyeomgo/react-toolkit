@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     // tsc 컴파일된 JavaScript 파일을 저장할 디렉토리 지정
     "outDir": "./dist",
-    "rootDir": "./src", // 컴파일할 소스 코드가 있는 디렉토리
+    "rootDir": "./", // 컴파일할 소스 코드가 있는 디렉토리
     //TODO jest 에서 적용 실패 ... 이유 찾고 개선 하기
     //절대 경로로 컴포넌트 추가
     //보통 상대 경로를 사용하여 불러와 사용=> 복잡해지면 위치 파악하기 어려움
     //https://www.daleseo.com/tsconfig-path-mapping/
-    "baseUrl": "./src", //src 폴더를 기본으로 하는 절대 경로 컴포넌트를 추가할 수 있다.
+    //"baseUrl": "./src" //src 폴더를 기본으로 하는 절대 경로 컴포넌트를 추가할 수 있다.
     //별칭 사용을 원할때=> jest 를 사용하는 경우 moduleNameMapper 에 설정도 변경 필요
     "paths": {
       //baseUrl 옵션으로 이미 ./src을 지정해준 경우, paths 옵션에서 ./src를 생략 가능
@@ -53,5 +54,5 @@
   },
   "include": ["src/**/*.tsx", "src/**/*.ts"],
   //"include": ["src/**/*"],
-  "exclude": ["node_modules", "./src/demo_init_ts", "./src/stories"]
+  "exclude": ["node_modules", "./src/demo_init_ts", "./src/stories", "./tests"]
 }

@@ -139,6 +139,7 @@
             'button',
             {
               role: 'button',
+              'aria-label': 'default-button',
               className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(
                 buttonClass,
                 {
@@ -865,7 +866,7 @@
                           react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(
                             InputComponent,
                             {
-                              role: 'input',
+                              'aria-label': label || 'input-field',
                               disabled: readOnly,
                               value: inputValue,
                               ref: inputRef,
@@ -987,6 +988,31 @@
                 name: 'typeSearch',
                 required: !1,
                 type: { name: 'boolean' },
+              },
+              autoFocus: {
+                defaultValue: null,
+                description: '',
+                name: 'autoFocus',
+                required: !1,
+                type: { name: 'boolean' },
+              },
+              onFocus: {
+                defaultValue: null,
+                description: '',
+                name: 'onFocus',
+                required: !1,
+                type: {
+                  name: '((event: FocusEvent<HTMLInputElement, Element>) => void)',
+                },
+              },
+              onBlur: {
+                defaultValue: null,
+                description: '',
+                name: 'onBlur',
+                required: !1,
+                type: {
+                  name: '((event: FocusEvent<HTMLInputElement, Element>) => void)',
+                },
               },
             },
           }),
@@ -1964,4 +1990,4 @@
     },
   },
 ]);
-//# sourceMappingURL=stories-templates-DaumAdressSearch-stories.09a04bfc.iframe.bundle.js.map
+//# sourceMappingURL=stories-templates-DaumAdressSearch-stories.afdc6cf6.iframe.bundle.js.map

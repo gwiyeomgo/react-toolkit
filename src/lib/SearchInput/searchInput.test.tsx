@@ -8,8 +8,9 @@ it('SearchInput 렌더링', async () => {
   const onClick = jest.fn();
 
   render(<SearchInput onClickSearch={onClick} delay={delay} />);
-  const inputElement = screen.getByRole('input');
-  const button = screen.getByRole('button', { name: 'Search' });
+  // aria-label이 "input-field"인 요소를 찾음
+  const inputElement = screen.getByLabelText('input-field');
+  const button = screen.getByRole('button');
   //메세지 입력
   await act(() => {
     userEvent.type(inputElement, 'SearchInput테스트');
@@ -17,7 +18,6 @@ it('SearchInput 렌더링', async () => {
 
   // waitFor 사용 변경된 값이 화면에 나타날 때까지 기다림
   await waitFor(() => {
-    const inputElement = screen.getByRole('input');
     expect(inputElement).toHaveValue('SearchInput테스트');
   });
 
@@ -28,7 +28,6 @@ it('SearchInput 렌더링', async () => {
 
   // 클리어됨
   await waitFor(() => {
-    const inputElement = screen.getByRole('input');
     expect(inputElement).toHaveValue('');
   });
 

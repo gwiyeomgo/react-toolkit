@@ -1,6 +1,6 @@
 {
   "name": "@gwiyeomgo/react-toolkit",
-  "version": "0.1.93",
+  "version": "0.1.94",
   "repository": {
     "type": "git",
     "url": "https://github.com/gwiyeomgo/react-toolkit"
@@ -41,6 +41,8 @@
     "focus-trap-react": "^10.2.3",
     "heic2any": "^0.0.4",
     "html2canvas": "^1.4.1",
+    "jest-axe": "^9.0.0",
+    "mockdate": "^3.0.5",
     "react": "18.3.1",
     "react-beautiful-dnd": "13.1.1",
     "react-csv": "^2.2.2",
@@ -113,6 +115,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest-axe": "^3.5.9",
     "@types/react-csv": "^1.1.9",
     "eslint": "^8.56.0",
     "eslint-plugin-storybook": "^0.8.0",

@@ -1,13 +1,58 @@
-'use strict';
 (self.webpackChunk_gwiyeomgo_react_toolkit =
   self.webpackChunk_gwiyeomgo_react_toolkit || []).push([
-  [8849],
+  [5801, 4691, 945],
   {
+    './src/stories/molecules/SearchInput.stories.tsx': (
+      __unused_webpack_module,
+      __webpack_exports__,
+      __webpack_require__,
+    ) => {
+      'use strict';
+      __webpack_require__.r(__webpack_exports__),
+        __webpack_require__.d(__webpack_exports__, {
+          Default: () => Default,
+          __namedExportsOrder: () => __namedExportsOrder,
+          default: () => __WEBPACK_DEFAULT_EXPORT__,
+        });
+      let __WEBPACK_DEFAULT_EXPORT__ = {
+          title: '2.Molecules/SearchInput',
+          component: __webpack_require__(
+            './src/lib/SearchInput/searchInput.tsx',
+          ).D,
+          parameters: { layout: 'centered' },
+          tags: ['autodocs'],
+          argTypes: {},
+        },
+        Default = {
+          args: {
+            value: '',
+            buttonStyle: {},
+            inputStyle: {},
+            onClickSearch: (str) => {
+              console.log('검색', str);
+            },
+            delay: 100,
+          },
+        };
+      Default.parameters = {
+        ...Default.parameters,
+        docs: {
+          ...Default.parameters?.docs,
+          source: {
+            originalSource:
+              "{\n  args: {\n    value: '',\n    buttonStyle: {},\n    inputStyle: {},\n    onClickSearch: str => {\n      console.log('검색', str);\n    },\n    delay: 100\n  }\n}",
+            ...Default.parameters?.docs?.source,
+          },
+        },
+      };
+      let __namedExportsOrder = ['Default'];
+    },
     './src/lib/Buttton/button.tsx': (
       __unused_webpack_module,
       __webpack_exports__,
       __webpack_require__,
     ) => {
+      'use strict';
       __webpack_require__.d(__webpack_exports__, { $: () => Button });
       var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
           './node_modules/react/index.js',
@@ -64,6 +109,7 @@
             'button',
             {
               role: 'button',
+              'aria-label': 'default-button',
               className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(
                 buttonClass,
                 {
@@ -99,6 +145,7 @@
       __webpack_exports__,
       __webpack_require__,
     ) => {
+      'use strict';
       __webpack_require__.d(__webpack_exports__, { I: () => Icon });
       var react = __webpack_require__('./node_modules/react/index.js');
       function lazy(importFn) {
@@ -328,6 +375,7 @@
       __webpack_exports__,
       __webpack_require__,
     ) => {
+      'use strict';
       __webpack_require__.d(__webpack_exports__, { p: () => Input });
       var _templateObject,
         _templateObject2,
@@ -492,7 +540,7 @@
                           react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(
                             InputComponent,
                             {
-                              role: 'input',
+                              'aria-label': label || 'input-field',
                               disabled: readOnly,
                               value: inputValue,
                               ref: inputRef,
@@ -615,6 +663,31 @@
                 required: !1,
                 type: { name: 'boolean' },
               },
+              autoFocus: {
+                defaultValue: null,
+                description: '',
+                name: 'autoFocus',
+                required: !1,
+                type: { name: 'boolean' },
+              },
+              onFocus: {
+                defaultValue: null,
+                description: '',
+                name: 'onFocus',
+                required: !1,
+                type: {
+                  name: '((event: FocusEvent<HTMLInputElement, Element>) => void)',
+                },
+              },
+              onBlur: {
+                defaultValue: null,
+                description: '',
+                name: 'onBlur',
+                required: !1,
+                type: {
+                  name: '((event: FocusEvent<HTMLInputElement, Element>) => void)',
+                },
+              },
             },
           }),
           'undefined' != typeof STORYBOOK_REACT_CLASSES &&
@@ -630,6 +703,7 @@
       __webpack_exports__,
       __webpack_require__,
     ) => {
+      'use strict';
       __webpack_require__.d(__webpack_exports__, { R: () => Loading });
       var _templateObject,
         _templateObject2,
@@ -834,271 +908,12 @@
             });
       } catch (__react_docgen_typescript_loader_error) {}
     },
-    './src/lib/Messages/message.tsx': (
-      __unused_webpack_module,
-      __webpack_exports__,
-      __webpack_require__,
-    ) => {
-      __webpack_require__.d(__webpack_exports__, { Q: () => Message });
-      var _templateObject,
-        _templateObject2,
-        _Users_gwiyeom_Documents_react_react_toolkit_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral_js__WEBPACK_IMPORTED_MODULE_3__ =
-          __webpack_require__(
-            './node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js',
-          ),
-        styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          './node_modules/styled-components/dist/styled-components.browser.esm.js',
-        );
-      __webpack_require__('./node_modules/react/index.js');
-      var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-        './node_modules/react/jsx-runtime.js',
-      );
-      let Container = styled_components__WEBPACK_IMPORTED_MODULE_2__.Ay.div(
-          _templateObject ||
-            (_templateObject = (0,
-            _Users_gwiyeom_Documents_react_react_toolkit_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral_js__WEBPACK_IMPORTED_MODULE_3__.A)(
-              [
-                '\n  margin: 10px 30px;\n  padding: 10px;\n  font-family: sans-serif;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  border-radius: 10px;\n  background-color: #ffffff;\n  border-radius: 10px;\n  width: max-content; /* 수정: min-content 대신 max-content 사용 */\n  max-width: 300px; /* 추가: 부모 요소 크기를 넘지 않도록 최대 너비 설정 */\n  box-shadow:\n    rgba(0, 0, 0, 0.12) 0px 1px 3px,\n    rgba(0, 0, 0, 0.24) 0px 1px 2px;\n  outline: none;\n',
-              ],
-            )),
-        ),
-        Text = styled_components__WEBPACK_IMPORTED_MODULE_2__.Ay.span(
-          _templateObject2 ||
-            (_templateObject2 = (0,
-            _Users_gwiyeom_Documents_react_react_toolkit_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral_js__WEBPACK_IMPORTED_MODULE_3__.A)(
-              [
-                '\n  color: #000000;\n  margin: 0 5px;\n  text-align: left;\n  font-size: 16px;\n  width: 100%;\n  word-wrap: break-word; /* 추가 */\n  max-width: 200px; /* 추가 */\n',
-              ],
-            )),
-        ),
-        Message = (_ref) => {
-          let { children, className, style } = _ref;
-          return (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(
-            Container,
-            {
-              className: className,
-              style: style,
-              children: (0, react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(
-                Text,
-                { children: children },
-              ),
-            },
-          );
-        };
-      try {
-        (Message.displayName = 'Message'),
-          (Message.__docgenInfo = {
-            description: '',
-            displayName: 'Message',
-            props: {
-              id: {
-                defaultValue: null,
-                description: '',
-                name: 'id',
-                required: !0,
-                type: { name: 'number' },
-              },
-              className: {
-                defaultValue: null,
-                description: '',
-                name: 'className',
-                required: !1,
-                type: { name: 'string' },
-              },
-              style: {
-                defaultValue: null,
-                description: '',
-                name: 'style',
-                required: !1,
-                type: { name: 'CSSProperties' },
-              },
-            },
-          }),
-          'undefined' != typeof STORYBOOK_REACT_CLASSES &&
-            (STORYBOOK_REACT_CLASSES['src/lib/Messages/message.tsx#Message'] = {
-              docgenInfo: Message.__docgenInfo,
-              name: 'Message',
-              path: 'src/lib/Messages/message.tsx#Message',
-            });
-      } catch (__react_docgen_typescript_loader_error) {}
-    },
-    './src/lib/Messages/messageGroup.tsx': (
-      __unused_webpack_module,
-      __webpack_exports__,
-      __webpack_require__,
-    ) => {
-      __webpack_require__.d(__webpack_exports__, { $: () => MessageGroup });
-      var _templateObject,
-        _templateObject2,
-        _templateObject3,
-        taggedTemplateLiteral = __webpack_require__(
-          './node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js',
-        ),
-        react = __webpack_require__('./node_modules/react/index.js'),
-        message = __webpack_require__('./src/lib/Messages/message.tsx');
-      let useNotificationTimer = (list, delay) => {
-        let [notifications, setNotifications] = (0, react.useState)([]),
-          timerRef = (0, react.useRef)(null);
-        return (
-          (0, react.useEffect)(
-            () => (
-              timerRef.current && clearInterval(timerRef.current),
-              (timerRef.current = setInterval(() => {
-                setNotifications((prevList) => {
-                  if (!(prevList.length < list.length))
-                    return clearInterval(timerRef.current), [];
-                  {
-                    let index = prevList.length;
-                    return [...prevList, list[index]];
-                  }
-                });
-              }, delay)),
-              () => {
-                timerRef.current &&
-                  (clearInterval(timerRef.current), setNotifications([]));
-              }
-            ),
-            [list, delay, setNotifications],
-          ),
-          notifications
-        );
-      };
-      var searchInput = __webpack_require__(
-          './src/lib/SearchInput/searchInput.tsx',
-        ),
-        styled_components_browser_esm = __webpack_require__(
-          './node_modules/styled-components/dist/styled-components.browser.esm.js',
-        ),
-        jsx_runtime = __webpack_require__(
-          './node_modules/react/jsx-runtime.js',
-        );
-      let Container = styled_components_browser_esm.Ay.div(
-          _templateObject ||
-            (_templateObject = (0, taggedTemplateLiteral.A)([
-              '\n  display: flex;\n  flex-direction: column;\n  background-color: #fcfcfc;\n  width: 300px;\n  padding: 20px;\n  box-shadow:\n    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,\n    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;\n',
-            ])),
-        ),
-        Content = styled_components_browser_esm.Ay.div(
-          _templateObject2 ||
-            (_templateObject2 = (0, taggedTemplateLiteral.A)([
-              '\n  flex: 1; /* 남은 공간을 모두 차지하도록 설정 */\n  overflow-y: auto; /* 콘텐츠가 넘치면 스크롤바 추가 */\n',
-            ])),
-        ),
-        Footer = styled_components_browser_esm.Ay.div(
-          _templateObject3 ||
-            (_templateObject3 = (0, taggedTemplateLiteral.A)([
-              "\n  width: '100%';\n  flex: 0 0 auto; /* 높이를 고정시키고, 늘어나거나 줄어들지 않도록 설정 */\n",
-            ])),
-        ),
-        MessageGroup = (_ref) => {
-          let { boxMinHeight, delay, list, addMessage } = _ref,
-            [statusList, setStatusList] = (0, react.useState)(list),
-            notifications = statusList
-              ? useNotificationTimer(statusList, delay)
-              : [];
-          return (0, jsx_runtime.jsxs)(Container, {
-            style: { minHeight: boxMinHeight || '50vh' },
-            children: [
-              (0, jsx_runtime.jsx)(Content, {
-                children: notifications.map((notification) =>
-                  (0, jsx_runtime.jsx)(
-                    message.Q,
-                    {
-                      className: notification.classNames,
-                      id: notification.id,
-                      style: notification.style,
-                      children: (0, jsx_runtime.jsx)('span', {
-                        children: notification.message,
-                      }),
-                    },
-                    notification.id,
-                  ),
-                ),
-              }),
-              addMessage &&
-                (0, jsx_runtime.jsx)(Footer, {
-                  children: (0, jsx_runtime.jsx)(searchInput.D, {
-                    delay: delay,
-                    onClickSearch: (message) => {
-                      let newItem = {
-                        id: statusList ? statusList.length + 1 : 1,
-                        message: message,
-                      };
-                      setStatusList((prevList) => [
-                        ...(prevList || []),
-                        newItem,
-                      ]);
-                    },
-                  }),
-                }),
-            ],
-          });
-        };
-      try {
-        (MessageGroup.displayName = 'MessageGroup'),
-          (MessageGroup.__docgenInfo = {
-            description: '',
-            displayName: 'MessageGroup',
-            props: {
-              list: {
-                defaultValue: null,
-                description: '',
-                name: 'list',
-                required: !1,
-                type: { name: 'ListItem[]' },
-              },
-              delay: {
-                defaultValue: null,
-                description: '',
-                name: 'delay',
-                required: !0,
-                type: { name: 'number' },
-              },
-              style: {
-                defaultValue: null,
-                description: '',
-                name: 'style',
-                required: !1,
-                type: { name: 'CSSProperties' },
-              },
-              classNames: {
-                defaultValue: null,
-                description: '',
-                name: 'classNames',
-                required: !1,
-                type: { name: 'string' },
-              },
-              addMessage: {
-                defaultValue: null,
-                description: '',
-                name: 'addMessage',
-                required: !1,
-                type: { name: 'boolean' },
-              },
-              boxMinHeight: {
-                defaultValue: null,
-                description: '',
-                name: 'boxMinHeight',
-                required: !1,
-                type: { name: 'string' },
-              },
-            },
-          }),
-          'undefined' != typeof STORYBOOK_REACT_CLASSES &&
-            (STORYBOOK_REACT_CLASSES[
-              'src/lib/Messages/messageGroup.tsx#MessageGroup'
-            ] = {
-              docgenInfo: MessageGroup.__docgenInfo,
-              name: 'MessageGroup',
-              path: 'src/lib/Messages/messageGroup.tsx#MessageGroup',
-            });
-      } catch (__react_docgen_typescript_loader_error) {}
-    },
     './src/lib/SearchInput/searchInput.tsx': (
       __unused_webpack_module,
       __webpack_exports__,
       __webpack_require__,
     ) => {
+      'use strict';
       __webpack_require__.d(__webpack_exports__, { D: () => SearchInput });
       var _templateObject,
         _Users_gwiyeom_Documents_react_react_toolkit_node_modules_babel_runtime_helpers_esm_taggedTemplateLiteral_js__WEBPACK_IMPORTED_MODULE_8__ =
@@ -1253,6 +1068,7 @@
       __webpack_exports__,
       __webpack_require__,
     ) => {
+      'use strict';
       __webpack_require__.d(__webpack_exports__, { d: () => useDebounce });
       var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
         './node_modules/react/index.js',
@@ -1290,11 +1106,109 @@
             });
       } catch (__react_docgen_typescript_loader_error) {}
     },
+    './node_modules/classnames/bind.js': (module, exports) => {
+      var __WEBPACK_AMD_DEFINE_RESULT__;
+      /*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/ !(function () {
+        'use strict';
+        var hasOwn = {}.hasOwnProperty;
+        function classNames() {
+          for (var classes = '', i = 0; i < arguments.length; i++) {
+            var arg = arguments[i];
+            arg && (classes = appendClass(classes, parseValue.call(this, arg)));
+          }
+          return classes;
+        }
+        function parseValue(arg) {
+          if ('string' == typeof arg || 'number' == typeof arg)
+            return (this && this[arg]) || arg;
+          if ('object' != typeof arg) return '';
+          if (Array.isArray(arg)) return classNames.apply(this, arg);
+          if (
+            arg.toString !== Object.prototype.toString &&
+            !arg.toString.toString().includes('[native code]')
+          )
+            return arg.toString();
+          var classes = '';
+          for (var key in arg)
+            hasOwn.call(arg, key) &&
+              arg[key] &&
+              (classes = appendClass(classes, (this && this[key]) || key));
+          return classes;
+        }
+        function appendClass(value, newClass) {
+          return newClass
+            ? value
+              ? value + ' ' + newClass
+              : value + newClass
+            : value;
+        }
+        module.exports
+          ? ((classNames.default = classNames), (module.exports = classNames))
+          : void 0 !==
+              (__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+                return classNames;
+              }.apply(exports, [])) &&
+            (module.exports = __WEBPACK_AMD_DEFINE_RESULT__);
+      })();
+    },
+    './node_modules/classnames/index.js': (module, exports) => {
+      var __WEBPACK_AMD_DEFINE_RESULT__;
+      /*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/ !(function () {
+        'use strict';
+        var hasOwn = {}.hasOwnProperty;
+        function classNames() {
+          for (var classes = '', i = 0; i < arguments.length; i++) {
+            var arg = arguments[i];
+            arg && (classes = appendClass(classes, parseValue(arg)));
+          }
+          return classes;
+        }
+        function parseValue(arg) {
+          if ('string' == typeof arg || 'number' == typeof arg) return arg;
+          if ('object' != typeof arg) return '';
+          if (Array.isArray(arg)) return classNames.apply(null, arg);
+          if (
+            arg.toString !== Object.prototype.toString &&
+            !arg.toString.toString().includes('[native code]')
+          )
+            return arg.toString();
+          var classes = '';
+          for (var key in arg)
+            hasOwn.call(arg, key) &&
+              arg[key] &&
+              (classes = appendClass(classes, key));
+          return classes;
+        }
+        function appendClass(value, newClass) {
+          return newClass
+            ? value
+              ? value + ' ' + newClass
+              : value + newClass
+            : value;
+        }
+        module.exports
+          ? ((classNames.default = classNames), (module.exports = classNames))
+          : void 0 !==
+              (__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+                return classNames;
+              }.apply(exports, [])) &&
+            (module.exports = __WEBPACK_AMD_DEFINE_RESULT__);
+      })();
+    },
     './src/lib/styles.module.css': (
       __unused_webpack_module,
       __webpack_exports__,
       __webpack_require__,
     ) => {
+      'use strict';
       __webpack_require__.d(__webpack_exports__, {
         A: () => __WEBPACK_DEFAULT_EXPORT__,
       });
@@ -1340,3 +1254,4 @@
     },
   },
 ]);
+//# sourceMappingURL=stories-molecules-SearchInput-stories.a3aa4e4c.iframe.bundle.js.map

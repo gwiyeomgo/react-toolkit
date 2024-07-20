@@ -36,13 +36,13 @@ it('Message Group 렌더링', async () => {
   expect(textElement).toBeInTheDocument();
 });
 
-it('Message Group 렌더링', async () => {
+it('Message Group 렌더링2', async () => {
   const delay = 1000;
   render(<MessageGroup delay={delay} list={list} addMessage={true} />);
 
   //메세지 입력
   await act(() => {
-    const inputElement = screen.getByRole('input');
+    const inputElement = screen.getByRole('textbox', { name: 'input-field' });
     userEvent.type(inputElement, '테스트성공?');
   });
   //검색 버튼 클릭
@@ -53,7 +53,8 @@ it('Message Group 렌더링', async () => {
   });
 
   await act(() => {
-    userEvent.click(screen.getByRole('button', { name: 'Search' }));
+    const buttons = screen.getAllByRole('button');
+    userEvent.click(buttons[1]);
   });
 
   // 타이머 진행
