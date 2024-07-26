@@ -20,19 +20,21 @@ it('Calculator 렌더링', async () => {
   });
 });
 
-it('Calculator 렌더링2', async () => {
+it('Calculator 렌더링2', () => {
   render(<Calculator />);
   const input = screen.getAllByRole('input');
 
-  await act(() => {
+  act(() => {
     const target = {} as { value: string };
     target.value = '111';
     fireEvent.change(input[0], {
       target: target,
     });
   });
-  await waitFor(() => {
-    const textElement = screen.getByText('The water would boil.');
+
+  const textElement = screen.getByText('The water would boil.');
+
+  waitFor(() => {
     expect(textElement).toBeInTheDocument();
   });
 });

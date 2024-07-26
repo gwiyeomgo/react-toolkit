@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, sleep } from '../tests/utils';
+import { fireEvent, render, sleep, act } from '../tests/utils';
 
 const focusTest = (
   Component: React.ComponentType<any>,
@@ -56,8 +56,9 @@ const focusTest = (
         );
         ref.current.focus();
         expect(focused).toBeTruthy();
-
-        fireEvent.focus(getElement(container)!);
+        act(() => {
+          fireEvent.focus(getElement(container)!);
+        });
         expect(onFocus).toHaveBeenCalled();
       });
 
@@ -72,8 +73,9 @@ const focusTest = (
         );
         ref.current.blur();
         expect(blurred).toBeTruthy();
-
-        fireEvent.blur(getElement(container)!);
+        act(() => {
+          fireEvent.blur(getElement(container)!);
+        });
         await sleep(blurDelay);
         expect(onBlur).toHaveBeenCalled();
       });
@@ -83,15 +85,18 @@ const focusTest = (
         const { container } = render(<Component autoFocus onFocus={onFocus} />);
 
         expect(focused).toBeTruthy();
-
-        fireEvent.focus(getElement(container)!);
+        act(() => {
+          fireEvent.focus(getElement(container)!);
+        });
         expect(onFocus).toHaveBeenCalled();
       });
     } else {
       it('focus() and onFocus', () => {
         const handleFocus = jest.fn();
         const { container } = render(<Component onFocus={handleFocus} />);
-        fireEvent.focus(getElement(container)!);
+        act(() => {
+          fireEvent.focus(getElement(container)!);
+        });
         expect(handleFocus).toHaveBeenCalled();
       });
 
@@ -99,16 +104,24 @@ const focusTest = (
         jest.useRealTimers();
         const handleBlur = jest.fn();
         const { container } = render(<Component onBlur={handleBlur} />);
-        fireEvent.focus(getElement(container)!);
+
+        act(() => {
+          fireEvent.focus(getElement(container)!);
+        });
+
         await sleep(0);
-        fireEvent.blur(getElement(container)!);
+        act(() => {
+          fireEvent.blur(getElement(container)!);
+        });
+
         await sleep(0);
         expect(handleBlur).toHaveBeenCalled();
       });
 
-      it('autoFocus', async () => {
+      it('autoFocus', () => {
         const handleFocus = jest.fn();
         render(<Component autoFocus onFocus={handleFocus} />);
+
         expect(handleFocus).toHaveBeenCalled();
       });
     }

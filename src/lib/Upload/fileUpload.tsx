@@ -124,6 +124,7 @@ const FileUpload = forwardRef<FileUploadInputRef, FileUploadProps>(
         <input
           className={styles.name}
           value={fileName}
+          readOnly
           placeholder={placeholder}
         />
         <label htmlFor="file">파일찾기</label>

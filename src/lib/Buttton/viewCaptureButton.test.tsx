@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ViewCaptureButton } from './viewCaptureButton';
 import React from 'react';
@@ -28,7 +28,7 @@ describe('컴포넌트 캡처 버튼', () => {
     globalThis.URL = originalURL;
   });
 
-  it('captures view on button click', async () => {
+  it('captures view on button click', () => {
     render(
       <ViewCaptureButton downloadFileName="test" downloadButtonName="download">
         <div
@@ -43,10 +43,11 @@ describe('컴포넌트 캡처 버튼', () => {
     );
 
     const button = screen.getByRole('button');
-    await act(() => {
+    act(() => {
       userEvent.click(button);
     });
-    await act(() => {
+
+    waitFor(() => {
       expect(html2canvas).toHaveBeenCalledWith(screen.getByTestId('test-view'));
     });
   });

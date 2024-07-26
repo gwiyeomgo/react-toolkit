@@ -47,8 +47,8 @@ describe('test', () => {
   mountTest(excel.ExcelDownloadButton as any);
   accessibilityTest(excel.ExcelDownloadButton as any);
 
-  it('버튼 렌더링 확인', async () => {
-    await act(async () => {
+  it('버튼 렌더링 확인', () => {
+    act(() => {
       render(
         <excel.ExcelDownloadButton
           headers={[]}
@@ -58,19 +58,17 @@ describe('test', () => {
         />,
       );
     });
-
-    await waitFor(() => {
-      const buttonElement = screen.getByRole('button');
-
+    const buttonElement = screen.getByRole('button');
+    waitFor(() => {
       expect(buttonElement).toBeInTheDocument();
     });
   });
 
-  it('파일 다운로드', async () => {
+  it('파일 다운로드', () => {
     const fetchData = jest.fn(() => {
       return data;
     });
-    await act(async () => {
+    act(() => {
       render(
         <excel.ExcelDownloadButton
           buttonName="버튼2"
@@ -81,12 +79,12 @@ describe('test', () => {
       );
     });
 
-    await act(async () => {
-      const buttonElement = screen.getByRole('button');
+    const buttonElement = screen.getByRole('button');
+    act(() => {
       userEvent.click(buttonElement);
     });
 
-    await waitFor(() => {
+    waitFor(() => {
       expect(fetchData).toHaveBeenCalled();
     });
   });

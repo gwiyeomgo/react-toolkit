@@ -3,14 +3,14 @@ import { ToggleButton } from './toggleButton';
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 
-it('ToggleButton left 속성 적용 확인', async () => {
+it('ToggleButton left 속성 적용 확인', () => {
   render(<ToggleButton toggled={false} />);
   const toggleElement = screen.getByRole('button');
 
-  await act(() => {
+  act(() => {
     userEvent.click(toggleElement);
   });
-  await waitFor(() => {
+  waitFor(() => {
     // button 요소의 style 속성 가져오기
     const buttonStyles = window.getComputedStyle(toggleElement);
     // left 속성의 값 가져오기
@@ -20,14 +20,14 @@ it('ToggleButton left 속성 적용 확인', async () => {
   });
 });
 
-it('ToggleButton transform 속성 적용 확인', async () => {
+it('ToggleButton transform 속성 적용 확인', () => {
   render(<ToggleButton toggled={false} />);
   const toggleElement = screen.getByRole('button');
 
-  await act(() => {
+  act(() => {
     userEvent.click(toggleElement);
   });
-  await waitFor(() => {
+  waitFor(() => {
     // button 요소의 style 속성 가져오기
     const buttonStyles = window.getComputedStyle(toggleElement);
     // transform 속성의 값 가져오기

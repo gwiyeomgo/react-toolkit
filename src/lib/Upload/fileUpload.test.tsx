@@ -50,12 +50,13 @@ it('heic 파일 테스트', async () => {
       }}
     />,
   );
-  await act(() => {
-    const fileInput = screen.getByTestId('Upload');
+  const fileInput = screen.getByTestId('Upload');
 
-    const imageFile = new File(['heic ...'], 'test3.jpg', {
-      type: 'image/heic',
-    });
+  const imageFile = new File(['heic ...'], 'test3.jpg', {
+    type: 'image/heic',
+  });
+
+  await act(() => {
     fireEvent.change(fileInput, { target: { files: [imageFile] } });
   });
 

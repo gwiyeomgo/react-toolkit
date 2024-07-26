@@ -46,16 +46,17 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
       </>,
     );
     const buttonElement = screen.getByRole('button');
-    //disabled
-    expect(buttonElement).toBeDisabled();
 
-    await act(() => {
+    act(() => {
+      //disabled
+      expect(buttonElement).toBeDisabled();
+
       userEvent.click(buttonElement);
     });
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  it('loading true 인 경우 버튼을 클릭한 후에 onClick 함수가 호출되지 않음 ', async () => {
+  it('loading true 인 경우 버튼을 클릭한 후에 onClick 함수가 호출되지 않음 ', () => {
     const onClickMock = jest.fn();
     render(
       <>
@@ -66,7 +67,7 @@ describe('기본 버튼 color 와 type 이 적용되었는지 테스트', () => 
     );
     const buttonElement = screen.getByRole('button');
 
-    await act(() => {
+    act(() => {
       userEvent.click(buttonElement);
     });
     expect(onClickMock).toHaveBeenCalledTimes(0);

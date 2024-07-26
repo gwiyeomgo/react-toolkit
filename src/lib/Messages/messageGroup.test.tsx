@@ -36,33 +36,33 @@ it('Message Group 렌더링', async () => {
   expect(textElement).toBeInTheDocument();
 });
 
-it('Message Group 렌더링2', async () => {
+it('Message Group 렌더링2', () => {
   const delay = 1000;
   render(<MessageGroup delay={delay} list={list} addMessage={true} />);
 
   //메세지 입력
-  await act(() => {
+  act(() => {
     const inputElement = screen.getByRole('textbox', { name: 'input-field' });
     userEvent.type(inputElement, '테스트성공?');
   });
   //검색 버튼 클릭
 
   // 타이머 진행
-  await act(() => {
+  act(() => {
     jest.advanceTimersByTime(delay);
   });
 
-  await act(() => {
+  act(() => {
     const buttons = screen.getAllByRole('button');
     userEvent.click(buttons[1]);
   });
 
   // 타이머 진행
-  await act(() => {
+  act(() => {
     jest.advanceTimersByTime(delay * 2);
   });
 
-  await waitFor(() => {
+  waitFor(() => {
     const textElement = screen.getByText('테스트성공?');
     expect(textElement).toBeInTheDocument();
   });

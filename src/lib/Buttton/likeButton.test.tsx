@@ -9,13 +9,7 @@ describe('좋아요 버튼 테스트', () => {
   mountTest(LikeButton as any);
   accessibilityTest(LikeButton as any);
   it('LikeButton ', () => {
-    render(
-      <LikeButton
-        onClick={() => {
-          console.log('LikeButton click');
-        }}
-      />,
-    );
+    render(<LikeButton onClick={jest.fn()} />);
     const buttonElement = screen.getByRole('button');
     const iconElement = screen.getByRole('img');
     act(() => {
