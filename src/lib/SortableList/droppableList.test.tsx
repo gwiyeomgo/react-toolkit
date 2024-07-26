@@ -9,7 +9,9 @@ test('첫번째 item 마지막으로 이동', () => {
   const startItem = getByText('item 0');
   const endItem = getByText('item 2');
 
-  fireEvent.dragStart(startItem);
+  act(() => {
+    fireEvent.dragStart(startItem);
+  });
 
   act(() => {
     // act는 React 상태 업데이트가 발생할 때 테스트가 올바르게 작동하도록 보장
@@ -18,7 +20,9 @@ test('첫번째 item 마지막으로 이동', () => {
     fireEvent.drop(endItem);
   });
 
-  fireEvent.dragEnd(startItem);
+  act(() => {
+    fireEvent.dragEnd(startItem);
+  });
 
   waitFor(() => {
     const items = container.querySelectorAll('[data-rbd-draggable-id]');

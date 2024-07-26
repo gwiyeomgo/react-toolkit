@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import React from 'react';
 import { ImageGallery } from './ImageGallery';
 import userEvent from '@testing-library/user-event';
@@ -10,7 +10,7 @@ describe('ImageGallery 전체 테스트', () => {
   mountTest(ImageGallery as any);
   accessibilityTest(ImageGallery as any);
 
-  it('ImageGallery 이미지 클릭하면 모달 오픈', async () => {
+  it('ImageGallery 이미지 클릭하면 모달 오픈', () => {
     render(
       <ImageGallery
         data={[
@@ -25,16 +25,14 @@ describe('ImageGallery 전체 테스트', () => {
 
     const images = screen.getAllByRole('img');
 
-    await act(() => {
+    act(() => {
       userEvent.click(images[0]);
     });
     const images2 = screen.getAllByRole('img');
-    await waitFor(() => {
-      expect(images2[1]).toHaveAttribute('alt', 'original size');
-    });
+    expect(images2[1]).toHaveAttribute('alt', 'original size');
   });
 
-  it('Image 모달 오픈 후 오른쪽 클릭시 다른 사진 ', async () => {
+  it('Image 모달 오픈 후 오른쪽 클릭시 다른 사진 ', () => {
     render(
       <ImageGallery
         data={[
@@ -54,22 +52,18 @@ describe('ImageGallery 전체 테스트', () => {
 
     const images = screen.getAllByRole('img');
 
-    await act(() => {
+    act(() => {
       userEvent.click(images[0]);
     });
 
     const images2 = screen.getAllByRole('img');
-    await waitFor(() => {
-      expect(images2[2]).toHaveAttribute('src', '0_1280.jpg');
-    });
+    expect(images2[2]).toHaveAttribute('src', '0_1280.jpg');
 
-    await act(() => {
+    act(() => {
       userEvent.click(images2[4]);
     });
 
     const images3 = screen.getAllByRole('img');
-    await waitFor(() => {
-      expect(images3[2]).toHaveAttribute('src', '222.jpg');
-    });
+    expect(images3[2]).toHaveAttribute('src', '222.jpg');
   });
 });

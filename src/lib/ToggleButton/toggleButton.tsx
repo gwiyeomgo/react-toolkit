@@ -60,7 +60,7 @@ const ToggleButton = ({ id, toggled }: ToggleButtonProps) => {
   const handleClick = () => setIsToggleOn((prevState) => !prevState);
   return (
     <>
-      <HiddenInput id={id} type="checkbox" checked={isToggleOn} />
+      <HiddenInput id={id} type="checkbox" checked={isToggleOn} readOnly />
       <Outline htmlFor={id}>
         <Toggle role={'button'} onClick={handleClick} />
       </Outline>

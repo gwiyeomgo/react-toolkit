@@ -25,12 +25,12 @@ const DaumAdressSearch: React.FC<{
 }> = (props) => {
   const [address, setAddress] = useState('');
   const [postNo, setPostNo] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const [show, setShow] = useState(false);
   const openModal = () => {
-    setIsOpen(true);
+    setShow(true);
   };
   const closeModal = () => {
-    setIsOpen(false);
+    setShow(false);
   };
   const onCompletePost = (data: any) => {
     // 도로명 주소 적용
@@ -58,7 +58,7 @@ const DaumAdressSearch: React.FC<{
         <Row>
           <Input value={address} readOnly={true} />
         </Row>
-        <FixedCenterModal isOpen={isOpen} onClose={closeModal}>
+        <FixedCenterModal isOpen={show} onClose={closeModal}>
           <DaumPostcode
             autoClose={true}
             onComplete={onCompletePost}

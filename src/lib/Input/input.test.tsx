@@ -35,11 +35,13 @@ describe('input 전체 테스트', () => {
       container.querySelector('input')?.focus();
       const target = {} as { value: string };
       target.value = '111';
-      //TODO warning  Forbidden non-null assertion ->
-      fireEvent.change(container.querySelector('input')!, {
-        target: target,
-      });
 
+      const input = container.querySelector('input');
+      if (input) {
+        fireEvent.change(input, {
+          target: target,
+        });
+      }
       expect(container.querySelector('input')?.value).toEqual('111');
 
       unmount();

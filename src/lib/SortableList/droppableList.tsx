@@ -23,16 +23,13 @@ const reorder = (list: any[], startIndex: number, endIndex: number) => {
 };
 
 const grid = 8;
-const Item = styled.div<{ isDragging: boolean; draggableStyle: any }>`
+const Item = styled.div`
   user-select: none;
   padding: ${grid * 2}px;
   margin: 0 0 ${grid}px 0;
-  background: ${(props) => (props.isDragging ? 'lightgreen' : 'grey')};
-  ${(props) => props.draggableStyle}
 `;
 
-const List = styled.div<{ isDraggingOver: boolean }>`
-  background: ${(props) => (props.isDraggingOver ? 'lightblue' : 'lightgrey')};
+const List = styled.div`
   padding: ${grid}px;
   width: 250px;
 `;
@@ -40,8 +37,10 @@ const List = styled.div<{ isDraggingOver: boolean }>`
 type DroppableListProps = {
   count?: number;
 };
+
 const DroppableList = (props: DroppableListProps) => {
-  const [items, setItems] = useState(getItems(props.count ? props.count : 10));
+  const { count = 10 } = props;
+  const [items, setItems] = useState(getItems(count));
 
   const onDragEnd = (result: DropResult) => {
     //Dropped outside the list
@@ -61,21 +60,15 @@ const DroppableList = (props: DroppableListProps) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable">
-        {(provided, snapshot) => (
-          <List
-            {...provided.droppableProps}
-            isDraggingOver={snapshot.isDraggingOver}
-            ref={provided.innerRef}
-          >
+        {(provided) => (
+          <List {...provided.droppableProps} ref={provided.innerRef}>
             {items.map((item, index) => (
               <Draggable key={item.id} draggableId={item.id} index={index}>
-                {(provided, snapshot) => (
+                {(provided) => (
                   <Item
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
-                    isDragging={snapshot.isDragging}
-                    draggableStyle={provided.draggableProps.style}
                   >
                     {item.content}
                   </Item>
@@ -89,4 +82,5 @@ const DroppableList = (props: DroppableListProps) => {
     </DragDropContext>
   );
 };
+
 export { DroppableList };

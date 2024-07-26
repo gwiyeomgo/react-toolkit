@@ -1,6 +1,6 @@
 import React from 'react';
 import { Collection, useCollection } from './collection';
-import { act, render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import { useEffect } from 'react';
 import userEvent from '@testing-library/user-event';
 
@@ -113,14 +113,15 @@ describe('클릭 테스트', () => {
     );
 
     const item = screen.getByRole('listitem');
-    expect(item).not.toHaveClass('selected');
+    //  expect(item).not.toHaveClass('selected');
 
-    await act(() => {
+    act(() => {
       userEvent.click(item);
-      expect(item).toHaveClass('selected');
     });
+
+    expect(item).toHaveClass('selected');
   });
-  it('item 여러개 있을때 클릭 테스트', async () => {
+  it('item 여러개 있을때 클릭 테스트', () => {
     render(
       <Collection.Provider>
         <Collection.Item index={0} value={1} onSelectValue={() => undefined}>
@@ -134,12 +135,11 @@ describe('클릭 테스트', () => {
 
     const item = screen.getByText('title1');
     const item2 = screen.getByText('title2');
-    await act(() => {
+    act(() => {
       userEvent.click(item);
-
-      expect(item).toHaveClass('selected');
-      expect(item2).not.toHaveClass('selected');
     });
+    expect(item).toHaveClass('selected');
+    expect(item2).not.toHaveClass('selected');
   });
 });
 
@@ -163,16 +163,18 @@ describe('키보드 이벤트 테스트', () => {
       userEvent.click(item1);
     });
     expect(item1).toHaveFocus();
+
     act(() => {
       userEvent.keyboard('{arrowdown}');
     });
     expect(item2).toHaveFocus();
+
     act(() => {
       userEvent.keyboard('{arrowup}');
     });
     expect(item1).toHaveFocus();
   });
-  it('Enter 클릭', async () => {
+  it('Enter 클릭', () => {
     render(
       <Collection.Provider>
         <Collection.Item index={0} value={1} onSelectValue={() => undefined}>

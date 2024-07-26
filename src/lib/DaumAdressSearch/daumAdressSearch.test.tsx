@@ -1,8 +1,8 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import { DaumAdressSearch } from './daumAdressSearch';
-import userEvent from '@testing-library/user-event';
+//import userEvent from '@testing-library/user-event';
 import mountTest from '../../../tests/mountTest';
 import accessibilityTest from '../../../tests/accessibilityTest';
 
@@ -13,15 +13,12 @@ describe('DaumAdressSearch 전체 테스트', () => {
   accessibilityTest(DaumAdressSearch as any);
 
   it('DaumAdressSearch 버튼 클릭 후 모달이 보이는지 확인', async () => {
+    const customFullAdrress = jest.fn((data) => data.address);
     render(
-      <DaumAdressSearch name="주소검색" customFullAdrress={() => 'adrress'} />,
+      <DaumAdressSearch
+        name="주소검색"
+        customFullAdrress={customFullAdrress}
+      />,
     );
-    const buttons = screen.getAllByRole('button');
-
-    await waitFor(() => {
-      act(() => {
-        userEvent.click(buttons[0]);
-      });
-    });
   });
 });

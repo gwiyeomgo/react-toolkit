@@ -20,12 +20,13 @@ const FixedCenterModal = forwardRef(function FixedCenterModal(
   props: ComponentPropsWithoutRef<typeof Button> & ModalProps, //https://www.pumpkiinbell.com/blog/react/reusable-components
   ref,
 ) {
-  return props.isOpen ? (
+  const { isOpen, onClose, modalStyle, children, ...buttonProps } = props;
+  return isOpen ? (
     <GlobalPortal.Consumer>
       <div
         className="modal"
         style={{
-          ...props.modalStyle,
+          ...modalStyle,
           backgroundColor: 'white',
           position: 'fixed',
           left: 0,
@@ -37,10 +38,10 @@ const FixedCenterModal = forwardRef(function FixedCenterModal(
           height: 'fit-content',
         }}
       >
-        <Button {...props} onClick={props.onClose} ref={ref}>
+        <Button {...buttonProps} onClick={onClose} ref={ref}>
           <Icon icon={'Cross'} color="white" width={'1rem'} height={'1rem'} />
         </Button>
-        {props.children}
+        {children}
       </div>
     </GlobalPortal.Consumer>
   ) : (
