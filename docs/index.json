@@ -387,6 +387,14 @@
       "importPath": "./src/stories/molecules/CountDownTimer.stories.tsx",
       "tags": ["autodocs", "story"]
     },
+    "2-molecules-countdowntimer--expired-timer": {
+      "type": "story",
+      "id": "2-molecules-countdowntimer--expired-timer",
+      "name": "Expired Timer",
+      "title": "2.Molecules/CountdownTimer",
+      "importPath": "./src/stories/molecules/CountDownTimer.stories.tsx",
+      "tags": ["autodocs", "story"]
+    },
     "2-molecules-imagegallery--docs": {
       "id": "2-molecules-imagegallery--docs",
       "title": "2.Molecules/ImageGallery",

@@ -23,16 +23,6 @@ describe('실패 ', () => {
       );
     }).toThrow(new Error('yyyyMMddHHmmss 형식이 아닙니다.'));
   });
-
-  it('targetTime 과거', () => {
-    expect(() => {
-      render(
-        <>
-          <CountdownTimer targetTime={'20201103100000'} />
-        </>,
-      );
-    }).toThrow(new Error('목표 시간이 이미 지났습니다.'));
-  });
 });
 describe('렌더링 테스트', () => {
   beforeEach(() => {
@@ -76,5 +66,18 @@ describe('렌더링 테스트', () => {
     );
     const textElement = screen.queryAllByText('days');
     expect(textElement.length).toEqual(1);
+  });
+
+  it('targetTime 과거이거나 현재면 00:00 출력 (성공)', () => {
+    expect(() => {
+      render(
+        <>
+          <CountdownTimer type="default" targetTime={'20201103100000'} />
+        </>,
+      );
+    });
+
+    const textElement = screen.queryAllByText('days');
+    expect(textElement.length).toEqual(0);
   });
 });

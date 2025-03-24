@@ -23,7 +23,7 @@ export type FileUploadInputRef = {
  * https://www.npmjs.com/package/browser-image-compression
  */
 const handleImageUpload = async (file: globalThis.File) => {
-  console.log(`before size ${file.size / 1024 / 1024} MB`);
+  //console.log(`before size ${file.size / 1024 / 1024} MB`);
   if (file) {
     try {
       const options = {

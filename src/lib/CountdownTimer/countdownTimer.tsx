@@ -42,7 +42,7 @@ type CountdownTimerProps = {
 
 const CountdownTimer = ({
   fontSize = 60,
-  targetTime = '20240729000000',
+  targetTime,
   type = 'default',
 }: CountdownTimerProps) => {
   const [remainingTime, setRemainingTime] = useState(0);
@@ -76,10 +76,14 @@ const CountdownTimer = ({
   //TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
   // Date 값 앞에 단항 연산자 (Unary operator)인 + 를 지정하면
   // new Date()의 결과를 숫자(number)로 취급
-  const timeDifference = +targetDate - +currentDate;
-  if (timeDifference <= 0) {
-    throw new Error('목표 시간이 이미 지났습니다.');
-  }
+  //const timeDifference = +targetDate - +currentDate;
+  // 시간 차이를 계산하는 함수
+  const timeDifference = Math.max(+targetDate - +currentDate, 0); // 음수값을 0으로 처리
+
+  //초기화
+  useEffect(() => {
+    setRemainingTime(timeDifference);
+  }, [targetTime]);
 
   useIntervalCall(() => setRemainingTime(timeDifference), 1000);
 
