@@ -308,11 +308,7 @@
           suffix: ':',
         },
         CountdownTimer = (_ref) => {
-          let {
-              fontSize = 60,
-              targetTime = '20240729000000',
-              type = 'default',
-            } = _ref,
+          let { fontSize = 60, targetTime, type = 'default' } = _ref,
             [remainingTime, setRemainingTime] = (0, react.useState)(0),
             [time, setTime] = react.useState(TimeUnitDefault),
             [keys, setKeys] = (0, react.useState)([]);
@@ -338,9 +334,14 @@
             !yyyyMMddHHmmssRegex.test(targetTime))
           )
             throw Error('yyyyMMddHHmmss 형식이 아닙니다.');
-          let timeDifference = +convertStringToDate(targetTime) - +new Date();
-          if (timeDifference <= 0) throw Error('목표 시간이 이미 지났습니다.');
+          let timeDifference = Math.max(
+            +convertStringToDate(targetTime) - +new Date(),
+            0,
+          );
           return (
+            (0, react.useEffect)(() => {
+              setRemainingTime(timeDifference);
+            }, [targetTime]),
             useIntervalCall(() => setRemainingTime(timeDifference), 1e3),
             (0, react.useEffect)(
               () =>
@@ -399,10 +400,10 @@
                 type: { name: 'number' },
               },
               targetTime: {
-                defaultValue: { value: '20240729000000' },
+                defaultValue: null,
                 description: '',
                 name: 'targetTime',
-                required: !1,
+                required: !0,
                 type: { name: 'string' },
               },
               type: {
@@ -2273,10 +2274,7 @@
           './node_modules/react/jsx-runtime.js',
         );
       let handleImageUpload = async (file) => {
-          if (
-            (console.log('before size '.concat(file.size / 1024 / 1024, ' MB')),
-            file)
-          ) {
+          if (file) {
             try {
               let compressedFile = await (0,
               browser_image_compression__WEBPACK_IMPORTED_MODULE_3__.A)(file, {

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CountdownTimer } from '../../lib/CountdownTimer/countdownTimer';
+import dayjs from 'dayjs';
 
 const meta = {
   title: '2.Molecules/CountdownTimer',
@@ -16,9 +17,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const getTimeNextWeek = (weeks: number) => {
+  return dayjs().add(weeks, 'week').format('YYYYMMDDHHmmss');
+};
+
 export const Default: Story = {
   args: {
-    targetTime: '20241224120000',
+    targetTime: getTimeNextWeek(7),
     fontSize: 20,
   },
 };
@@ -26,7 +31,7 @@ export const Default: Story = {
 export const TimerWithSuffix: Story = {
   args: {
     type: 'suffix',
-    targetTime: '20241224120000',
+    targetTime: getTimeNextWeek(7),
     fontSize: 30,
   },
 };
@@ -34,7 +39,15 @@ export const TimerWithSuffix: Story = {
 export const OnlyTimer: Story = {
   args: {
     type: 'none',
-    targetTime: '20241224120000',
+    targetTime: getTimeNextWeek(7),
+    fontSize: 40,
+  },
+};
+
+export const ExpiredTimer: Story = {
+  args: {
+    type: 'none',
+    targetTime: '20240729000000',
     fontSize: 40,
   },
 };
